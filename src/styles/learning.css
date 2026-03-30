@@ -720,6 +720,369 @@
   margin-bottom: 32px;
 }
 
+/* ===== Layout Pattern Diagrams ===== */
+.layout-diagram {
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 16px 0 24px;
+  background: var(--bg-card);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  font-size: var(--font-size-sm);
+}
+
+.layout-diagram * {
+  box-sizing: border-box;
+}
+
+/* 1. Title slide */
+.ld-title {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white;
+  gap: 8px;
+  padding: 24px;
+}
+
+.ld-title-main {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.ld-title-sub {
+  font-size: var(--font-size-base);
+  opacity: 0.7;
+}
+
+.ld-title-meta {
+  font-size: var(--font-size-xs);
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+/* 2. Text + Image split */
+.ld-split {
+  flex-direction: row;
+}
+
+.ld-split-text {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ld-split-text-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ld-split-text-body {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.ld-split-image {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+/* 3. Full image + overlay */
+.ld-overlay {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  align-items: center;
+  justify-content: center;
+}
+
+.ld-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 20px,
+    transparent 20px,
+    transparent 40px
+  );
+}
+
+.ld-overlay-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding: 24px;
+}
+
+.ld-overlay-content-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+}
+
+.ld-overlay-content-sub {
+  font-size: var(--font-size-base);
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+/* 4. Three column */
+.ld-three-col {
+  flex-direction: row;
+  background: var(--bg-light);
+}
+
+.ld-three-col-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 12px;
+  gap: 8px;
+  border-right: 1px solid var(--border-light);
+}
+
+.ld-three-col-item:last-child {
+  border-right: none;
+}
+
+.ld-three-col-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+}
+
+.ld-three-col-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.ld-three-col-desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* 5. Data/chart */
+.ld-chart {
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 12px;
+}
+
+.ld-chart-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ld-chart-area {
+  flex: 1;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  min-height: 0;
+}
+
+.ld-chart-bar {
+  width: 32px;
+  border-radius: 4px 4px 0 0;
+  background: var(--accent);
+  transition: height 0.3s;
+}
+
+.ld-chart-bar:nth-child(2) { background: var(--accent-light); }
+.ld-chart-bar:nth-child(3) { background: var(--primary-lighter); }
+.ld-chart-bar:nth-child(5) { background: var(--accent-light); }
+
+.ld-chart-insight {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* 6. Quote */
+.ld-quote {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  background: var(--bg-light);
+  gap: 12px;
+}
+
+.ld-quote-mark {
+  font-size: 48px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+}
+
+.ld-quote-text {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-style: italic;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.ld-quote-author {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+}
+
+/* 7. Compare */
+.ld-compare {
+  flex-direction: row;
+}
+
+.ld-compare-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 12px;
+  text-align: center;
+}
+
+.ld-compare-before {
+  background: var(--error-bg);
+}
+
+.ld-compare-after {
+  background: var(--success-bg);
+}
+
+.ld-compare-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.ld-compare-before .ld-compare-label {
+  background: var(--error);
+  color: white;
+}
+
+.ld-compare-after .ld-compare-label {
+  background: var(--success);
+  color: white;
+}
+
+.ld-compare-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.ld-compare-divider {
+  width: 2px;
+  background: var(--border-light);
+}
+
+/* 8. Process/timeline */
+.ld-process {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 24px;
+  background: var(--bg-light);
+}
+
+.ld-process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  text-align: center;
+}
+
+.ld-process-num {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: var(--font-size-base);
+}
+
+.ld-process-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ld-process-arrow {
+  font-size: var(--font-size-lg);
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin: 0 4px;
+  padding-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .layout-diagram {
+    aspect-ratio: 4 / 3;
+    font-size: var(--font-size-xs);
+  }
+  .ld-title-main { font-size: var(--font-size-lg); }
+  .ld-split { flex-direction: column; }
+  .ld-split-image { min-height: 80px; }
+  .ld-three-col { flex-direction: column; }
+  .ld-three-col-item { border-right: none; border-bottom: 1px solid var(--border-light); padding: 12px; }
+  .ld-three-col-item:last-child { border-bottom: none; }
+  .ld-compare { flex-direction: column; }
+  .ld-compare-divider { width: 100%; height: 2px; }
+  .ld-process { flex-wrap: wrap; gap: 8px; }
+  .ld-process-arrow { display: none; }
+}
+
 @media (max-width: 1024px) {
   .learning-sidebar {
     position: fixed;

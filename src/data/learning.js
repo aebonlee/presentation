@@ -411,82 +411,136 @@ export const learningCategories = [
           {
             title: '자주 쓰는 레이아웃 8가지',
             content: `### 1. 타이틀 슬라이드
-\`\`\`
-┌─────────────────────┐
-│                     │
-│     큰 제목 텍스트    │
-│     부제목 / 이름     │
-│     날짜 / 소속       │
-│                     │
-└─────────────────────┘
-\`\`\`
+
+발표의 첫인상을 결정하는 슬라이드입니다. 제목, 발표자, 날짜를 중앙 정렬로 깔끔하게 배치합니다.
+
+<div class="layout-diagram ld-title">
+<div class="ld-title-main">프레젠테이션 제목</div>
+<div class="ld-title-sub">부제목 / 발표자 이름</div>
+<div class="ld-title-meta">2026년 3월 · DreamIT Biz</div>
+</div>
 
 ### 2. 텍스트 + 이미지 (좌우 분할)
-\`\`\`
-┌──────────┬──────────┐
-│          │          │
-│  텍스트   │  이미지   │
-│  내용     │          │
-│          │          │
-└──────────┴──────────┘
-\`\`\`
+
+가장 많이 사용되는 레이아웃입니다. 왼쪽에 텍스트, 오른쪽에 이미지를 배치하여 정보와 시각적 요소를 동시에 전달합니다.
+
+<div class="layout-diagram ld-split">
+<div class="ld-split-text">
+<div class="ld-split-text-title">핵심 메시지 전달</div>
+<div class="ld-split-text-body">간결한 텍스트로 핵심 내용을 전달하고, 오른쪽 이미지로 시각적 이해를 돕습니다. 한 슬라이드에 하나의 메시지만 담으세요.</div>
+</div>
+<div class="ld-split-image">IMAGE</div>
+</div>
 
 ### 3. 전체 이미지 + 텍스트 오버레이
-\`\`\`
-┌─────────────────────┐
-│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ │
-│ ▓▓ 큰 텍스트 ▓▓▓▓▓▓ │
-│ ▓▓ (오버레이) ▓▓▓▓▓▓│
-│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ │
-└─────────────────────┘
-\`\`\`
+
+강렬한 비주얼이 필요할 때 사용합니다. 배경 이미지 위에 반투명 오버레이를 깔고 텍스트를 올립니다.
+
+<div class="layout-diagram ld-overlay">
+<div class="ld-overlay-bg"></div>
+<div class="ld-overlay-content">
+<div class="ld-overlay-content-title">강렬한 한 마디</div>
+<div class="ld-overlay-content-sub">배경 이미지 위에 핵심 메시지를 오버레이</div>
+</div>
+</div>
 
 ### 4. 3분할 (Three Column)
-\`\`\`
-┌──────┬──────┬──────┐
-│ 항목1 │ 항목2 │ 항목3 │
-│ 아이콘 │ 아이콘 │ 아이콘 │
-│ 설명  │ 설명  │ 설명  │
-└──────┴──────┴──────┘
-\`\`\`
+
+3가지 항목을 나란히 비교하거나 나열할 때 효과적입니다. 아이콘 + 제목 + 설명 구조를 반복합니다.
+
+<div class="layout-diagram ld-three-col">
+<div class="ld-three-col-item">
+<div class="ld-three-col-icon">A</div>
+<div class="ld-three-col-title">첫 번째 항목</div>
+<div class="ld-three-col-desc">간결한 설명 텍스트를 아이콘 아래에 배치</div>
+</div>
+<div class="ld-three-col-item">
+<div class="ld-three-col-icon">B</div>
+<div class="ld-three-col-title">두 번째 항목</div>
+<div class="ld-three-col-desc">동일한 구조를 반복하여 일관성 유지</div>
+</div>
+<div class="ld-three-col-item">
+<div class="ld-three-col-icon">C</div>
+<div class="ld-three-col-title">세 번째 항목</div>
+<div class="ld-three-col-desc">3개 이하로 유지하면 가독성이 높아짐</div>
+</div>
+</div>
 
 ### 5. 데이터/차트 중심
-\`\`\`
-┌─────────────────────┐
-│   제목              │
-│ ┌─────────────────┐ │
-│ │   차트/그래프     │ │
-│ └─────────────────┘ │
-│   핵심 인사이트 한 줄  │
-└─────────────────────┘
-\`\`\`
+
+숫자와 데이터를 시각적으로 전달할 때 사용합니다. 제목 → 차트 → 핵심 인사이트 순서로 배치합니다.
+
+<div class="layout-diagram ld-chart">
+<div class="ld-chart-title">분기별 매출 추이</div>
+<div class="ld-chart-area">
+<div class="ld-chart-bar" style="height:45%"></div>
+<div class="ld-chart-bar" style="height:65%"></div>
+<div class="ld-chart-bar" style="height:55%"></div>
+<div class="ld-chart-bar" style="height:80%"></div>
+<div class="ld-chart-bar" style="height:90%"></div>
+</div>
+<div class="ld-chart-insight">3분기 대비 4분기 매출 28% 성장</div>
+</div>
 
 ### 6. 인용문/강조
-\`\`\`
-┌─────────────────────┐
-│                     │
-│  " 인용문 텍스트 "    │
-│                     │
-│        - 출처        │
-└─────────────────────┘
-\`\`\`
+
+인상적인 말이나 핵심 메시지를 강조할 때 사용합니다. 여백을 충분히 두어 메시지에 집중하게 합니다.
+
+<div class="layout-diagram ld-quote">
+<div class="ld-quote-mark">"</div>
+<div class="ld-quote-text">좋은 디자인은 가능한 적게 디자인하는 것이다.</div>
+<div class="ld-quote-author">— Dieter Rams</div>
+</div>
 
 ### 7. 비교/대조
-\`\`\`
-┌──────────┬──────────┐
-│  Before  │  After   │
-│  문제점   │  해결안   │
-│  현재    │  미래     │
-└──────────┴──────────┘
-\`\`\`
+
+두 가지 상태나 선택지를 나란히 놓고 비교할 때 효과적입니다. Before/After, 장점/단점 등에 활용합니다.
+
+<div class="layout-diagram ld-compare">
+<div class="ld-compare-side ld-compare-before">
+<div class="ld-compare-label">Before</div>
+<div class="ld-compare-items">
+<div>글자가 너무 많음</div>
+<div>시각 자료 없음</div>
+<div>구조가 불분명</div>
+</div>
+</div>
+<div class="ld-compare-divider"></div>
+<div class="ld-compare-side ld-compare-after">
+<div class="ld-compare-label">After</div>
+<div class="ld-compare-items">
+<div>핵심만 간결하게</div>
+<div>차트와 이미지 활용</div>
+<div>명확한 3단 구성</div>
+</div>
+</div>
+</div>
 
 ### 8. 프로세스/타임라인
-\`\`\`
-┌─────────────────────┐
-│  ① → ② → ③ → ④    │
-│  단계1 단계2 단계3 단계4│
-└─────────────────────┘
-\`\`\``
+
+단계별 과정을 시각적으로 보여줄 때 사용합니다. 번호와 화살표로 순서를 명확히 합니다.
+
+<div class="layout-diagram ld-process">
+<div class="ld-process-step">
+<div class="ld-process-num">1</div>
+<div class="ld-process-label">기획</div>
+</div>
+<div class="ld-process-arrow">&rarr;</div>
+<div class="ld-process-step">
+<div class="ld-process-num">2</div>
+<div class="ld-process-label">디자인</div>
+</div>
+<div class="ld-process-arrow">&rarr;</div>
+<div class="ld-process-step">
+<div class="ld-process-num">3</div>
+<div class="ld-process-label">리허설</div>
+</div>
+<div class="ld-process-arrow">&rarr;</div>
+<div class="ld-process-step">
+<div class="ld-process-num">4</div>
+<div class="ld-process-label">발표</div>
+</div>
+</div>`
           }
         ]
       }
