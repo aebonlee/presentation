@@ -31,12 +31,11 @@ export default function Enrollment() {
       />
 
       {/* Hero Header */}
-      <section className="hero-section" data-aos="fade-down">
+      <section className="about-hero">
         <div className="container">
-          <h1 className="hero-title">과정 신청</h1>
-          <p className="hero-subtitle">
+          <h1 className="about-hero-title" data-aos="fade-up">과정 신청</h1>
+          <p className="about-hero-desc" data-aos="fade-up" data-aos-delay="100">
             체계적인 커리큘럼으로 프레젠테이션 역량을 한 단계 끌어올리세요.
-            <br />
             원하는 과정을 선택하고 지금 바로 신청하세요.
           </p>
         </div>

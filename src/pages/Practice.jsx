@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
+import useAOS from '../hooks/useAOS';
 
 const quizData = [
   {
@@ -220,6 +221,7 @@ const quizData = [
 ];
 
 const Practice = () => {
+  useAOS();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);
@@ -281,14 +283,17 @@ const Practice = () => {
         path="/practice"
       />
 
-      <section className="section" style={{ paddingTop: 'calc(var(--nav-height) + 48px)' }}>
+      <section className="about-hero">
+        <div className="container">
+          <h1 className="about-hero-title" data-aos="fade-up">프레젠테이션 연습 문제</h1>
+          <p className="about-hero-desc" data-aos="fade-up" data-aos-delay="100">
+            프레젠테이션 기획, 디자인, 스피치, 데이터 시각화 등 핵심 지식을 테스트해 보세요.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container-content">
-          <div className="text-center" style={{ marginBottom: 40 }}>
-            <h1 className="section-title">프레젠테이션 연습 문제</h1>
-            <p className="section-subtitle">
-              프레젠테이션 기획, 디자인, 스피치, 데이터 시각화 등 핵심 지식을 테스트해 보세요.
-            </p>
-          </div>
 
           {!isFinished ? (
             <>

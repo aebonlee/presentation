@@ -52,12 +52,16 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
+  // Pages without dark hero sections need scrolled (glass) navbar from the start
+  const noHeroPage = location.pathname.startsWith('/learn') || location.pathname === '/login';
+  const showScrolled = scrolled || noHeroPage;
+
   const themeIcon = theme === 'light' ? 'Light' : theme === 'dark' ? 'Dark' : 'Auto';
 
   const colorLabels = { blue: '블루', teal: '틸', purple: '퍼플', emerald: '에메랄드', gold: '골드' };
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : 'navbar-transparent'}`}>
+    <nav className={`navbar ${showScrolled ? 'navbar-scrolled' : 'navbar-transparent'}`}>
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
           <div className="navbar-brand-icon">P</div>

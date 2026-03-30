@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
+import useAOS from '../hooks/useAOS';
 
 const glossaryData = [
   // 기획 (Planning)
@@ -55,6 +56,7 @@ const glossaryData = [
 const categories = ['전체', '기획', '디자인', '스피치', '데이터', '도구', '영어표현'];
 
 const Glossary = () => {
+  useAOS();
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('전체');
 
@@ -77,14 +79,17 @@ const Glossary = () => {
         path="/glossary"
       />
 
-      <section className="section" style={{ paddingTop: 'calc(var(--nav-height) + 48px)' }}>
+      <section className="about-hero">
+        <div className="container">
+          <h1 className="about-hero-title" data-aos="fade-up">프레젠테이션 용어 사전</h1>
+          <p className="about-hero-desc" data-aos="fade-up" data-aos-delay="100">
+            발표 기획부터 실전까지, 꼭 알아야 할 핵심 용어를 정리했습니다
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container-content">
-          <div className="text-center" style={{ marginBottom: 40 }}>
-            <h1 className="section-title">프레젠테이션 용어 사전</h1>
-            <p className="section-subtitle">
-              발표 기획부터 실전까지, 꼭 알아야 할 핵심 용어를 정리했습니다
-            </p>
-          </div>
 
           <div className="glossary-search">
             <input
