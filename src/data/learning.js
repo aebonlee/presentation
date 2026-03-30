@@ -278,69 +278,98 @@ export const learningCategories = [
             title: 'CARP 디자인 원칙',
             content: `### 4가지 기본 디자인 원칙
 
-**C - Contrast (대비)**
-- 중요한 요소를 눈에 띄게
-- 크기, 색상, 굵기로 구분
-- 제목 vs 본문, 강조 텍스트 vs 일반
+프레젠테이션 디자인의 핵심이 되는 CARP 원칙을 시각적으로 확인하세요.
 
-**A - Alignment (정렬)**
-- 모든 요소는 보이지 않는 선에 맞춤
-- 좌측 정렬이 가장 읽기 쉬움
-- 중앙 정렬은 제목에만 사용
+<div class="design-diagram dp-carp">
+<div class="dp-carp-card"><div class="dp-carp-letter">C</div><div class="dp-carp-name">Contrast</div><div class="dp-carp-ko">대비</div><div class="dp-carp-desc">크기, 색상, 굵기로 중요한 요소를 강조</div></div>
+<div class="dp-carp-card"><div class="dp-carp-letter">A</div><div class="dp-carp-name">Alignment</div><div class="dp-carp-ko">정렬</div><div class="dp-carp-desc">보이지 않는 선에 맞춰 깔끔하게 배치</div></div>
+<div class="dp-carp-card"><div class="dp-carp-letter">R</div><div class="dp-carp-name">Repetition</div><div class="dp-carp-ko">반복</div><div class="dp-carp-desc">일관된 색상, 폰트, 레이아웃 유지</div></div>
+<div class="dp-carp-card"><div class="dp-carp-letter">P</div><div class="dp-carp-name">Proximity</div><div class="dp-carp-ko">근접</div><div class="dp-carp-desc">관련 정보는 가까이, 그룹 간 여백 확보</div></div>
+</div>
 
-**R - Repetition (반복)**
-- 일관된 색상, 폰트, 레이아웃
-- 슬라이드 전체의 통일성 유지
-- 브랜드 아이덴티티 강화
+### Contrast (대비) — 시각적 계층 만들기
 
-**P - Proximity (근접)**
-- 관련 있는 정보는 가까이
-- 그룹 간에는 충분한 여백
-- 시각적 계층 구조 형성
+모든 요소가 같은 크기와 색상이면 아무것도 눈에 띄지 않습니다. 대비를 통해 시각적 계층을 만드세요.
+
+<div class="design-diagram dp-contrast">
+<div class="dp-contrast-side dp-contrast-bad"><div class="dp-contrast-label">X 대비 없음</div><div class="dp-contrast-demo"><div class="dp-contrast-line heading"></div><div class="dp-contrast-line"></div><div class="dp-contrast-line"></div><div class="dp-contrast-line"></div><div class="dp-contrast-line heading"></div><div class="dp-contrast-line"></div><div class="dp-contrast-line"></div></div></div>
+<div class="dp-contrast-side dp-contrast-good"><div class="dp-contrast-label">O 명확한 대비</div><div class="dp-contrast-demo"><div class="dp-contrast-line heading"></div><div class="dp-contrast-line subtitle"></div><div class="dp-contrast-line body"></div><div class="dp-contrast-line body"></div><div class="dp-contrast-line body"></div></div></div>
+</div>
+
+### Alignment (정렬) — 보이지 않는 질서
+
+무작위 배치는 혼란을 주고, 일관된 정렬은 전문성을 전달합니다.
+
+<div class="design-diagram dp-alignment">
+<div class="dp-alignment-side dp-alignment-bad"><div class="dp-alignment-label">X 정렬 없음</div><div class="dp-alignment-items"><div class="dp-align-bar"></div><div class="dp-align-bar"></div><div class="dp-align-bar"></div><div class="dp-align-bar"></div><div class="dp-align-bar"></div></div></div>
+<div class="dp-alignment-side dp-alignment-good"><div class="dp-alignment-label">O 좌측 정렬</div><div class="dp-alignment-items"><div class="dp-align-bar"></div><div class="dp-align-bar"></div><div class="dp-align-bar"></div><div class="dp-align-bar"></div><div class="dp-align-bar"></div></div></div>
+</div>
 
 ### 여백(White Space)의 힘
 
 > **좋은 디자인의 50%는 여백에서 나옵니다.**
 
+빽빽한 슬라이드보다 여유 있는 슬라이드가 더 강한 인상을 줍니다.
+
+<div class="design-diagram dp-whitespace">
+<div class="dp-whitespace-side dp-whitespace-cluttered"><div class="dp-whitespace-label">X 여백 부족</div><div class="dp-ws-block"><div class="dp-ws-heading"></div><div class="dp-ws-text"></div><div class="dp-ws-text"></div></div><div class="dp-ws-block"><div class="dp-ws-heading"></div><div class="dp-ws-text"></div><div class="dp-ws-text"></div></div><div class="dp-ws-block"><div class="dp-ws-heading"></div><div class="dp-ws-text"></div><div class="dp-ws-text"></div></div><div class="dp-ws-block"><div class="dp-ws-heading"></div><div class="dp-ws-text"></div></div></div>
+<div class="dp-whitespace-side dp-whitespace-spacious"><div class="dp-whitespace-label">O 충분한 여백</div><div class="dp-ws-block"><div class="dp-ws-heading"></div><div class="dp-ws-text"></div><div class="dp-ws-text"></div></div><div class="dp-ws-block"><div class="dp-ws-heading"></div><div class="dp-ws-text"></div><div class="dp-ws-text"></div></div></div>
+</div>
+
 - 슬라이드 가장자리에 최소 10% 여백
 - 요소 간 충분한 간격
-- 빈 공간 = 시각적 호흡
 - 텍스트가 적을수록 임팩트 증가`
           },
           {
             title: '색상 이론과 활용',
-            content: `### 프레젠테이션 색상 원칙
+            content: `### 60-30-10 색상 규칙
 
-**1. 60-30-10 규칙**
-- 60%: 배경색 (흰색, 밝은 회색)
-- 30%: 보조색 (텍스트, 구조)
-- 10%: 강조색 (핵심 포인트)
+프레젠테이션에서 가장 중요한 색상 비율 법칙입니다. 배경 60%, 보조색 30%, 강조색 10%로 구성하세요.
 
-**2. 목적별 추천 색상**
+<div class="design-diagram dp-color-rule">
+<div class="dp-color-60"><div class="dp-color-60-label">60%</div><div class="dp-color-60-name">배경색 (흰색, 밝은 회색)</div></div>
+<div class="dp-color-30"><div class="dp-color-30-label">30%</div><div class="dp-color-30-name">보조색 (텍스트, 구조)</div></div>
+<div class="dp-color-10">10%</div>
+</div>
 
-| 목적 | 추천 색상 | 심리적 효과 |
-|------|---------|-----------|
-| 신뢰/전문성 | 네이비, 진한 파랑 | 안정감, 신뢰 |
-| 에너지/행동 | 빨강, 주황 | 긴급함, 열정 |
-| 성장/자연 | 초록, 민트 | 안정, 성장 |
-| 창의/혁신 | 보라, 자주 | 창의성, 프리미엄 |
-| 주의/경고 | 노랑, 금색 | 주의 환기 |
+### 목적별 추천 색상
 
-**3. 접근성 고려**
-- 배경과 텍스트의 명도 대비 4.5:1 이상
+색상은 심리적 효과를 가집니다. 발표 목적에 맞는 색상을 선택하세요.
+
+<div class="design-diagram dp-color-psych">
+<div class="dp-color-psych-item"><div class="dp-color-swatch navy"></div><div class="dp-color-psych-purpose">신뢰/전문성</div><div class="dp-color-psych-effect">안정감, 신뢰</div></div>
+<div class="dp-color-psych-item"><div class="dp-color-swatch red"></div><div class="dp-color-psych-purpose">에너지/행동</div><div class="dp-color-psych-effect">긴급함, 열정</div></div>
+<div class="dp-color-psych-item"><div class="dp-color-swatch green"></div><div class="dp-color-psych-purpose">성장/자연</div><div class="dp-color-psych-effect">안정, 성장</div></div>
+<div class="dp-color-psych-item"><div class="dp-color-swatch purple"></div><div class="dp-color-psych-purpose">창의/혁신</div><div class="dp-color-psych-effect">창의성, 프리미엄</div></div>
+<div class="dp-color-psych-item"><div class="dp-color-swatch gold"></div><div class="dp-color-psych-purpose">주의/경고</div><div class="dp-color-psych-effect">주의 환기</div></div>
+</div>
+
+### 접근성 고려사항
+- 배경과 텍스트의 명도 대비 **4.5:1 이상**
 - 색맹 고려: 빨강-초록 조합 피하기
 - 색상만으로 정보 전달하지 않기 (아이콘, 텍스트 병행)
 
-**4. 팔레트 생성 도구**
-- Coolors.co - 자동 팔레트 생성
-- Adobe Color - 색상 조합 탐색
-- Color Hunt - 트렌디한 팔레트`
+### 팔레트 생성 도구
+- **Coolors.co** — 자동 팔레트 생성
+- **Adobe Color** — 색상 조합 탐색
+- **Color Hunt** — 트렌디한 팔레트`
           },
           {
             title: '타이포그래피',
-            content: `### 프레젠테이션 폰트 선택
+            content: `### 폰트 크기 계층 구조
 
-**추천 폰트 조합 (한글)**
+프레젠테이션의 가독성은 명확한 텍스트 계층에서 시작됩니다.
+
+<div class="design-diagram dp-typo-scale">
+<div class="dp-typo-row"><div class="dp-typo-size">36-44pt</div><div class="dp-typo-sample title">프레젠테이션 제목</div></div>
+<div class="dp-typo-row"><div class="dp-typo-size">24-30pt</div><div class="dp-typo-sample subtitle">부제목 또는 섹션 타이틀</div></div>
+<div class="dp-typo-row"><div class="dp-typo-size">18-24pt</div><div class="dp-typo-sample body">본문 텍스트 — 핵심 내용을 전달하는 문장입니다.</div></div>
+<div class="dp-typo-row"><div class="dp-typo-size">14-16pt</div><div class="dp-typo-sample caption">캡션, 출처 표기, 부가 설명 (최소 14pt 이상)</div></div>
+<div class="dp-typo-divider"></div>
+<div class="dp-typo-rule">제목과 본문의 크기 차이가 클수록 시각적 계층이 명확해집니다.</div>
+</div>
+
+### 추천 폰트 조합 (한글)
 
 | 제목 | 본문 | 스타일 |
 |------|------|--------|
@@ -349,18 +378,14 @@ export const learningCategories = [
 | 나눔스퀘어 ExtraBold | 나눔고딕 Regular | 깔끔, 한국적 |
 | 에스코어드림 Bold | 에스코어드림 Light | 부드러운 |
 
-**폰트 크기 가이드**
+### 좋은 타이포그래피 vs 나쁜 타이포그래피
 
-\`\`\`
-제목:    36~44pt
-부제목:  24~30pt
-본문:    18~24pt
-캡션:    14~16pt
-최소:    14pt (이하는 읽기 어려움)
-\`\`\`
+<div class="design-diagram dp-typo-compare">
+<div class="dp-typo-side dp-typo-bad"><div class="dp-typo-badge">X 나쁜 예</div><div class="dp-typo-preview"><div class="tp-title">밑줄 강조된 제목</div><div class="tp-body">폰트 3개 이상 혼용, 줄간격 좁음, 가독성 저하. 중요한 내용인데 읽기 어려운 슬라이드가 됩니다.</div></div></div>
+<div class="dp-typo-side dp-typo-good"><div class="dp-typo-badge">O 좋은 예</div><div class="dp-typo-preview"><div class="tp-title">볼드로 강조한 제목</div><div class="tp-body">2가지 폰트만 사용, 충분한 줄간격, 왼쪽 정렬. 핵심 메시지가 명확히 전달됩니다.</div></div></div>
+</div>
 
-**타이포그래피 규칙**
-
+### 타이포그래피 규칙
 1. **2가지 이내 폰트** 사용 (제목 + 본문)
 2. **볼드**로 강조, ~~밑줄~~ 사용 금지
 3. **행간(line-height)** 1.4~1.6배
@@ -370,19 +395,20 @@ export const learningCategories = [
           },
           {
             title: '이미지와 아이콘 활용',
-            content: `### 이미지 사용 원칙
+            content: `### 이미지 사용 Do / Don't
 
-**Do (O)**
+고품질 이미지는 슬라이드의 신뢰도를 높이고, 저품질 이미지는 전체 발표의 품질을 떨어뜨립니다.
+
+<div class="design-diagram dp-image-compare">
+<div class="dp-image-side dp-image-dont"><div class="dp-image-badge">X Don't</div><div class="dp-image-preview">저해상도 / 클립아트</div><div class="dp-image-caption">픽셀 깨짐, 워터마크, 관련 없는 장식</div></div>
+<div class="dp-image-side dp-image-do"><div class="dp-image-badge">O Do</div><div class="dp-image-preview"><span>고해상도 + 오버레이</span></div><div class="dp-image-caption">Full HD 이상, 반투명 오버레이 + 텍스트</div></div>
+</div>
+
+**이미지 사용 원칙**
 - 고해상도 이미지 사용 (최소 1920x1080)
 - 전체 화면 이미지 + 반투명 오버레이 + 텍스트
 - 이미지로 감정과 분위기 전달
 - 일관된 스타일의 이미지 사용
-
-**Don't (X)**
-- 클립아트, 워터마크 이미지
-- 픽셀이 깨지는 저해상도 이미지
-- 관련 없는 장식용 이미지
-- 과도한 이미지 사용
 
 ### 무료 이미지 소스
 
@@ -396,7 +422,6 @@ export const learningCategories = [
 | **Freepik** | 벡터/일러스트 | freepik.com |
 
 ### 아이콘 활용 팁
-
 - **라인 아이콘 vs 솔리드 아이콘**: 한 가지만 통일
 - **크기 통일**: 같은 행의 아이콘은 동일 크기
 - **색상 통일**: 브랜드 컬러 1~2가지로 제한

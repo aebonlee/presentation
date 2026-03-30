@@ -1083,6 +1083,668 @@
   .ld-process-arrow { display: none; }
 }
 
+/* ===== Design Principles Diagrams ===== */
+.design-diagram {
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 16px 0 24px;
+  background: var(--bg-card);
+  font-size: var(--font-size-sm);
+}
+
+.design-diagram * {
+  box-sizing: border-box;
+}
+
+/* 1. CARP 4-principle cards */
+.dp-carp {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.dp-carp-card {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  border-right: 1px solid var(--border-light);
+}
+
+.dp-carp-card:last-child {
+  border-right: none;
+}
+
+.dp-carp-letter {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: var(--font-size-xl);
+}
+
+.dp-carp-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.dp-carp-ko {
+  font-size: var(--font-size-xs);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.dp-carp-desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* 2. Contrast Before/After */
+.dp-contrast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dp-contrast-side {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dp-contrast-bad {
+  background: var(--bg-light);
+}
+
+.dp-contrast-good {
+  background: var(--bg-card);
+}
+
+.dp-contrast-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.dp-contrast-bad .dp-contrast-label {
+  background: var(--error);
+  color: white;
+}
+
+.dp-contrast-good .dp-contrast-label {
+  background: var(--success);
+  color: white;
+}
+
+.dp-contrast-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Bad contrast: same size, same color */
+.dp-contrast-bad .dp-contrast-line {
+  height: 10px;
+  border-radius: 3px;
+  background: var(--text-light);
+  opacity: 0.4;
+}
+
+.dp-contrast-bad .dp-contrast-line.heading {
+  width: 60%;
+  height: 10px;
+}
+
+/* Good contrast: varied sizes, clear hierarchy */
+.dp-contrast-good .dp-contrast-line {
+  border-radius: 3px;
+  background: var(--text-secondary);
+}
+
+.dp-contrast-good .dp-contrast-line.heading {
+  height: 18px;
+  width: 70%;
+  background: var(--text-primary);
+  border-radius: 4px;
+}
+
+.dp-contrast-good .dp-contrast-line.subtitle {
+  height: 12px;
+  width: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+.dp-contrast-good .dp-contrast-line.body {
+  height: 8px;
+  width: 90%;
+  opacity: 0.3;
+}
+
+/* 3. Alignment demo */
+.dp-alignment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dp-alignment-side {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dp-alignment-bad {
+  background: var(--bg-light);
+}
+
+.dp-alignment-good {
+  background: var(--bg-card);
+}
+
+.dp-alignment-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.dp-alignment-bad .dp-alignment-label {
+  background: var(--error);
+  color: white;
+}
+
+.dp-alignment-good .dp-alignment-label {
+  background: var(--success);
+  color: white;
+}
+
+.dp-alignment-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Bad alignment: random positions */
+.dp-alignment-bad .dp-align-bar {
+  height: 8px;
+  border-radius: 3px;
+  background: var(--text-light);
+  opacity: 0.4;
+}
+
+.dp-alignment-bad .dp-align-bar:nth-child(1) { width: 65%; margin-left: 10%; }
+.dp-alignment-bad .dp-align-bar:nth-child(2) { width: 40%; margin-left: 30%; }
+.dp-alignment-bad .dp-align-bar:nth-child(3) { width: 75%; margin-left: 5%; }
+.dp-alignment-bad .dp-align-bar:nth-child(4) { width: 50%; margin-left: 25%; }
+.dp-alignment-bad .dp-align-bar:nth-child(5) { width: 55%; margin-left: 15%; }
+
+/* Good alignment: all left-aligned */
+.dp-alignment-good .dp-align-bar {
+  height: 8px;
+  border-radius: 3px;
+  background: var(--text-secondary);
+}
+
+.dp-alignment-good .dp-align-bar:nth-child(1) { width: 50%; height: 14px; background: var(--text-primary); }
+.dp-alignment-good .dp-align-bar:nth-child(2) { width: 35%; background: var(--accent); opacity: 0.6; }
+.dp-alignment-good .dp-align-bar:nth-child(3) { width: 80%; opacity: 0.3; }
+.dp-alignment-good .dp-align-bar:nth-child(4) { width: 70%; opacity: 0.3; }
+.dp-alignment-good .dp-align-bar:nth-child(5) { width: 60%; opacity: 0.3; }
+
+/* 4. Whitespace comparison */
+.dp-whitespace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dp-whitespace-side {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dp-whitespace-cluttered {
+  background: var(--bg-light);
+  gap: 2px;
+  padding: 10px;
+}
+
+.dp-whitespace-spacious {
+  background: var(--bg-card);
+  gap: 16px;
+  padding: 28px;
+}
+
+.dp-whitespace-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+  margin-bottom: 8px;
+}
+
+.dp-whitespace-cluttered .dp-whitespace-label {
+  background: var(--error);
+  color: white;
+}
+
+.dp-whitespace-spacious .dp-whitespace-label {
+  background: var(--success);
+  color: white;
+}
+
+.dp-ws-block {
+  border-radius: 4px;
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+}
+
+.dp-whitespace-cluttered .dp-ws-block {
+  padding: 4px 8px;
+  font-size: var(--font-size-xs);
+}
+
+.dp-ws-heading {
+  height: 12px;
+  width: 60%;
+  background: var(--text-light);
+  border-radius: 3px;
+  margin-bottom: 4px;
+  opacity: 0.5;
+}
+
+.dp-ws-text {
+  height: 6px;
+  width: 90%;
+  background: var(--text-light);
+  border-radius: 2px;
+  opacity: 0.2;
+  margin-top: 4px;
+}
+
+.dp-ws-text:last-child {
+  width: 70%;
+}
+
+/* 5. 60-30-10 Color Rule */
+.dp-color-rule {
+  display: flex;
+  flex-direction: row;
+  aspect-ratio: 16 / 9;
+}
+
+.dp-color-60 {
+  flex: 6;
+  background: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+}
+
+.dp-color-60-label {
+  font-size: var(--font-size-3xl);
+  font-weight: 900;
+  color: var(--text-light);
+  opacity: 0.5;
+}
+
+.dp-color-60-name {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.dp-color-30 {
+  flex: 3;
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: white;
+  padding: 16px;
+}
+
+.dp-color-30-label {
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  opacity: 0.7;
+}
+
+.dp-color-30-name {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.dp-color-10 {
+  flex: 1;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-lr;
+  color: white;
+  font-weight: 800;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.05em;
+}
+
+/* 6. Color psychology grid */
+.dp-color-psych {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
+.dp-color-psych-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 8px;
+  text-align: center;
+  gap: 8px;
+  border-right: 1px solid var(--border-light);
+}
+
+.dp-color-psych-item:last-child {
+  border-right: none;
+}
+
+.dp-color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(0,0,0,0.08);
+}
+
+.dp-color-swatch.navy { background: #1e3a5f; }
+.dp-color-swatch.red { background: #dc2626; }
+.dp-color-swatch.green { background: #16a34a; }
+.dp-color-swatch.purple { background: #7c3aed; }
+.dp-color-swatch.gold { background: #d97706; }
+
+.dp-color-psych-purpose {
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+}
+
+.dp-color-psych-effect {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* 7. Typography scale */
+.dp-typo-scale {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  gap: 12px;
+  background: var(--bg-card);
+}
+
+.dp-typo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.dp-typo-size {
+  width: 60px;
+  text-align: right;
+  font-size: var(--font-size-xs);
+  color: var(--accent);
+  font-weight: 600;
+  font-family: monospace;
+  flex-shrink: 0;
+}
+
+.dp-typo-sample {
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.dp-typo-sample.title {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.dp-typo-sample.subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.dp-typo-sample.body {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.dp-typo-sample.caption {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.dp-typo-divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 4px 0;
+}
+
+.dp-typo-rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-xs);
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* 8. Typography Good/Bad */
+.dp-typo-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dp-typo-side {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dp-typo-bad {
+  background: var(--bg-light);
+}
+
+.dp-typo-good {
+  background: var(--bg-card);
+}
+
+.dp-typo-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.dp-typo-bad .dp-typo-badge {
+  background: var(--error);
+  color: white;
+}
+
+.dp-typo-good .dp-typo-badge {
+  background: var(--success);
+  color: white;
+}
+
+.dp-typo-bad .dp-typo-preview {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.dp-typo-bad .dp-typo-preview .tp-title {
+  font-size: 14px;
+  text-decoration: underline;
+  color: var(--text-light);
+}
+
+.dp-typo-bad .dp-typo-preview .tp-body {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+.dp-typo-good .dp-typo-preview .tp-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.dp-typo-good .dp-typo-preview .tp-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 9. Image Do/Don't */
+.dp-image-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dp-image-side {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dp-image-dont {
+  background: var(--bg-light);
+}
+
+.dp-image-do {
+  background: var(--bg-card);
+}
+
+.dp-image-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.dp-image-dont .dp-image-badge {
+  background: var(--error);
+  color: white;
+}
+
+.dp-image-do .dp-image-badge {
+  background: var(--success);
+  color: white;
+}
+
+.dp-image-preview {
+  flex: 1;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.dp-image-dont .dp-image-preview {
+  background: repeating-conic-gradient(
+    var(--border-light) 0% 25%,
+    transparent 0% 50%
+  ) 50% / 16px 16px;
+  border: 2px dashed var(--border-light);
+  color: var(--text-light);
+}
+
+.dp-image-do .dp-image-preview {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: rgba(255,255,255,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.dp-image-do .dp-image-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+}
+
+.dp-image-do .dp-image-preview span {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.dp-image-caption {
+  font-size: 11px;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* Design diagram responsive */
+@media (max-width: 768px) {
+  .dp-carp { grid-template-columns: repeat(2, 1fr); }
+  .dp-carp-card { border-bottom: 1px solid var(--border-light); }
+  .dp-carp-card:nth-child(2) { border-right: none; }
+  .dp-contrast { grid-template-columns: 1fr; }
+  .dp-alignment { grid-template-columns: 1fr; }
+  .dp-whitespace { grid-template-columns: 1fr; }
+  .dp-color-rule { flex-direction: column; aspect-ratio: auto; }
+  .dp-color-10 { writing-mode: horizontal-tb; padding: 12px; }
+  .dp-color-psych { grid-template-columns: repeat(3, 1fr); }
+  .dp-color-psych-item { border-bottom: 1px solid var(--border-light); }
+  .dp-typo-compare { grid-template-columns: 1fr; }
+  .dp-image-compare { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 1024px) {
   .learning-sidebar {
     position: fixed;
