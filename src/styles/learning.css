@@ -1729,6 +1729,482 @@
   text-align: center;
 }
 
+/* ===== Chart Type Diagrams ===== */
+
+/* Chart type card grid */
+.dc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.dc-card {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.dc-card:nth-child(4n) { border-right: none; }
+.dc-card:nth-last-child(-n+4) { border-bottom: none; }
+
+.dc-card-name {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.dc-card-use {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* Mini chart preview area */
+.dc-mini {
+  width: 100%;
+  height: 72px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--bg-light);
+  overflow: hidden;
+}
+
+/* 1. Vertical bar chart */
+.dc-mini-bar {
+  gap: 5px;
+  padding: 8px 16px;
+}
+
+.dc-mini-bar .bar {
+  width: 14px;
+  border-radius: 3px 3px 0 0;
+  background: var(--accent);
+}
+
+.dc-mini-bar .bar:nth-child(1) { height: 55%; }
+.dc-mini-bar .bar:nth-child(2) { height: 80%; background: var(--accent-light); }
+.dc-mini-bar .bar:nth-child(3) { height: 40%; }
+.dc-mini-bar .bar:nth-child(4) { height: 95%; background: var(--primary); }
+.dc-mini-bar .bar:nth-child(5) { height: 65%; background: var(--accent-light); }
+
+/* 2. Horizontal bar chart */
+.dc-mini-hbar {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 12px;
+}
+
+.dc-mini-hbar .hbar {
+  height: 10px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent);
+}
+
+.dc-mini-hbar .hbar:nth-child(1) { width: 85%; background: var(--primary); }
+.dc-mini-hbar .hbar:nth-child(2) { width: 60%; background: var(--accent-light); }
+.dc-mini-hbar .hbar:nth-child(3) { width: 70%; }
+.dc-mini-hbar .hbar:nth-child(4) { width: 45%; background: var(--accent-light); }
+
+/* 3. Line chart */
+.dc-mini-line {
+  padding: 0;
+  align-items: stretch;
+}
+
+.dc-mini-line svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dc-mini-line .line-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dc-mini-line .line-area {
+  fill: var(--accent);
+  opacity: 0.1;
+}
+
+.dc-mini-line .dot {
+  fill: var(--accent);
+}
+
+/* 4. Pie chart */
+.dc-mini-pie {
+  align-items: center;
+  justify-content: center;
+}
+
+.dc-mini-pie .pie {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--primary) 0deg 130deg,
+    var(--accent) 130deg 230deg,
+    var(--accent-light) 230deg 310deg,
+    var(--border-light) 310deg 360deg
+  );
+}
+
+/* 5. Stacked bar chart */
+.dc-mini-stacked {
+  gap: 5px;
+  padding: 8px 16px;
+}
+
+.dc-mini-stacked .sbar {
+  width: 14px;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.dc-mini-stacked .sbar .seg {
+  width: 100%;
+}
+
+.dc-mini-stacked .seg-a { background: var(--primary); }
+.dc-mini-stacked .seg-b { background: var(--accent); }
+.dc-mini-stacked .seg-c { background: var(--accent-light); }
+
+/* 6. Area chart */
+.dc-mini-area {
+  padding: 0;
+  align-items: stretch;
+}
+
+.dc-mini-area svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dc-mini-area .area-fill {
+  fill: var(--accent);
+  opacity: 0.2;
+}
+
+.dc-mini-area .area-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+/* 7. Scatter plot */
+.dc-mini-scatter {
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 8px;
+}
+
+.dc-mini-scatter .scatter-area {
+  flex: 1;
+  position: relative;
+}
+
+.dc-mini-scatter .sdot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+.dc-mini-scatter .sdot:nth-child(1) { left: 15%; bottom: 20%; }
+.dc-mini-scatter .sdot:nth-child(2) { left: 25%; bottom: 35%; }
+.dc-mini-scatter .sdot:nth-child(3) { left: 35%; bottom: 30%; background: var(--primary); }
+.dc-mini-scatter .sdot:nth-child(4) { left: 45%; bottom: 50%; }
+.dc-mini-scatter .sdot:nth-child(5) { left: 55%; bottom: 55%; background: var(--primary); }
+.dc-mini-scatter .sdot:nth-child(6) { left: 65%; bottom: 60%; }
+.dc-mini-scatter .sdot:nth-child(7) { left: 72%; bottom: 70%; background: var(--primary); }
+.dc-mini-scatter .sdot:nth-child(8) { left: 82%; bottom: 75%; }
+
+/* 8. Bubble chart */
+.dc-mini-bubble {
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 8px;
+}
+
+.dc-mini-bubble .bubble-area {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.dc-mini-bubble .bub {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.dc-mini-bubble .bub:nth-child(1) { width: 30px; height: 30px; left: 12%; top: 20%; background: var(--accent); }
+.dc-mini-bubble .bub:nth-child(2) { width: 20px; height: 20px; left: 42%; top: 35%; background: var(--primary); }
+.dc-mini-bubble .bub:nth-child(3) { width: 38px; height: 38px; left: 55%; top: 15%; background: var(--accent-light); }
+.dc-mini-bubble .bub:nth-child(4) { width: 16px; height: 16px; left: 30%; top: 55%; background: var(--accent); }
+.dc-mini-bubble .bub:nth-child(5) { width: 24px; height: 24px; left: 72%; top: 50%; background: var(--primary); }
+
+/* 9. Treemap */
+.dc-mini-treemap {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  padding: 6px;
+  align-items: stretch;
+}
+
+.dc-mini-treemap .tblock {
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+}
+
+.dc-mini-treemap .tblock:nth-child(1) { background: var(--primary); grid-row: 1 / 3; }
+.dc-mini-treemap .tblock:nth-child(2) { background: var(--accent); }
+.dc-mini-treemap .tblock:nth-child(3) { background: var(--accent-light); }
+
+/* 10. Histogram */
+.dc-mini-hist {
+  gap: 1px;
+  padding: 8px 12px;
+}
+
+.dc-mini-hist .hbar {
+  width: 12px;
+  border-radius: 2px 2px 0 0;
+}
+
+.dc-mini-hist .hbar:nth-child(1) { height: 15%; background: var(--accent-light); }
+.dc-mini-hist .hbar:nth-child(2) { height: 30%; background: var(--accent-light); }
+.dc-mini-hist .hbar:nth-child(3) { height: 55%; background: var(--accent); }
+.dc-mini-hist .hbar:nth-child(4) { height: 85%; background: var(--primary); }
+.dc-mini-hist .hbar:nth-child(5) { height: 95%; background: var(--primary); }
+.dc-mini-hist .hbar:nth-child(6) { height: 70%; background: var(--accent); }
+.dc-mini-hist .hbar:nth-child(7) { height: 40%; background: var(--accent-light); }
+.dc-mini-hist .hbar:nth-child(8) { height: 20%; background: var(--accent-light); }
+
+/* Chart good vs bad comparison */
+.dc-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dc-compare-side {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dc-compare-bad {
+  background: var(--bg-light);
+}
+
+.dc-compare-good {
+  background: var(--bg-card);
+}
+
+.dc-compare-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.dc-compare-bad .dc-compare-badge {
+  background: var(--error);
+  color: white;
+}
+
+.dc-compare-good .dc-compare-badge {
+  background: var(--success);
+  color: white;
+}
+
+/* Bad chart example: 3D pie, cluttered */
+.dc-compare-chart {
+  flex: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dc-bad-chart {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 15px,
+    var(--border-light) 15px,
+    var(--border-light) 16px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 15px,
+    var(--border-light) 15px,
+    var(--border-light) 16px
+  );
+  padding: 8px;
+}
+
+.dc-bad-pie {
+  width: 70px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #ef4444 0deg 90deg,
+    #f59e0b 90deg 170deg,
+    #10b981 170deg 230deg,
+    #3b82f6 230deg 280deg,
+    #8b5cf6 280deg 330deg,
+    #ec4899 330deg 360deg
+  );
+  transform: perspective(100px) rotateX(30deg);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.15);
+}
+
+.dc-bad-title {
+  font-size: 11px;
+  color: var(--text-light);
+  text-align: center;
+  padding: 4px;
+}
+
+/* Good chart example: clean bar with highlight */
+.dc-good-chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  gap: 4px;
+}
+
+.dc-good-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dc-good-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.dc-good-bars .gbar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  background: var(--border-light);
+  position: relative;
+}
+
+.dc-good-bars .gbar.highlight {
+  background: var(--accent);
+}
+
+.dc-good-bars .gbar.highlight::after {
+  content: attr(data-val);
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.dc-good-source {
+  font-size: 10px;
+  color: var(--text-light);
+  text-align: right;
+}
+
+/* Chart purpose cards */
+.dc-purpose {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.dc-purpose-card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  border-right: 1px solid var(--border-light);
+}
+
+.dc-purpose-card:last-child {
+  border-right: none;
+}
+
+.dc-purpose-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: var(--font-size-sm);
+  color: white;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+}
+
+.dc-purpose-name {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.dc-purpose-best {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.dc-purpose-avoid {
+  font-size: 11px;
+  color: var(--error);
+}
+
 /* Design diagram responsive */
 @media (max-width: 768px) {
   .dp-carp { grid-template-columns: repeat(2, 1fr); }
@@ -1743,6 +2219,15 @@
   .dp-color-psych-item { border-bottom: 1px solid var(--border-light); }
   .dp-typo-compare { grid-template-columns: 1fr; }
   .dp-image-compare { grid-template-columns: 1fr; }
+  .dc-grid { grid-template-columns: repeat(2, 1fr); }
+  .dc-card:nth-child(4n) { border-right: 1px solid var(--border-light); }
+  .dc-card:nth-child(2n) { border-right: none; }
+  .dc-card:nth-last-child(-n+4) { border-bottom: 1px solid var(--border-light); }
+  .dc-card:nth-last-child(-n+2) { border-bottom: none; }
+  .dc-compare { grid-template-columns: 1fr; }
+  .dc-purpose { grid-template-columns: repeat(2, 1fr); }
+  .dc-purpose-card { border-bottom: 1px solid var(--border-light); }
+  .dc-purpose-card:nth-child(2) { border-right: none; }
 }
 
 @media (max-width: 1024px) {

@@ -777,76 +777,76 @@ export const learningCategories = [
         sections: [
           {
             title: '목적별 차트 선택 가이드',
-            content: `### 차트 선택 의사결정 트리
+            content: `### 주요 차트 유형 한눈에 보기
 
-**비교가 목적이라면:**
-- 항목 간 비교 → **막대 차트** (수직/수평)
-- 시간에 따른 변화 비교 → **선 차트**
-- 부분 vs 전체 비교 → **누적 막대 차트**
+각 차트의 형태와 용도를 시각적으로 확인하세요.
 
-**구성/비율이 목적이라면:**
-- 전체 대비 부분 → **원형 차트** (5개 이하)
-- 여러 구성 비교 → **100% 누적 막대**
-- 부분의 부분 → **트리맵**
+<div class="design-diagram dc-grid">
+<div class="dc-card"><div class="dc-mini dc-mini-bar"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="dc-card-name">막대 차트</div><div class="dc-card-use">항목 간 크기 비교</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-hbar"><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div></div><div class="dc-card-name">수평 막대 차트</div><div class="dc-card-use">긴 라벨, 순위 비교</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-line"><svg viewBox="0 0 120 72" preserveAspectRatio="none"><path class="line-area" d="M0,62 L20,50 L40,55 L60,35 L80,25 L100,30 L120,10 L120,72 L0,72Z"/><path class="line-path" d="M0,62 L20,50 L40,55 L60,35 L80,25 L100,30 L120,10"/><circle class="dot" cx="60" cy="35" r="3"/><circle class="dot" cx="120" cy="10" r="3"/></svg></div><div class="dc-card-name">선 차트</div><div class="dc-card-use">시간에 따른 추세 변화</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-pie"><div class="pie"></div></div><div class="dc-card-name">원형 차트</div><div class="dc-card-use">전체 대비 비율 (5개 이하)</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-stacked"><div class="sbar" style="height:70%"><div class="seg seg-a" style="height:40%"></div><div class="seg seg-b" style="height:35%"></div><div class="seg seg-c" style="height:25%"></div></div><div class="sbar" style="height:85%"><div class="seg seg-a" style="height:30%"></div><div class="seg seg-b" style="height:45%"></div><div class="seg seg-c" style="height:25%"></div></div><div class="sbar" style="height:60%"><div class="seg seg-a" style="height:50%"></div><div class="seg seg-b" style="height:30%"></div><div class="seg seg-c" style="height:20%"></div></div><div class="sbar" style="height:90%"><div class="seg seg-a" style="height:35%"></div><div class="seg seg-b" style="height:40%"></div><div class="seg seg-c" style="height:25%"></div></div></div><div class="dc-card-name">누적 막대 차트</div><div class="dc-card-use">부분 vs 전체 구성 비교</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-area"><svg viewBox="0 0 120 72" preserveAspectRatio="none"><path class="area-fill" d="M0,60 L24,48 L48,52 L72,30 L96,35 L120,15 L120,72 L0,72Z"/><path class="area-line" d="M0,60 L24,48 L48,52 L72,30 L96,35 L120,15"/></svg></div><div class="dc-card-name">영역 차트</div><div class="dc-card-use">누적 변화, 볼륨 강조</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-scatter"><div class="scatter-area"><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div></div></div><div class="dc-card-name">산점도</div><div class="dc-card-use">두 변수 간 관계/상관</div></div>
+<div class="dc-card"><div class="dc-mini dc-mini-treemap"><div class="tblock">40%</div><div class="tblock">35%</div><div class="tblock">25%</div></div><div class="dc-card-name">트리맵</div><div class="dc-card-use">계층적 비율 시각화</div></div>
+</div>
 
-**추세/변화가 목적이라면:**
-- 단일 추세 → **선 차트**
-- 다중 추세 비교 → **다중 선 차트**
-- 누적 변화 → **영역 차트**
+### 목적별 차트 추천
 
-**관계/분포가 목적이라면:**
-- 두 변수 관계 → **산점도**
-- 데이터 분포 → **히스토그램**
-- 상관관계 → **버블 차트**
+발표 목적에 따라 최적의 차트를 선택하세요.
 
-### 차트 추천 요약
-
-| 목적 | 1순위 | 2순위 | 피하기 |
-|------|-------|-------|--------|
-| 비교 | 막대 | 점 차트 | 원형 |
-| 구성 | 누적 막대 | 원형(≤5) | 3D 원형 |
-| 추세 | 선 | 영역 | 원형 |
-| 관계 | 산점도 | 버블 | 막대 |
+<div class="design-diagram dc-purpose">
+<div class="dc-purpose-card"><div class="dc-purpose-icon">VS</div><div class="dc-purpose-name">비교</div><div class="dc-purpose-best">1순위: 막대 차트</div><div class="dc-purpose-avoid">피하기: 원형</div></div>
+<div class="dc-purpose-card"><div class="dc-purpose-icon">%</div><div class="dc-purpose-name">구성</div><div class="dc-purpose-best">1순위: 누적 막대</div><div class="dc-purpose-avoid">피하기: 3D 원형</div></div>
+<div class="dc-purpose-card"><div class="dc-purpose-icon">/</div><div class="dc-purpose-name">추세</div><div class="dc-purpose-best">1순위: 선 차트</div><div class="dc-purpose-avoid">피하기: 원형</div></div>
+<div class="dc-purpose-card"><div class="dc-purpose-icon">~</div><div class="dc-purpose-name">관계</div><div class="dc-purpose-best">1순위: 산점도</div><div class="dc-purpose-avoid">피하기: 막대</div></div>
+</div>
 
 > **절대 피할 것**: 3D 차트, 장식적 효과, 불필요한 범례`
           },
           {
             title: '차트 디자인 원칙',
-            content: `### 차트 깔끔하게 만들기
+            content: `### 나쁜 차트 vs 좋은 차트
+
+같은 데이터라도 디자인에 따라 전달력이 완전히 달라집니다.
+
+<div class="design-diagram dc-compare">
+<div class="dc-compare-side dc-compare-bad"><div class="dc-compare-badge">X 나쁜 차트</div><div class="dc-compare-chart"><div class="dc-bad-chart"><div class="dc-bad-pie"></div></div><div class="dc-bad-title">2024년 분기별 매출</div></div></div>
+<div class="dc-compare-side dc-compare-good"><div class="dc-compare-badge">O 좋은 차트</div><div class="dc-compare-chart"><div class="dc-good-chart"><div class="dc-good-title">3분기 매출 150% 성장</div><div class="dc-good-bars"><div class="gbar" style="height:35%"></div><div class="gbar" style="height:50%"></div><div class="gbar highlight" data-val="150%" style="height:90%"></div><div class="gbar" style="height:65%"></div></div><div class="dc-good-source">단위: 억원 | 출처: 내부 데이터</div></div></div></div>
+</div>
+
+### 차트 깔끔하게 만들기
 
 **제거할 것 (Less is More):**
 - X 3D 효과
 - X 불필요한 격자선
 - X 장식적 그림자
-- X 과도한 색상
+- X 과도한 색상 (6색 이상)
 - X 회전된 텍스트
 
 **추가할 것:**
 - O 명확한 제목 (인사이트 포함)
 - O 데이터 레이블 (핵심만)
-- O 강조 색상 (핵심 데이터)
+- O 강조 색상 (핵심 데이터 1개만 컬러)
 - O 출처 표기
 - O 단위 표기
 
 ### 차트 제목 작성법
 
-**나쁜 예:**
-- "2024년 분기별 매출"
+> **규칙**: 차트 제목은 데이터가 아닌 **인사이트**를 담으세요.
+
+**나쁜 예:** "2024년 분기별 매출"
 
 **좋은 예:**
 - "3분기 매출 150% 성장, 역대 최고 기록"
 - "모바일 매출이 전체의 70% 차지"
 
-> **규칙**: 차트 제목은 데이터가 아닌 **인사이트**를 담으세요.
-
-### 색상 활용
-
-\`\`\`
-■ 강조 데이터:  브랜드 메인 컬러 (진한 색)
-■ 일반 데이터:  회색 또는 연한 색
-■ 비교 대상:   보조 컬러
-□ 배경:       흰색 또는 아주 연한 회색
-\`\`\``
+### 색상 활용 원칙
+- **강조 데이터**: 브랜드 메인 컬러 (진한 색) 1개
+- **일반 데이터**: 회색 또는 연한 색
+- **비교 대상**: 보조 컬러 1개
+- **배경**: 흰색 또는 아주 연한 회색`
           }
         ]
       }
