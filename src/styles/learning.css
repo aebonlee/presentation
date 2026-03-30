@@ -62,13 +62,13 @@
 }
 
 .learning-sidebar-topics {
-  padding: 0 0 0 20px;
+  padding: 4px 0;
 }
 
 .learning-sidebar-topic {
   display: block;
   width: 100%;
-  padding: 8px 20px 8px 32px;
+  padding: 7px 16px 7px 49px;
   font-size: var(--font-size-xs);
   color: var(--text-light);
   text-align: left;

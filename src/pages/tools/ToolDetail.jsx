@@ -33,7 +33,7 @@ const ToolDetail = () => {
       />
 
       {/* Hero */}
-      <section className="tool-detail-hero" style={{ background: tool.gradient }}>
+      <section className="tool-detail-hero">
         <div className="container">
           <div className="tool-detail-grid">
             <div data-aos="fade-right">

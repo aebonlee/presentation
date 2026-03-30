@@ -41,12 +41,15 @@
   flex-shrink: 0;
 }
 
-.tool-icon-ppt { background: linear-gradient(135deg, #D24726, #E86C4A); color: white; }
-.tool-icon-google { background: linear-gradient(135deg, #FBBC04, #F9AB00); color: white; }
-.tool-icon-canva { background: linear-gradient(135deg, #00C4CC, #7B2FF7); color: white; }
-.tool-icon-miri { background: linear-gradient(135deg, #4A90D9, #6FB3F2); color: white; }
-.tool-icon-figma { background: linear-gradient(135deg, #F24E1E, #A259FF); color: white; }
-.tool-icon-genially { background: linear-gradient(135deg, #FF6B35, #FF3366); color: white; }
+.tool-icon-ppt,
+.tool-icon-google,
+.tool-icon-canva,
+.tool-icon-miri,
+.tool-icon-figma,
+.tool-icon-genially {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+}
 
 .tool-card-name {
   font-size: var(--font-size-xl);
@@ -111,6 +114,7 @@
   padding: calc(var(--nav-height) + 60px) 0 60px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
 }
 
 .tool-detail-hero-bg {
