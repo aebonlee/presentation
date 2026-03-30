@@ -2560,6 +2560,93 @@
   font-style: italic;
 }
 
+/* ===== Zone Grid Diagram ===== */
+.st-zone-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-card);
+}
+
+.st-zone-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  padding: 16px;
+  aspect-ratio: 16 / 9;
+}
+
+.st-zone-cell {
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.st-zone-cell:hover {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: var(--accent);
+}
+
+.st-zone-cell-num {
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.st-zone-cell-label {
+  font-size: 10px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.st-zone-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border-light);
+}
+
+.st-zone-footer-label {
+  text-align: center;
+  padding: 8px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.st-zone-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 12px 0 0;
+}
+
+.st-zone-side-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-light);
+  font-weight: 500;
+  text-align: right;
+}
+
+.st-zone-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  gap: 0;
+}
+
+.st-zone-wrapper .st-zone-body {
+  flex: 1;
+  padding: 0;
+}
+
 /* ===== Checklist Diagram ===== */
 .st-checklist {
   display: flex;

@@ -690,17 +690,28 @@ export const learningCategories = [
 
 ### 시선 처리 (Eye Contact)
 
-**Zone 기법:**
-\`\`\`
-┌─────────────────────┐
-│  Zone1   Zone2  Zone3│  ← 뒷줄
-│                     │
-│  Zone4   Zone5  Zone6│  ← 중간
-│                     │
-│  Zone7   Zone8  Zone9│  ← 앞줄
-└─────────────────────┘
-   왼쪽    가운데   오른쪽
-\`\`\`
+**Zone 기법:** 청중석을 9개 구역으로 나누어 시선을 분배합니다.
+
+<div class="design-diagram st-zone-grid">
+<div class="st-zone-wrapper">
+<div class="st-zone-body">
+<div class="st-zone-cell"><div class="st-zone-cell-num">1</div><div class="st-zone-cell-label">뒷줄 왼쪽</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">2</div><div class="st-zone-cell-label">뒷줄 가운데</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">3</div><div class="st-zone-cell-label">뒷줄 오른쪽</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">4</div><div class="st-zone-cell-label">중간 왼쪽</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">5</div><div class="st-zone-cell-label">중간 가운데</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">6</div><div class="st-zone-cell-label">중간 오른쪽</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">7</div><div class="st-zone-cell-label">앞줄 왼쪽</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">8</div><div class="st-zone-cell-label">앞줄 가운데</div></div>
+<div class="st-zone-cell"><div class="st-zone-cell-num">9</div><div class="st-zone-cell-label">앞줄 오른쪽</div></div>
+</div>
+</div>
+<div class="st-zone-footer">
+<div class="st-zone-footer-label">왼쪽</div>
+<div class="st-zone-footer-label">가운데</div>
+<div class="st-zone-footer-label">오른쪽</div>
+</div>
+</div>
 
 - 한 Zone에 3~5초씩 시선 유지
 - 무작위로 Zone 이동 (Z 패턴)
