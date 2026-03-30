@@ -6,14 +6,14 @@ import { learningCategories, getLearningCategory, getLearningTopic } from '../..
 const renderMarkdown = (text) => {
   if (!text) return '';
   let html = text;
+  // Code blocks (must come before inline code)
+  html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
   // Headers
   html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
   // Bold
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   // Inline code
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-  // Code blocks
-  html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
   // Blockquotes
   html = html.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
   // Merge consecutive blockquotes
