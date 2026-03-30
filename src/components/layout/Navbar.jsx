@@ -10,8 +10,8 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [colorOpen, setColorOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
+  const [learnOpen, setLearnOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
-  const [currOpen, setCurrOpen] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme, color, setColor, COLORS } = useTheme();
   const { user, isAuthenticated, getUserName, getUserInitial } = useAuth();
@@ -27,8 +27,8 @@ const Navbar = () => {
 
   useEffect(() => {
     setMobileOpen(false);
+    setLearnOpen(false);
     setToolsOpen(false);
-    setCurrOpen(false);
   }, [location]);
 
   useEffect(() => {
@@ -67,28 +67,31 @@ const Navbar = () => {
         <div className={`navbar-nav ${mobileOpen ? 'open' : ''}`}>
           <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>홈</Link>
 
-          <div className={`nav-dropdown ${currOpen ? 'open' : ''}`}>
+          {/* 학습 드롭다운 */}
+          <div className={`nav-dropdown ${learnOpen ? 'open' : ''}`}>
             <button
-              className={`nav-link ${isActive('/curriculum') ? 'active' : ''}`}
-              onClick={() => setCurrOpen(!currOpen)}
-              onMouseEnter={() => { if (window.innerWidth > 1024) setCurrOpen(true); }}
-              onMouseLeave={() => { if (window.innerWidth > 1024) setCurrOpen(false); }}
+              className={`nav-link ${isActive('/learn') ? 'active' : ''}`}
+              onClick={() => setLearnOpen(!learnOpen)}
+              onMouseEnter={() => { if (window.innerWidth > 1024) setLearnOpen(true); }}
+              onMouseLeave={() => { if (window.innerWidth > 1024) setLearnOpen(false); }}
             >
-              커리큘럼 ▾
+              학습 ▾
             </button>
             <div
               className="nav-dropdown-menu"
-              onMouseEnter={() => { if (window.innerWidth > 1024) setCurrOpen(true); }}
-              onMouseLeave={() => { if (window.innerWidth > 1024) setCurrOpen(false); }}
+              onMouseEnter={() => { if (window.innerWidth > 1024) setLearnOpen(true); }}
+              onMouseLeave={() => { if (window.innerWidth > 1024) setLearnOpen(false); }}
             >
-              <Link to="/curriculum/planning" className="nav-dropdown-item">기획과 구성</Link>
-              <Link to="/curriculum/ppt-design" className="nav-dropdown-item">PPT 디자인 원칙</Link>
-              <Link to="/curriculum/speech" className="nav-dropdown-item">스피치 전달력</Link>
-              <Link to="/curriculum/data-visualization" className="nav-dropdown-item">데이터 시각화</Link>
-              <Link to="/curriculum/practice" className="nav-dropdown-item">실전 발표 연습</Link>
+              <Link to="/learn/basics" className="nav-dropdown-item">프레젠테이션 기초</Link>
+              <Link to="/learn/slide-design" className="nav-dropdown-item">슬라이드 디자인</Link>
+              <Link to="/learn/speech" className="nav-dropdown-item">스피치와 전달력</Link>
+              <Link to="/learn/data-viz" className="nav-dropdown-item">데이터 시각화</Link>
+              <Link to="/learn/storytelling" className="nav-dropdown-item">스토리텔링</Link>
+              <Link to="/learn/english-presentation" className="nav-dropdown-item">영어 프레젠테이션</Link>
             </div>
           </div>
 
+          {/* 도구 드롭다운 */}
           <div className={`nav-dropdown ${toolsOpen ? 'open' : ''}`}>
             <button
               className={`nav-link ${isActive('/tools') ? 'active' : ''}`}
@@ -103,6 +106,7 @@ const Navbar = () => {
               onMouseEnter={() => { if (window.innerWidth > 1024) setToolsOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setToolsOpen(false); }}
             >
+              <Link to="/tools" className="nav-dropdown-item">도구 비교</Link>
               <Link to="/tools/powerpoint" className="nav-dropdown-item">PowerPoint</Link>
               <Link to="/tools/google-slides" className="nav-dropdown-item">Google Slides</Link>
               <Link to="/tools/canva" className="nav-dropdown-item">Canva</Link>
@@ -112,8 +116,9 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link to="/tools" className={`nav-link ${location.pathname === '/tools' ? 'active' : ''}`}>도구 비교</Link>
-          <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>소개</Link>
+          <Link to="/glossary" className={`nav-link ${isActive('/glossary') ? 'active' : ''}`}>용어사전</Link>
+          <Link to="/practice" className={`nav-link ${isActive('/practice') ? 'active' : ''}`}>퀴즈</Link>
+          <Link to="/enrollment" className={`nav-link ${isActive('/enrollment') ? 'active' : ''}`}>과정 신청</Link>
         </div>
 
         <div className="navbar-controls">

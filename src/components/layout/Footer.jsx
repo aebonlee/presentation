@@ -37,13 +37,16 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="footer-title">커리큘럼</h4>
+            <h4 className="footer-title">학습</h4>
             <div className="footer-links">
-              <Link to="/curriculum/planning" className="footer-link">기획과 구성</Link>
-              <Link to="/curriculum/ppt-design" className="footer-link">PPT 디자인 원칙</Link>
-              <Link to="/curriculum/speech" className="footer-link">스피치 전달력</Link>
-              <Link to="/curriculum/data-visualization" className="footer-link">데이터 시각화</Link>
-              <Link to="/curriculum/practice" className="footer-link">실전 발표 연습</Link>
+              <Link to="/learn/basics" className="footer-link">프레젠테이션 기초</Link>
+              <Link to="/learn/slide-design" className="footer-link">슬라이드 디자인</Link>
+              <Link to="/learn/speech" className="footer-link">스피치와 전달력</Link>
+              <Link to="/learn/data-viz" className="footer-link">데이터 시각화</Link>
+              <Link to="/learn/storytelling" className="footer-link">스토리텔링</Link>
+              <Link to="/learn/english-presentation" className="footer-link">영어 프레젠테이션</Link>
+              <Link to="/glossary" className="footer-link">용어사전</Link>
+              <Link to="/practice" className="footer-link">퀴즈</Link>
             </div>
           </div>
 

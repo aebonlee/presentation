@@ -9,6 +9,10 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const CourseDetail = lazy(() => import('./pages/courses/CourseDetail'));
 const ToolsOverview = lazy(() => import('./pages/tools/ToolsOverview'));
 const ToolDetail = lazy(() => import('./pages/tools/ToolDetail'));
+const LearningPage = lazy(() => import('./pages/learning/LearningPage'));
+const Enrollment = lazy(() => import('./pages/Enrollment'));
+const Glossary = lazy(() => import('./pages/Glossary'));
+const Practice = lazy(() => import('./pages/Practice'));
 
 const App = () => {
   return (
@@ -17,6 +21,12 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="login" element={<Login />} />
+        <Route path="learn" element={<LearningPage />} />
+        <Route path="learn/:categoryId" element={<LearningPage />} />
+        <Route path="learn/:categoryId/:topicId" element={<LearningPage />} />
+        <Route path="enrollment" element={<Enrollment />} />
+        <Route path="glossary" element={<Glossary />} />
+        <Route path="practice" element={<Practice />} />
         <Route path="curriculum/:slug" element={<CourseDetail />} />
         <Route path="tools" element={<ToolsOverview />} />
         <Route path="tools/:toolId" element={<ToolDetail />} />
