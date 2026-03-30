@@ -4,6 +4,8 @@
   padding-top: var(--nav-height);
   min-height: 100vh;
   display: flex;
+  max-width: var(--container-max);
+  margin: 0 auto;
 }
 
 /* Sidebar */
@@ -68,7 +70,7 @@
 .learning-sidebar-topic {
   display: block;
   width: 100%;
-  padding: 7px 16px 7px 49px;
+  padding: 7px 16px 7px 22px;
   font-size: var(--font-size-xs);
   color: var(--text-light);
   text-align: left;
