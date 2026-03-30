@@ -77,7 +77,7 @@ const Navbar = () => {
               onMouseEnter={() => { if (window.innerWidth > 1024) setLearnOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setLearnOpen(false); }}
             >
-              학습 ▾
+              A ~ Z 학습 ▾
             </button>
             <div
               className="nav-dropdown-menu"
@@ -101,7 +101,7 @@ const Navbar = () => {
               onMouseEnter={() => { if (window.innerWidth > 1024) setToolsOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setToolsOpen(false); }}
             >
-              도구 ▾
+              제작도구 ▾
             </button>
             <div
               className="nav-dropdown-menu"
