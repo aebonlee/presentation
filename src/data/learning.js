@@ -111,18 +111,17 @@ export const learningCategories = [
 
 ### 청중 분석 프레임워크
 
-\`\`\`
-┌─────────────────────────────────────┐
-│           청중 분석 체크리스트        │
-├─────────────────────────────────────┤
-│ □ 연령대와 직업/역할                 │
-│ □ 주제에 대한 사전 지식 수준          │
-│ □ 발표를 듣는 이유/동기               │
-│ □ 기대하는 결과                      │
-│ □ 의사결정 권한 여부                  │
-│ □ 문화적 배경과 선호 커뮤니케이션 방식  │
-└─────────────────────────────────────┘
-\`\`\`
+<div class="design-diagram st-checklist">
+<div class="st-checklist-header">청중 분석 체크리스트</div>
+<div class="st-checklist-items">
+<div class="st-checklist-item"><div class="st-checklist-box"></div>연령대와 직업/역할</div>
+<div class="st-checklist-item"><div class="st-checklist-box"></div>주제에 대한 사전 지식 수준</div>
+<div class="st-checklist-item"><div class="st-checklist-box"></div>발표를 듣는 이유/동기</div>
+<div class="st-checklist-item"><div class="st-checklist-box"></div>기대하는 결과</div>
+<div class="st-checklist-item"><div class="st-checklist-box"></div>의사결정 권한 여부</div>
+<div class="st-checklist-item"><div class="st-checklist-box"></div>문화적 배경과 선호 커뮤니케이션 방식</div>
+</div>
+</div>
 
 ### SMART 목표 설정
 
@@ -866,51 +865,77 @@ export const learningCategories = [
             title: '프레젠테이션 스토리텔링',
             content: `### 왜 스토리텔링인가?
 
-- 통계만 있는 발표: **5~10%** 기억
-- 스토리가 있는 발표: **63~65%** 기억
+같은 내용이라도 스토리로 전달하면 기억 효과가 완전히 달라집니다.
+
+<div class="design-diagram st-retention">
+<div class="st-retention-side st-retention-data"><div class="st-retention-num">5~10%</div><div class="st-retention-bar"><div class="st-retention-bar-fill"></div></div><div class="st-retention-label">통계만 있는 발표</div><div class="st-retention-desc">데이터 나열 위주의 발표</div></div>
+<div class="st-retention-side st-retention-story"><div class="st-retention-num">63~65%</div><div class="st-retention-bar"><div class="st-retention-bar-fill"></div></div><div class="st-retention-label">스토리가 있는 발표</div><div class="st-retention-desc">이야기 구조로 전달하는 발표</div></div>
+</div>
 
 > "사람들은 데이터를 잊지만, 이야기는 기억합니다."
 
-### 스토리텔링 프레임워크
+### 1. 영웅의 여정 (Hero's Journey)
 
-**1. 영웅의 여정 (Hero's Journey)**
-\`\`\`
-일상 → 문제 발생 → 해결 시도 → 시련 → 깨달음 → 변화된 결과
-\`\`\`
+가장 보편적이고 강력한 스토리 구조입니다.
+
+<div class="design-diagram st-hero">
+<div class="st-hero-step"><div class="st-hero-dot">1</div><div class="st-hero-name">일상</div></div>
+<div class="st-hero-arrow">→</div>
+<div class="st-hero-step"><div class="st-hero-dot">2</div><div class="st-hero-name">문제 발생</div></div>
+<div class="st-hero-arrow">→</div>
+<div class="st-hero-step"><div class="st-hero-dot">3</div><div class="st-hero-name">해결 시도</div></div>
+<div class="st-hero-arrow">→</div>
+<div class="st-hero-step"><div class="st-hero-dot">4</div><div class="st-hero-name">시련</div></div>
+<div class="st-hero-arrow">→</div>
+<div class="st-hero-step"><div class="st-hero-dot">5</div><div class="st-hero-name">깨달음</div></div>
+<div class="st-hero-arrow">→</div>
+<div class="st-hero-step"><div class="st-hero-dot">6</div><div class="st-hero-name">변화된 결과</div></div>
+</div>
+
 - 비즈니스 예: "고객의 고통점 → 우리 솔루션 → 성공 사례"
 
-**2. Before-After-Bridge**
-\`\`\`
-Before: 현재의 문제/고통
-After:  해결 후의 이상적 모습
-Bridge: 우리의 해결 방안
-\`\`\`
+### 2. Before-After-Bridge
 
-**3. STAR 기법**
-\`\`\`
-Situation: 상황 설명
-Task:      해결해야 할 과제
-Action:    실제 행동
-Result:    결과와 성과
-\`\`\`
+문제 → 이상 → 해결책 순서로 청중을 설득하는 프레임워크입니다.
 
-**4. 3의 법칙**
-- 핵심 메시지 3개
-- 사례 3개
-- 스텝 3단계
+<div class="design-diagram st-bab">
+<div class="st-bab-panel"><div class="st-bab-badge">Before</div><div class="st-bab-title">현재의 문제</div><div class="st-bab-desc">청중이 겪고 있는 고통점과 불편함을 생생하게 묘사</div></div>
+<div class="st-bab-panel"><div class="st-bab-badge">After</div><div class="st-bab-title">이상적 모습</div><div class="st-bab-desc">문제가 해결된 후의 밝고 이상적인 미래를 제시</div></div>
+<div class="st-bab-panel"><div class="st-bab-badge">Bridge</div><div class="st-bab-title">해결 방안</div><div class="st-bab-desc">Before에서 After로 가는 구체적인 방법을 제안</div></div>
+</div>
 
-> "스티브 잡스는 항상 3가지로 발표했습니다:
-> 'iPod, Phone, Internet communicator... 이 세 가지는 하나입니다.'"
+### 3. STAR 기법
 
-### 감정을 움직이는 스토리 요소
+경험과 성과를 구조적으로 전달하는 프레임워크입니다.
 
-| 요소 | 효과 | 예시 |
-|------|------|------|
-| **구체적 인물** | 공감 | "김대리가 매일 야근..." |
-| **갈등과 긴장** | 몰입 | "그때 예상치 못한 일이..." |
-| **감각적 묘사** | 생생함 | "손이 떨리고 목소리가..." |
-| **반전** | 놀라움 | "그런데 결과는 정반대였습니다" |
-| **교훈** | 인사이트 | "이것이 우리에게 알려주는 것은..." |`
+<div class="design-diagram st-star">
+<div class="st-star-card"><div class="st-star-letter">S</div><div class="st-star-name">Situation</div><div class="st-star-desc">상황 설명 — 배경과 맥락을 공유</div></div>
+<div class="st-star-card"><div class="st-star-letter">T</div><div class="st-star-name">Task</div><div class="st-star-desc">과제 — 해결해야 할 목표를 제시</div></div>
+<div class="st-star-card"><div class="st-star-letter">A</div><div class="st-star-name">Action</div><div class="st-star-desc">행동 — 실제로 취한 구체적 조치</div></div>
+<div class="st-star-card"><div class="st-star-letter">R</div><div class="st-star-name">Result</div><div class="st-star-desc">결과 — 성과와 배운 점을 정리</div></div>
+</div>
+
+### 4. 3의 법칙
+
+사람은 3개의 정보를 가장 잘 기억합니다.
+
+<div class="design-diagram st-three">
+<div class="st-three-item"><div class="st-three-num">1</div><div class="st-three-label">핵심 메시지</div><div class="st-three-sub">3개로 정리</div></div>
+<div class="st-three-item"><div class="st-three-num">2</div><div class="st-three-label">사례/근거</div><div class="st-three-sub">3개씩 제시</div></div>
+<div class="st-three-item"><div class="st-three-num">3</div><div class="st-three-label">실행 단계</div><div class="st-three-sub">3스텝으로 구성</div></div>
+</div>
+
+> "스티브 잡스는 항상 3가지로 발표했습니다: 'iPod, Phone, Internet communicator... 이 세 가지는 하나입니다.'"
+
+### 감정을 움직이는 5가지 스토리 요소
+
+<div class="design-diagram st-elements">
+<div class="st-element-card"><div class="st-element-icon">인물</div><div class="st-element-name">구체적 인물</div><div class="st-element-effect">공감</div><div class="st-element-ex">"김대리가 매일 야근..."</div></div>
+<div class="st-element-card"><div class="st-element-icon">갈등</div><div class="st-element-name">갈등과 긴장</div><div class="st-element-effect">몰입</div><div class="st-element-ex">"그때 예상치 못한 일이..."</div></div>
+<div class="st-element-card"><div class="st-element-icon">묘사</div><div class="st-element-name">감각적 묘사</div><div class="st-element-effect">생생함</div><div class="st-element-ex">"손이 떨리고 목소리가..."</div></div>
+<div class="st-element-card"><div class="st-element-icon">반전</div><div class="st-element-name">반전</div><div class="st-element-effect">놀라움</div><div class="st-element-ex">"결과는 정반대였습니다"</div></div>
+<div class="st-element-card"><div class="st-element-icon">교훈</div><div class="st-element-name">교훈</div><div class="st-element-effect">인사이트</div><div class="st-element-ex">"이것이 알려주는 것은..."</div></div>
+</div>`
           }
         ]
       }
