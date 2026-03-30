@@ -1,4 +1,4 @@
-const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:"프레젠테이션의 기본 개념과 기획 방법을 배웁니다",topics:[{id:"what-is-presentation",title:"프레젠테이션이란?",sections:[{title:"프레젠테이션의 정의",content:`프레젠테이션(Presentation)은 특정 청중에게 정보, 아이디어, 제안 등을 효과적으로 전달하는 커뮤니케이션 활동입니다.
+const i=[{id:"basics",title:"프레젠테이션 기초",icon:"1",description:"프레젠테이션의 기본 개념과 기획 방법을 배웁니다",topics:[{id:"what-is-presentation",title:"프레젠테이션이란?",sections:[{title:"프레젠테이션의 정의",content:`프레젠테이션(Presentation)은 특정 청중에게 정보, 아이디어, 제안 등을 효과적으로 전달하는 커뮤니케이션 활동입니다.
 
 단순히 "발표"라는 의미를 넘어, **시각 자료 + 구두 설명 + 비언어적 표현**이 결합된 종합적인 소통 방식입니다.
 
@@ -10,7 +10,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 | **시각 자료** | 슬라이드, 차트, 이미지 등 | 30% |
 | **전달력** | 목소리, 제스처, 시선 처리 | 30% |
 
-> 💡 **핵심**: 좋은 프레젠테이션은 "무엇을 말하는가"보다 "어떻게 전달하는가"가 더 중요합니다.`},{title:"프레젠테이션의 유형",content:`### 목적에 따른 분류
+> **핵심**: 좋은 프레젠테이션은 "무엇을 말하는가"보다 "어떻게 전달하는가"가 더 중요합니다.`},{title:"프레젠테이션의 유형",content:`### 목적에 따른 분류
 
 **1. 정보 전달형 (Informative)**
 - 교육, 연구 발표, 기술 세미나
@@ -39,7 +39,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 | 대규모 발표 | 무대, 마이크, 프로젝터 | 50명+ |
 | 소규모 미팅 | 회의실, 모니터 공유 | 5~20명 |
 | 온라인 발표 | Zoom, Teams, Meet | 다양 |
-| 하이브리드 | 현장 + 온라인 동시 | 다양 |`},{title:"좋은 발표 vs 나쁜 발표",content:`### ✅ 좋은 발표의 특징
+| 하이브리드 | 현장 + 온라인 동시 | 다양 |`},{title:"좋은 발표 vs 나쁜 발표",content:`### 좋은 발표의 특징
 
 1. **명확한 목적** - 발표가 끝난 후 청중이 무엇을 해야 하는지 분명함
 2. **청중 맞춤** - 청중의 수준과 관심사에 맞춘 내용
@@ -48,7 +48,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 5. **자연스러운 전달** - 원고를 읽지 않고 대화하듯 전달
 6. **적절한 시간 관리** - 주어진 시간 내 완료
 
-### ❌ 나쁜 발표의 특징
+### 나쁜 발표의 특징
 
 1. **목적 불분명** - "오늘 여러 가지를 말씀드리겠습니다"
 2. **텍스트 과다** - 슬라이드를 그대로 읽기
@@ -57,7 +57,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 5. **단조로운 톤** - 변화 없는 목소리와 표정
 6. **데이터 남용** - 맥락 없이 숫자만 나열
 
-### 🎯 개선 포인트
+### 개선 포인트
 
 > **10-20-30 Rule** (가이 가와사키)
 > - **10장** 이내의 슬라이드
@@ -179,7 +179,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 - □ 비상 상황 대비 (파일 백업)
 - □ 최종 시간 확인
 
-> 💡 **팁**: 발표 시간의 3배를 리허설에 투자하세요. 15분 발표 = 최소 45분 리허설`}]},{id:"audience-analysis",title:"청중 분석",sections:[{title:"청중 유형 이해하기",content:`### 4가지 청중 유형
+> **팁**: 발표 시간의 3배를 리허설에 투자하세요. 15분 발표 = 최소 45분 리허설`}]},{id:"audience-analysis",title:"청중 분석",sections:[{title:"청중 유형 이해하기",content:`### 4가지 청중 유형
 
 **1. 분석형 (Analytical)**
 - 데이터와 수치를 중시
@@ -209,7 +209,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 | 투자자 | 시장 기회, 성장성 | 기술 용어 남용 |
 | 엔지니어 | 기술 상세, 아키텍처 | 과도한 마케팅 표현 |
 | 일반 대중 | 쉬운 용어, 스토리 | 전문 용어 과다 |
-| 학생 | 사례, 실습 연계 | 일방적 강의 |`}]}]},{id:"slide-design",title:"슬라이드 디자인",icon:"🎨",description:"전문적인 프레젠테이션 슬라이드 디자인 원칙을 학습합니다",topics:[{id:"design-principles",title:"디자인 기본 원칙",sections:[{title:"CARP 디자인 원칙",content:`### 4가지 기본 디자인 원칙
+| 학생 | 사례, 실습 연계 | 일방적 강의 |`}]}]},{id:"slide-design",title:"슬라이드 디자인",icon:"2",description:"전문적인 프레젠테이션 슬라이드 디자인 원칙을 학습합니다",topics:[{id:"design-principles",title:"디자인 기본 원칙",sections:[{title:"CARP 디자인 원칙",content:`### 4가지 기본 디자인 원칙
 
 **C - Contrast (대비)**
 - 중요한 요소를 눈에 띄게
@@ -397,7 +397,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 │  ① → ② → ③ → ④    │
 │  단계1 단계2 단계3 단계4│
 └─────────────────────┘
-\`\`\``}]}]},{id:"speech",title:"스피치와 전달력",icon:"🎤",description:"목소리, 제스처, 시선 처리 등 발표 전달력을 향상시킵니다",topics:[{id:"voice-techniques",title:"음성 활용법",sections:[{title:"발성과 호흡",content:`### 복식호흡 연습
+\`\`\``}]}]},{id:"speech",title:"스피치와 전달력",icon:"3",description:"목소리, 제스처, 시선 처리 등 발표 전달력을 향상시킵니다",topics:[{id:"voice-techniques",title:"음성 활용법",sections:[{title:"발성과 호흡",content:`### 복식호흡 연습
 
 발표에서 목소리의 힘은 호흡에서 나옵니다.
 
@@ -407,7 +407,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 3. 입으로 6초간 내쉬기 (배가 들어감)
 4. 10회 반복
 
-> 💡 **팁**: 발표 5분 전 복식호흡을 하면 긴장이 완화됩니다.
+> **팁**: 발표 5분 전 복식호흡을 하면 긴장이 완화됩니다.
 
 ### 음성의 4요소
 
@@ -549,7 +549,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 2분 전: 첫 문장 리허설
 1분 전: 미소 + 물 한 모금
 시작:   청중에게 인사, 시작
-\`\`\``}]}]},{id:"data-viz",title:"데이터 시각화",icon:"📊",description:"데이터를 효과적으로 시각화하여 설득력 있는 슬라이드를 만듭니다",topics:[{id:"chart-selection",title:"차트 유형 선택",sections:[{title:"목적별 차트 선택 가이드",content:`### 차트 선택 의사결정 트리
+\`\`\``}]}]},{id:"data-viz",title:"데이터 시각화",icon:"4",description:"데이터를 효과적으로 시각화하여 설득력 있는 슬라이드를 만듭니다",topics:[{id:"chart-selection",title:"차트 유형 선택",sections:[{title:"목적별 차트 선택 가이드",content:`### 차트 선택 의사결정 트리
 
 **비교가 목적이라면:**
 - 항목 간 비교 → **막대 차트** (수직/수평)
@@ -580,21 +580,21 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 | 추세 | 선 | 영역 | 원형 |
 | 관계 | 산점도 | 버블 | 막대 |
 
-> ⚠️ **절대 피할 것**: 3D 차트, 장식적 효과, 불필요한 범례`},{title:"차트 디자인 원칙",content:`### 차트 깔끔하게 만들기
+> **절대 피할 것**: 3D 차트, 장식적 효과, 불필요한 범례`},{title:"차트 디자인 원칙",content:`### 차트 깔끔하게 만들기
 
 **제거할 것 (Less is More):**
-- ❌ 3D 효과
-- ❌ 불필요한 격자선
-- ❌ 장식적 그림자
-- ❌ 과도한 색상
-- ❌ 회전된 텍스트
+- X 3D 효과
+- X 불필요한 격자선
+- X 장식적 그림자
+- X 과도한 색상
+- X 회전된 텍스트
 
 **추가할 것:**
-- ✅ 명확한 제목 (인사이트 포함)
-- ✅ 데이터 레이블 (핵심만)
-- ✅ 강조 색상 (핵심 데이터)
-- ✅ 출처 표기
-- ✅ 단위 표기
+- O 명확한 제목 (인사이트 포함)
+- O 데이터 레이블 (핵심만)
+- O 강조 색상 (핵심 데이터)
+- O 출처 표기
+- O 단위 표기
 
 ### 차트 제목 작성법
 
@@ -605,7 +605,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 - "3분기 매출 150% 성장, 역대 최고 기록"
 - "모바일 매출이 전체의 70% 차지"
 
-> 💡 **규칙**: 차트 제목은 데이터가 아닌 **인사이트**를 담으세요.
+> **규칙**: 차트 제목은 데이터가 아닌 **인사이트**를 담으세요.
 
 ### 색상 활용
 
@@ -614,7 +614,7 @@ const i=[{id:"basics",title:"프레젠테이션 기초",icon:"📋",description:
 ■ 일반 데이터:  회색 또는 연한 색
 ■ 비교 대상:   보조 컬러
 □ 배경:       흰색 또는 아주 연한 회색
-\`\`\``}]}]},{id:"storytelling",title:"스토리텔링",icon:"📖",description:"청중을 사로잡는 스토리텔링 기법을 배웁니다",topics:[{id:"storytelling-basics",title:"스토리텔링 기법",sections:[{title:"프레젠테이션 스토리텔링",content:`### 왜 스토리텔링인가?
+\`\`\``}]}]},{id:"storytelling",title:"스토리텔링",icon:"5",description:"청중을 사로잡는 스토리텔링 기법을 배웁니다",topics:[{id:"storytelling-basics",title:"스토리텔링 기법",sections:[{title:"프레젠테이션 스토리텔링",content:`### 왜 스토리텔링인가?
 
 - 통계만 있는 발표: **5~10%** 기억
 - 스토리가 있는 발표: **63~65%** 기억
@@ -660,7 +660,7 @@ Result:    결과와 성과
 | **갈등과 긴장** | 몰입 | "그때 예상치 못한 일이..." |
 | **감각적 묘사** | 생생함 | "손이 떨리고 목소리가..." |
 | **반전** | 놀라움 | "그런데 결과는 정반대였습니다" |
-| **교훈** | 인사이트 | "이것이 우리에게 알려주는 것은..." |`}]}]},{id:"english-presentation",title:"영문 프레젠테이션",icon:"🌍",description:"영어로 프레젠테이션을 진행하는 핵심 노하우를 전달합니다",topics:[{id:"english-basics",title:"영문 발표 기본 표현",sections:[{title:"오프닝 표현",content:`### Opening Expressions
+| **교훈** | 인사이트 | "이것이 우리에게 알려주는 것은..." |`}]}]},{id:"english-presentation",title:"영문 프레젠테이션",icon:"6",description:"영어로 프레젠테이션을 진행하는 핵심 노하우를 전달합니다",topics:[{id:"english-basics",title:"영문 발표 기본 표현",sections:[{title:"오프닝 표현",content:`### Opening Expressions
 
 **인사와 자기소개:**
 - "Good morning/afternoon, everyone."
