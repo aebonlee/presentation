@@ -65,12 +65,10 @@ const Navbar = () => {
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
           <div className="navbar-brand-icon">P</div>
-          Dream<span>IT</span> 프레젠테이션
+          Presentation
         </Link>
 
         <div className={`navbar-nav ${mobileOpen ? 'open' : ''}`}>
-          <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>홈</Link>
-
           {/* 학습 드롭다운 */}
           <div className={`nav-dropdown ${learnOpen ? 'open' : ''}`}>
             <button
@@ -123,6 +121,8 @@ const Navbar = () => {
           <Link to="/glossary" className={`nav-link ${isActive('/glossary') ? 'active' : ''}`}>용어사전</Link>
           <Link to="/practice" className={`nav-link ${isActive('/practice') ? 'active' : ''}`}>퀴즈</Link>
           <Link to="/enrollment" className={`nav-link ${isActive('/enrollment') ? 'active' : ''}`}>과정 신청</Link>
+          <Link to="/request" className={`nav-link ${isActive('/request') ? 'active' : ''}`}>제작 의뢰</Link>
+          <Link to="/community" className={`nav-link ${isActive('/community') ? 'active' : ''}`}>커뮤니티</Link>
         </div>
 
         <div className="navbar-controls">
