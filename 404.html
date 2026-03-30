@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>DreamIT 프레젠테이션</title>
+  <script>
+    sessionStorage.redirect = location.href;
+    location.replace(location.pathname.split('/').slice(0, 1).join('/') + '/' + '?' + location.pathname.slice(1).replace(/&/g, '~and~') + (location.search ? '&' + location.search.slice(1).replace(/&/g, '~and~') : '') + location.hash);
+  </script>
+</head>
+<body></body>
+</html>
