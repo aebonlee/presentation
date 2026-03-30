@@ -237,6 +237,60 @@
   line-height: 1.6;
 }
 
+/* ===== Recommendation Cards ===== */
+
+.recommend-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.recommend-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.recommend-card-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ===== Roadmap Card ===== */
+
+.roadmap-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.roadmap-card-body {
+  flex: 1;
+}
+
+.roadmap-week {
+  font-size: var(--font-size-xs);
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.roadmap-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.roadmap-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
 /* ===== 404 Page ===== */
 
 .not-found-page {

@@ -99,72 +99,48 @@ const ToolsOverview = () => {
           </div>
           <div className="grid grid-3" data-aos="fade-up">
             <div className="card">
-              <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                비즈니스 · 기업
-              </h3>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
-                호환성과 기능이 가장 중요한 비즈니스 환경
-              </p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <h3 className="recommend-card-title">비즈니스 · 기업</h3>
+              <p className="recommend-card-desc">호환성과 기능이 가장 중요한 비즈니스 환경</p>
+              <div className="recommend-card-badges">
                 <Link to="/tools/powerpoint" className="badge badge-primary">PowerPoint 추천</Link>
                 <Link to="/tools/google-slides" className="badge badge-primary">Google Slides</Link>
               </div>
             </div>
             <div className="card">
-              <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                학생 · 교육
-              </h3>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
-                무료이면서 쉽게 사용할 수 있는 도구
-              </p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <h3 className="recommend-card-title">학생 · 교육</h3>
+              <p className="recommend-card-desc">무료이면서 쉽게 사용할 수 있는 도구</p>
+              <div className="recommend-card-badges">
                 <Link to="/tools/canva" className="badge badge-primary">Canva 추천</Link>
                 <Link to="/tools/google-slides" className="badge badge-primary">Google Slides</Link>
               </div>
             </div>
             <div className="card">
-              <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                한국어 · 한국형
-              </h3>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
-                한글 폰트와 한국형 템플릿이 필요한 경우
-              </p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <h3 className="recommend-card-title">한국어 · 한국형</h3>
+              <p className="recommend-card-desc">한글 폰트와 한국형 템플릿이 필요한 경우</p>
+              <div className="recommend-card-badges">
                 <Link to="/tools/miricanvas" className="badge badge-primary">미리캔버스 추천</Link>
                 <Link to="/tools/powerpoint" className="badge badge-primary">PowerPoint</Link>
               </div>
             </div>
             <div className="card">
-              <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                디자인 · 포트폴리오
-              </h3>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
-                고급 디자인과 자유도가 필요한 경우
-              </p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <h3 className="recommend-card-title">디자인 · 포트폴리오</h3>
+              <p className="recommend-card-desc">고급 디자인과 자유도가 필요한 경우</p>
+              <div className="recommend-card-badges">
                 <Link to="/tools/figma" className="badge badge-primary">Figma 추천</Link>
                 <Link to="/tools/canva" className="badge badge-primary">Canva</Link>
               </div>
             </div>
             <div className="card">
-              <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                인터랙티브 · 교육
-              </h3>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
-                클릭, 호버 등 인터랙션이 필요한 교육 콘텐츠
-              </p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <h3 className="recommend-card-title">인터랙티브 · 교육</h3>
+              <p className="recommend-card-desc">클릭, 호버 등 인터랙션이 필요한 교육 콘텐츠</p>
+              <div className="recommend-card-badges">
                 <Link to="/tools/genially" className="badge badge-primary">Genially 추천</Link>
               </div>
             </div>
             <div className="card">
-              <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                스타트업 · 피치덱
-              </h3>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
-                투자자에게 임팩트 있는 발표를 해야 하는 경우
-              </p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <h3 className="recommend-card-title">스타트업 · 피치덱</h3>
+              <p className="recommend-card-desc">투자자에게 임팩트 있는 발표를 해야 하는 경우</p>
+              <div className="recommend-card-badges">
                 <Link to="/tools/figma" className="badge badge-primary">Figma 추천</Link>
                 <Link to="/tools/canva" className="badge badge-primary">Canva</Link>
               </div>

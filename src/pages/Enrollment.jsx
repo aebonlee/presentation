@@ -138,11 +138,7 @@ export default function Enrollment() {
       </section>
 
       {/* Enrollment Process Info */}
-      <section
-        className="enrollment-section"
-        style={{ paddingBottom: "4rem" }}
-        data-aos="fade-up"
-      >
+      <section className="enrollment-section" data-aos="fade-up">
         <div className="container">
           <h2 className="enrollment-section-heading">수강 신청 안내</h2>
           <div className="enrollment-process-grid">

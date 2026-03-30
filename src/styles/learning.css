@@ -311,6 +311,13 @@
 /* Enrollment page */
 .enrollment-section {
   background: var(--bg-light);
+  padding: var(--section-padding) 0;
+}
+
+.enrollment-section > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .enrollment-card {

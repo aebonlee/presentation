@@ -82,22 +82,15 @@ const About = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="card"
+                className="card roadmap-card"
                 data-aos="fade-right"
                 data-aos-delay={`${i * 100}`}
-                style={{ display: 'flex', gap: 20, alignItems: 'center', marginBottom: 16 }}
               >
                 <div className="icon-num">{item.num}</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--accent)', fontWeight: 600, marginBottom: 2 }}>
-                    {item.week}
-                  </div>
-                  <div style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>
-                    {item.title}
-                  </div>
-                  <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)' }}>
-                    {item.desc}
-                  </div>
+                <div className="roadmap-card-body">
+                  <div className="roadmap-week">{item.week}</div>
+                  <div className="roadmap-title">{item.title}</div>
+                  <div className="roadmap-desc">{item.desc}</div>
                 </div>
               </div>
             ))}
