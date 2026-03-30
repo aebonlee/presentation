@@ -1,0 +1,66 @@
+/* ===== Responsive ===== */
+
+@media (max-width: 1280px) {
+  :root {
+    --section-padding: 64px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: 56px;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 48px;
+    --nav-height: 64px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-base);
+    margin-bottom: 32px;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-lg {
+    padding: 14px 28px;
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 40px;
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .card {
+    padding: 24px;
+  }
+}

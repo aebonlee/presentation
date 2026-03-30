@@ -1,0 +1,67 @@
+/* ===== Dark Mode ===== */
+
+[data-theme="dark"] {
+  --bg-white: #0D1B2A;
+  --bg-light: #1B2838;
+  --bg-gray: #243447;
+  --bg-dark: #060E18;
+  --bg-darker: #030810;
+  --bg-card: #152238;
+  --bg-card-hover: #1B2D45;
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-light: #94A3B8;
+  --text-muted: #64748B;
+
+  --border-light: #1E3A5F;
+  --border-medium: #2E4A6F;
+  --border-dark: #475569;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.35);
+
+  --glass-bg: rgba(13, 27, 42, 0.9);
+  --glass-border: rgba(30, 58, 95, 0.5);
+
+  color-scheme: dark;
+}
+
+[data-theme="dark"] .card {
+  background: var(--bg-card);
+  border-color: var(--border-light);
+}
+
+[data-theme="dark"] .card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--accent);
+  color: var(--text-white);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}

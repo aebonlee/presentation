@@ -1,0 +1,12 @@
+/* DreamIT Presentation - Global Styles */
+@import './styles/base.css';
+@import './styles/dark-mode.css';
+@import './styles/animations.css';
+@import './styles/navbar.css';
+@import './styles/hero.css';
+@import './styles/footer.css';
+@import './styles/curriculum.css';
+@import './styles/tools.css';
+@import './styles/auth.css';
+@import './styles/pages.css';
+@import './styles/responsive.css';
