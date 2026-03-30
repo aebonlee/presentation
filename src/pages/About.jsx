@@ -31,7 +31,7 @@ const About = () => {
           </div>
           <div className="about-grid">
             <div className="about-card" data-aos="fade-up">
-              <div className="about-card-icon">📋</div>
+              <div className="about-card-icon icon-num-sm">01</div>
               <h3 className="about-card-title">체계적인 커리큘럼</h3>
               <p className="about-card-desc">
                 기획과 구성, PPT 디자인, 스피치, 데이터 시각화, 실전 연습까지
@@ -39,7 +39,7 @@ const About = () => {
               </p>
             </div>
             <div className="about-card" data-aos="fade-up" data-aos-delay="100">
-              <div className="about-card-icon">🛠️</div>
+              <div className="about-card-icon icon-num-sm">02</div>
               <h3 className="about-card-title">다양한 도구 학습</h3>
               <p className="about-card-desc">
                 파워포인트, 구글 슬라이드, 캔바, 미리캔버스, 피그마, 젠리 등
@@ -47,7 +47,7 @@ const About = () => {
               </p>
             </div>
             <div className="about-card" data-aos="fade-up" data-aos-delay="200">
-              <div className="about-card-icon">🎥</div>
+              <div className="about-card-icon icon-num-sm">03</div>
               <h3 className="about-card-title">영상 피드백</h3>
               <p className="about-card-desc">
                 발표 영상을 촬영하고 전문가의 상세한 피드백을 받습니다.
@@ -55,7 +55,7 @@ const About = () => {
               </p>
             </div>
             <div className="about-card" data-aos="fade-up" data-aos-delay="300">
-              <div className="about-card-icon">🏆</div>
+              <div className="about-card-icon icon-num-sm">04</div>
               <h3 className="about-card-title">실전 시뮬레이션</h3>
               <p className="about-card-desc">
                 실제 발표 환경을 재현한 시뮬레이션으로 실전 감각을 키웁니다.
@@ -72,13 +72,13 @@ const About = () => {
             <h2 className="section-title">학습 로드맵</h2>
             <p className="section-subtitle">총 18주 과정으로 프레젠테이션의 A to Z를 마스터합니다</p>
           </div>
-          <div style={{ maxWidth: 800, margin: '0 auto' }}>
+          <div className="container-content" style={{ padding: 0 }}>
             {[
-              { week: '1~4주', title: '기획과 구성', desc: '목적 설정, 청중 분석, 스토리보드 구성', icon: '📋' },
-              { week: '5~8주', title: 'PPT 디자인 원칙', desc: '레이아웃, 색상, 타이포그래피, 시각 요소', icon: '🎨' },
-              { week: '9~12주', title: '스피치와 전달력', desc: '발성, 제스처, 시선, 긴장감 극복', icon: '🎤' },
-              { week: '13~15주', title: '데이터 시각화', desc: '차트, 인포그래픽, 대시보드, 스토리텔링', icon: '📊' },
-              { week: '16~18주', title: '실전 발표 연습', desc: '시뮬레이션, 피드백, 포트폴리오, 수료', icon: '🏆' },
+              { week: '1~4주', title: '기획과 구성', desc: '목적 설정, 청중 분석, 스토리보드 구성', num: '01' },
+              { week: '5~8주', title: 'PPT 디자인 원칙', desc: '레이아웃, 색상, 타이포그래피, 시각 요소', num: '02' },
+              { week: '9~12주', title: '스피치와 전달력', desc: '발성, 제스처, 시선, 긴장감 극복', num: '03' },
+              { week: '13~15주', title: '데이터 시각화', desc: '차트, 인포그래픽, 대시보드, 스토리텔링', num: '04' },
+              { week: '16~18주', title: '실전 발표 연습', desc: '시뮬레이션, 피드백, 포트폴리오, 수료', num: '05' },
             ].map((item, i) => (
               <div
                 key={i}
@@ -87,14 +87,7 @@ const About = () => {
                 data-aos-delay={`${i * 100}`}
                 style={{ display: 'flex', gap: 20, alignItems: 'center', marginBottom: 16 }}
               >
-                <div style={{
-                  width: 56, height: 56, borderRadius: 'var(--radius-md)',
-                  background: 'linear-gradient(135deg, var(--accent), var(--accent-dark))',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 28, flexShrink: 0
-                }}>
-                  {item.icon}
-                </div>
+                <div className="icon-num">{item.num}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--accent)', fontWeight: 600, marginBottom: 2 }}>
                     {item.week}
@@ -119,7 +112,7 @@ const About = () => {
             <p className="cta-desc">
               DreamIT Biz의 체계적인 교육 프로그램으로 시작하세요.
             </p>
-            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="flex-center-wrap">
               <Link to="/curriculum/planning" className="hero-btn-primary">학습 시작하기 →</Link>
               <a href="https://www.dreamitbiz.com/contact" target="_blank" rel="noopener noreferrer" className="hero-btn-secondary">
                 문의하기

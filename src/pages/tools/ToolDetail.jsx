@@ -50,15 +50,8 @@ const ToolDetail = () => {
                 공식 사이트 방문 →
               </a>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} data-aos="fade-left">
-              <div style={{
-                width: 200, height: 200,
-                background: 'rgba(255,255,255,0.1)',
-                borderRadius: 'var(--radius-2xl)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 80, backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.15)'
-              }}>
+            <div className="tool-detail-visual" data-aos="fade-left">
+              <div className="tool-detail-visual-box">
                 {tool.icon}
               </div>
             </div>
@@ -104,7 +97,7 @@ const ToolDetail = () => {
           <div className="tool-info-grid">
             <div className="tool-info-card" data-aos="fade-up">
               <div className="tool-info-card-title">
-                <span className="tool-info-card-icon">⚡</span> 주요 기능
+                <span className="tool-info-card-icon">주요 기능</span>
               </div>
               <div className="tool-info-list">
                 {tool.features.map((f, i) => (
@@ -114,7 +107,7 @@ const ToolDetail = () => {
             </div>
             <div className="tool-info-card" data-aos="fade-up" data-aos-delay="100">
               <div className="tool-info-card-title">
-                <span className="tool-info-card-icon">👍</span> 장점
+                <span className="tool-info-card-icon">장점</span>
               </div>
               <div className="tool-info-list">
                 {tool.pros.map((p, i) => (
@@ -124,7 +117,7 @@ const ToolDetail = () => {
             </div>
             <div className="tool-info-card" data-aos="fade-up" data-aos-delay="200">
               <div className="tool-info-card-title">
-                <span className="tool-info-card-icon">⚠️</span> 단점
+                <span className="tool-info-card-icon">단점</span>
               </div>
               <div className="tool-info-list">
                 {tool.cons.map((c, i) => (
@@ -142,13 +135,13 @@ const ToolDetail = () => {
           <div className="text-center" data-aos="fade-up">
             <h2 className="section-title">추천 활용 분야</h2>
           </div>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }} data-aos="fade-up">
+          <div className="tool-usecase-grid" data-aos="fade-up">
             {tool.useCases.map((uc, i) => (
-              <div key={i} className="card" style={{ flex: '1 1 200px', maxWidth: 280, textAlign: 'center' }}>
-                <div style={{ fontSize: 32, marginBottom: 8 }}>
-                  {['💼', '🎓', '📈', '🎨'][i % 4]}
+              <div key={i} className="card tool-usecase-card">
+                <div className="tool-usecase-num">
+                  {String(i + 1).padStart(2, '0')}
                 </div>
-                <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{uc}</div>
+                <div className="tool-usecase-label">{uc}</div>
               </div>
             ))}
           </div>
@@ -162,18 +155,13 @@ const ToolDetail = () => {
             <h2 className="section-title">활용 팁</h2>
             <p className="section-subtitle">{tool.shortName}를 더 잘 활용하기 위한 실전 팁</p>
           </div>
-          <div style={{ maxWidth: 800, margin: '0 auto' }}>
+          <div className="container-content" style={{ padding: 0 }}>
             {tool.tips.map((tip, i) => (
-              <div key={i} className="card" data-aos="fade-up" data-aos-delay={`${i * 100}`} style={{ marginBottom: 12, display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                <div style={{
-                  width: 32, height: 32, borderRadius: 'var(--radius-sm)',
-                  background: 'var(--accent)', color: 'white',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontWeight: 700, fontSize: 'var(--font-size-sm)', flexShrink: 0
-                }}>
+              <div key={i} className="card tool-tip-card" data-aos="fade-up" data-aos-delay={`${i * 100}`}>
+                <div className="icon-num-sm">
                   {i + 1}
                 </div>
-                <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                <p className="tool-tip-text">
                   {tip}
                 </p>
               </div>
@@ -185,7 +173,7 @@ const ToolDetail = () => {
       {/* Navigation */}
       <section className="section">
         <div className="container">
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'space-between', flexWrap: 'wrap' }}>
+          <div className="flex-center-wrap" style={{ justifyContent: 'space-between' }}>
             {prevTool ? (
               <Link to={`/tools/${prevTool.id}`} className="btn btn-secondary">
                 ← {prevTool.shortName}

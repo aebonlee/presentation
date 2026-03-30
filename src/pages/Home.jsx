@@ -4,14 +4,6 @@ import useAOS from '../hooks/useAOS';
 import { learningCategories } from '../data/learning';
 import { toolsData } from '../data/tools';
 
-const particles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  size: Math.random() * 6 + 2,
-  left: Math.random() * 100,
-  delay: Math.random() * 15,
-  duration: Math.random() * 10 + 15,
-}));
-
 const Home = () => {
   useAOS();
 
@@ -22,24 +14,9 @@ const Home = () => {
       {/* Hero */}
       <section className="hero">
         <div className="hero-bg-pattern" />
-        <div className="hero-particles">
-          {particles.map(p => (
-            <div
-              key={p.id}
-              className="hero-particle"
-              style={{
-                width: p.size,
-                height: p.size,
-                left: `${p.left}%`,
-                animationDelay: `${p.delay}s`,
-                animationDuration: `${p.duration}s`,
-              }}
-            />
-          ))}
-        </div>
         <div className="hero-content">
           <div className="hero-badge">
-            🎯 DreamIT Biz 프레젠테이션 학습
+            DreamIT Biz 프레젠테이션 학습
           </div>
           <h1 className="hero-title">
             프레젠테이션의 모든 것<br />
@@ -75,10 +52,6 @@ const Home = () => {
               <div className="hero-stat-label">무료 학습</div>
             </div>
           </div>
-        </div>
-        <div className="hero-scroll">
-          <div className="hero-scroll-mouse" />
-          <span>스크롤</span>
         </div>
       </section>
 
@@ -167,7 +140,7 @@ const Home = () => {
           <div className="features-grid">
             <div className="feature-card" data-aos="fade-up">
               <div className="feature-icon">
-                <span className="feature-icon-emoji">📖</span>
+                <span className="feature-icon-text">01</span>
               </div>
               <h3 className="feature-title">체계적 학습 콘텐츠</h3>
               <p className="feature-desc">
@@ -177,7 +150,7 @@ const Home = () => {
             </div>
             <div className="feature-card" data-aos="fade-up" data-aos-delay="100">
               <div className="feature-icon">
-                <span className="feature-icon-emoji">🌍</span>
+                <span className="feature-icon-text">02</span>
               </div>
               <h3 className="feature-title">영어 프레젠테이션</h3>
               <p className="feature-desc">
@@ -187,7 +160,7 @@ const Home = () => {
             </div>
             <div className="feature-card" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-icon">
-                <span className="feature-icon-emoji">🎯</span>
+                <span className="feature-icon-text">03</span>
               </div>
               <h3 className="feature-title">퀴즈와 용어사전</h3>
               <p className="feature-desc">
@@ -210,28 +183,28 @@ const Home = () => {
           </div>
           <div className="audience-grid">
             <div className="audience-card" data-aos="fade-up">
-              <div className="audience-icon">🎓</div>
+              <div className="audience-icon">학생</div>
               <h3 className="audience-title">대학생 · 취준생</h3>
               <p className="audience-desc">
                 발표 수업, 팀 프로젝트, 면접에서 인상적인 프레젠테이션으로 차별화하세요.
               </p>
             </div>
             <div className="audience-card" data-aos="fade-up" data-aos-delay="100">
-              <div className="audience-icon">💼</div>
+              <div className="audience-icon">직장</div>
               <h3 className="audience-title">직장인 · 비즈니스</h3>
               <p className="audience-desc">
                 회의, 보고, 제안서 발표에서 설득력 있는 프레젠테이션 스킬을 익히세요.
               </p>
             </div>
             <div className="audience-card" data-aos="fade-up" data-aos-delay="200">
-              <div className="audience-icon">📚</div>
+              <div className="audience-icon">교육</div>
               <h3 className="audience-title">교육자 · 강사</h3>
               <p className="audience-desc">
                 학생들의 집중력을 높이는 교육 자료와 강의 기법을 학습하세요.
               </p>
             </div>
             <div className="audience-card" data-aos="fade-up" data-aos-delay="300">
-              <div className="audience-icon">🚀</div>
+              <div className="audience-icon">창업</div>
               <h3 className="audience-title">창업자 · 스타트업</h3>
               <p className="audience-desc">
                 투자자 피칭, 사업 제안, 데모데이 발표를 성공적으로 준비하세요.
@@ -250,7 +223,7 @@ const Home = () => {
               프레젠테이션 기초부터 영어 발표까지,
               체계적인 학습 콘텐츠가 무료로 준비되어 있습니다.
             </p>
-            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="flex-center-wrap">
               <Link to="/learn/basics" className="hero-btn-primary">무료 학습 시작하기</Link>
               <Link to="/enrollment" className="hero-btn-secondary">과정 신청하기</Link>
             </div>

@@ -100,7 +100,7 @@ const ToolsOverview = () => {
           <div className="grid grid-3" data-aos="fade-up">
             <div className="card">
               <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                💼 비즈니스 · 기업
+                비즈니스 · 기업
               </h3>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
                 호환성과 기능이 가장 중요한 비즈니스 환경
@@ -112,7 +112,7 @@ const ToolsOverview = () => {
             </div>
             <div className="card">
               <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                🎓 학생 · 교육
+                학생 · 교육
               </h3>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
                 무료이면서 쉽게 사용할 수 있는 도구
@@ -124,7 +124,7 @@ const ToolsOverview = () => {
             </div>
             <div className="card">
               <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                🇰🇷 한국어 · 한국형
+                한국어 · 한국형
               </h3>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
                 한글 폰트와 한국형 템플릿이 필요한 경우
@@ -136,7 +136,7 @@ const ToolsOverview = () => {
             </div>
             <div className="card">
               <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                🎨 디자인 · 포트폴리오
+                디자인 · 포트폴리오
               </h3>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
                 고급 디자인과 자유도가 필요한 경우
@@ -148,7 +148,7 @@ const ToolsOverview = () => {
             </div>
             <div className="card">
               <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                🎮 인터랙티브 · 교육
+                인터랙티브 · 교육
               </h3>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
                 클릭, 호버 등 인터랙션이 필요한 교육 콘텐츠
@@ -159,7 +159,7 @@ const ToolsOverview = () => {
             </div>
             <div className="card">
               <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
-                🚀 스타트업 · 피치덱
+                스타트업 · 피치덱
               </h3>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginBottom: 16, lineHeight: 1.7 }}>
                 투자자에게 임팩트 있는 발표를 해야 하는 경우

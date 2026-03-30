@@ -282,7 +282,7 @@ const Practice = () => {
       />
 
       <section className="section" style={{ paddingTop: 'calc(var(--nav-height) + 48px)' }}>
-        <div className="container" style={{ maxWidth: 760 }}>
+        <div className="container-content">
           <div className="text-center" style={{ marginBottom: 40 }}>
             <h1 className="section-title">프레젠테이션 연습 문제</h1>
             <p className="section-subtitle">
@@ -292,32 +292,19 @@ const Practice = () => {
 
           {!isFinished ? (
             <>
-              <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-light)', fontWeight: 600 }}>
+              <div className="quiz-meta">
+                <span className="quiz-meta-score">
                   {currentQuestion + 1} / {quizData.length}
                 </span>
-                <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-light)' }}>
+                <span>
                   현재 점수: {score}점
                 </span>
               </div>
 
-              <div
-                style={{
-                  height: 4,
-                  background: 'var(--border-light)',
-                  borderRadius: 2,
-                  marginBottom: 24,
-                  overflow: 'hidden',
-                }}
-              >
+              <div className="quiz-progress-bar">
                 <div
-                  style={{
-                    height: '100%',
-                    width: `${((currentQuestion + 1) / quizData.length) * 100}%`,
-                    background: 'var(--accent)',
-                    borderRadius: 2,
-                    transition: 'width 0.3s ease',
-                  }}
+                  className="quiz-progress-fill"
+                  style={{ width: `${((currentQuestion + 1) / quizData.length) * 100}%` }}
                 />
               </div>
 
@@ -356,23 +343,21 @@ const Practice = () => {
               )}
             </>
           ) : (
-            <div className="quiz-card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>
-                {Math.round((score / quizData.length) * 100) >= 80 ? '🎉' : Math.round((score / quizData.length) * 100) >= 50 ? '👏' : '💪'}
+            <div className="quiz-card quiz-result">
+              <div className="quiz-result-icon">
+                {Math.round((score / quizData.length) * 100)}%
               </div>
-              <h2 style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text-primary)' }}>
-                퀴즈 완료!
-              </h2>
-              <p style={{ fontSize: 'var(--font-size-3xl)', fontWeight: 900, color: 'var(--accent)', marginBottom: 8 }}>
+              <h2 className="quiz-result-title">퀴즈 완료!</h2>
+              <p className="quiz-result-score">
                 {score} / {quizData.length}
               </p>
-              <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--text-secondary)', marginBottom: 8 }}>
+              <p className="quiz-result-pct">
                 정답률: {Math.round((score / quizData.length) * 100)}%
               </p>
-              <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--text-secondary)', marginBottom: 32 }}>
+              <p className="quiz-result-msg">
                 {getScoreMessage()}
               </p>
-              <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <div className="flex-center-wrap">
                 <button className="btn btn-primary" onClick={handleReset}>
                   다시 풀기
                 </button>

@@ -78,7 +78,7 @@ const Glossary = () => {
       />
 
       <section className="section" style={{ paddingTop: 'calc(var(--nav-height) + 48px)' }}>
-        <div className="container" style={{ maxWidth: 860 }}>
+        <div className="container-content">
           <div className="text-center" style={{ marginBottom: 40 }}>
             <h1 className="section-title">프레젠테이션 용어 사전</h1>
             <p className="section-subtitle">

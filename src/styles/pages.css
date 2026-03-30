@@ -55,8 +55,15 @@
   transform: scale(1.1);
 }
 
-.feature-card:hover .feature-icon-emoji {
-  filter: brightness(10);
+.feature-icon-text {
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+  color: var(--accent);
+  transition: color var(--transition-fast);
+}
+
+.feature-card:hover .feature-icon-text {
+  color: white;
 }
 
 .feature-title {
@@ -106,7 +113,7 @@
   font-size: var(--font-size-lg);
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 32px;
-  max-width: 600px;
+  max-width: var(--container-narrow);
   margin-left: auto;
   margin-right: auto;
 }
@@ -129,7 +136,7 @@
 .about-hero-desc {
   font-size: var(--font-size-lg);
   color: rgba(255, 255, 255, 0.75);
-  max-width: 700px;
+  max-width: var(--container-narrow);
   margin: 0 auto;
 }
 
@@ -204,8 +211,17 @@
 }
 
 .audience-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--accent);
 }
 
 .audience-title {

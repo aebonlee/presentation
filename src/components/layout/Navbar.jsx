@@ -52,7 +52,7 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
-  const themeIcon = theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🔄';
+  const themeIcon = theme === 'light' ? 'Light' : theme === 'dark' ? 'Dark' : 'Auto';
 
   const colorLabels = { blue: '블루', teal: '틸', purple: '퍼플', emerald: '에메랄드', gold: '골드' };
 
@@ -128,7 +128,7 @@ const Navbar = () => {
 
           <div ref={colorRef} style={{ position: 'relative' }}>
             <button className="color-picker-btn" onClick={() => setColorOpen(!colorOpen)} title="컬러 테마">
-              🎨
+              Color
             </button>
             <div className={`color-picker-dropdown ${colorOpen ? 'open' : ''}`}>
               {COLORS.map(c => (

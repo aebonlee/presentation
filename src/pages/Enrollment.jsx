@@ -71,70 +71,23 @@ export default function Enrollment() {
                   <button
                     className="enrollment-card-module-toggle"
                     onClick={() => toggleModules(course.id)}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: "0.5rem 0",
-                      fontSize: "0.95rem",
-                      fontWeight: 600,
-                      color: "var(--color-primary, #3b82f6)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                    }}
                   >
-                    <span
-                      style={{
-                        transform: expandedModules[course.id]
-                          ? "rotate(90deg)"
-                          : "rotate(0deg)",
-                        transition: "transform 0.2s ease",
-                        display: "inline-block",
-                      }}
-                    >
+                    <span className={`toggle-arrow${expandedModules[course.id] ? ' open' : ''}`}>
                       ▶
                     </span>
                     커리큘럼 보기 ({course.modules.length}개 모듈)
                   </button>
                   {expandedModules[course.id] && (
-                    <ul
-                      style={{
-                        listStyle: "none",
-                        padding: "0.5rem 0 0.5rem 1rem",
-                        margin: 0,
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "0.5rem",
-                      }}
-                    >
+                    <ul className="enrollment-module-list">
                       {course.modules.map((mod, modIndex) => (
-                        <li
-                          key={modIndex}
-                          style={{
-                            fontSize: "0.9rem",
-                            lineHeight: 1.5,
-                          }}
-                        >
+                        <li key={modIndex} className="enrollment-module-item">
                           <strong>
                             {modIndex + 1}. {mod.title}
                           </strong>
                           {mod.topics && mod.topics.length > 0 && (
-                            <ul
-                              style={{
-                                listStyle: "disc",
-                                paddingLeft: "1.2rem",
-                                marginTop: "0.25rem",
-                              }}
-                            >
+                            <ul className="enrollment-module-topics">
                               {mod.topics.map((topic, topicIndex) => (
-                                <li
-                                  key={topicIndex}
-                                  style={{
-                                    fontSize: "0.85rem",
-                                    color: "var(--color-text-secondary, #6b7280)",
-                                  }}
-                                >
+                                <li key={topicIndex} className="enrollment-module-topic">
                                   {topic}
                                 </li>
                               ))}
@@ -192,141 +145,36 @@ export default function Enrollment() {
         data-aos="fade-up"
       >
         <div className="container">
-          <h2
-            style={{
-              textAlign: "center",
-              fontSize: "1.75rem",
-              fontWeight: 700,
-              marginBottom: "2rem",
-            }}
-          >
-            수강 신청 안내
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: "1.5rem",
-              maxWidth: "900px",
-              margin: "0 auto",
-            }}
-          >
-            <div
-              className="enrollment-card"
-              style={{ textAlign: "center" }}
-            >
-              <div
-                style={{
-                  fontSize: "2rem",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                01
-              </div>
-              <h3
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                과정 선택
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "var(--color-text-secondary, #6b7280)",
-                }}
-              >
+          <h2 className="enrollment-section-heading">수강 신청 안내</h2>
+          <div className="enrollment-process-grid">
+            <div className="enrollment-card" style={{ textAlign: "center" }}>
+              <div className="enrollment-process-num">01</div>
+              <h3 className="enrollment-process-title">과정 선택</h3>
+              <p className="enrollment-process-desc">
                 원하는 과정을 확인하고 상세 내용을 살펴보세요.
               </p>
             </div>
-            <div
-              className="enrollment-card"
-              style={{ textAlign: "center" }}
-            >
-              <div
-                style={{
-                  fontSize: "2rem",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                02
-              </div>
-              <h3
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                신청서 제출
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "var(--color-text-secondary, #6b7280)",
-                }}
-              >
+            <div className="enrollment-card" style={{ textAlign: "center" }}>
+              <div className="enrollment-process-num">02</div>
+              <h3 className="enrollment-process-title">신청서 제출</h3>
+              <p className="enrollment-process-desc">
                 신청하기 버튼을 클릭하여 수강 신청서를 제출하세요.
               </p>
             </div>
-            <div
-              className="enrollment-card"
-              style={{ textAlign: "center" }}
-            >
-              <div
-                style={{
-                  fontSize: "2rem",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                03
-              </div>
-              <h3
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                수강 시작
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "var(--color-text-secondary, #6b7280)",
-                }}
-              >
+            <div className="enrollment-card" style={{ textAlign: "center" }}>
+              <div className="enrollment-process-num">03</div>
+              <h3 className="enrollment-process-title">수강 시작</h3>
+              <p className="enrollment-process-desc">
                 담당자 확인 후 안내에 따라 수강을 시작합니다.
               </p>
             </div>
           </div>
 
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: "2.5rem",
-              padding: "1.5rem",
-              borderRadius: "0.75rem",
-              backgroundColor: "var(--color-bg-secondary, #f9fafb)",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.95rem",
-                color: "var(--color-text-secondary, #6b7280)",
-                marginBottom: "0.5rem",
-              }}
-            >
+          <div className="enrollment-contact-box">
+            <p className="enrollment-contact-label">
               수강 관련 문의사항이 있으신가요?
             </p>
-            <p
-              style={{
-                fontSize: "1rem",
-                fontWeight: 600,
-              }}
-            >
+            <p className="enrollment-contact-info">
               이메일: contact@dreamit.co.kr | 전화: 02-1234-5678
             </p>
           </div>

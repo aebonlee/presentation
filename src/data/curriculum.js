@@ -4,7 +4,7 @@ export const curriculumData = [
     slug: 'planning',
     title: '프레젠테이션 기획과 구성',
     shortTitle: '기획과 구성',
-    icon: '📋',
+    icon: '1',
     description: '효과적인 프레젠테이션의 시작은 체계적인 기획입니다. 목적 설정부터 청중 분석, 스토리보드 구성까지 탄탄한 기획 능력을 키웁니다.',
     topics: ['목적 및 목표 설정', '청중 분석 기법', '핵심 메시지 도출', '스토리보드 작성법', '논리적 구조 설계'],
     modules: [
@@ -34,7 +34,7 @@ export const curriculumData = [
     slug: 'ppt-design',
     title: 'PPT 디자인 원칙',
     shortTitle: 'PPT 디자인',
-    icon: '🎨',
+    icon: '2',
     description: '슬라이드 디자인의 핵심 원칙을 학습합니다. 레이아웃, 색상, 타이포그래피, 이미지 활용법을 통해 전문적인 PPT를 제작합니다.',
     topics: ['레이아웃 원칙', '색상 이론과 활용', '타이포그래피', '이미지 & 아이콘', '통일성 있는 디자인'],
     modules: [
@@ -64,7 +64,7 @@ export const curriculumData = [
     slug: 'speech',
     title: '스피치와 전달력 향상',
     shortTitle: '스피치 전달력',
-    icon: '🎤',
+    icon: '3',
     description: '목소리, 제스처, 시선 처리 등 비언어적 표현까지 포함한 종합적인 스피치 능력을 향상시킵니다.',
     topics: ['음성 활용법', '보디랭귀지', '시선 처리', '긴장감 극복', 'Q&A 대응'],
     modules: [
@@ -94,7 +94,7 @@ export const curriculumData = [
     slug: 'data-visualization',
     title: '데이터 시각화 기법',
     shortTitle: '데이터 시각화',
-    icon: '📊',
+    icon: '4',
     description: '데이터를 효과적으로 시각화하여 설득력 있는 프레젠테이션을 만드는 방법을 학습합니다.',
     topics: ['차트 유형 선택', '인포그래픽', '대시보드 디자인', '데이터 스토리텔링', '시각적 계층'],
     modules: [
@@ -124,7 +124,7 @@ export const curriculumData = [
     slug: 'practice',
     title: '실전 발표 연습',
     shortTitle: '실전 발표',
-    icon: '🏆',
+    icon: '5',
     description: '실제 발표 상황을 시뮬레이션하여 배운 내용을 종합적으로 적용하고 실전 경험을 쌓습니다.',
     topics: ['시뮬레이션', '피어 리뷰', '영상 분석', '포트폴리오', '최종 발표'],
     modules: [

@@ -38,19 +38,19 @@ const CourseDetail = () => {
           <div className="course-hero-inner">
             <div data-aos="fade-right">
               <span className="course-hero-badge">
-                {course.icon} 커리큘럼 {course.id}/5
+                커리큘럼 {course.id}/5
               </span>
               <h1 className="course-hero-title">{course.title}</h1>
               <p className="course-hero-desc">{course.description}</p>
               <div className="course-hero-meta">
                 <div className="course-meta-item">
-                  <span>📅</span> {course.duration}
+                  <span>기간:</span> {course.duration}
                 </div>
                 <div className="course-meta-item">
-                  <span>📈</span> {course.level}
+                  <span>난이도:</span> {course.level}
                 </div>
                 <div className="course-meta-item">
-                  <span>📚</span> {course.modules.length}개 모듈
+                  <span>모듈:</span> {course.modules.length}개
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const CourseDetail = () => {
               </div>
 
               {/* Navigation */}
-              <div style={{ display: 'flex', gap: 16, justifyContent: 'space-between', marginTop: 48, flexWrap: 'wrap' }}>
+              <div className="flex-center-wrap" style={{ justifyContent: 'space-between', marginTop: 48 }}>
                 {prevCourse ? (
                   <Link to={`/curriculum/${prevCourse.slug}`} className="btn btn-secondary">
                     ← {prevCourse.shortTitle}
@@ -121,20 +121,20 @@ const CourseDetail = () => {
                 <div className="course-sidebar-title">과정 정보</div>
                 <div className="course-sidebar-list">
                   <div className="course-sidebar-item">
-                    <span className="course-sidebar-icon">📅</span>
-                    기간: {course.duration}
+                    <span className="course-sidebar-icon">기간:</span>
+                    {course.duration}
                   </div>
                   <div className="course-sidebar-item">
-                    <span className="course-sidebar-icon">📈</span>
-                    난이도: {course.level}
+                    <span className="course-sidebar-icon">난이도:</span>
+                    {course.level}
                   </div>
                   <div className="course-sidebar-item">
-                    <span className="course-sidebar-icon">📚</span>
-                    {course.modules.length}개 모듈
+                    <span className="course-sidebar-icon">모듈:</span>
+                    {course.modules.length}개
                   </div>
                   <div className="course-sidebar-item">
-                    <span className="course-sidebar-icon">📝</span>
-                    {course.modules.reduce((acc, m) => acc + m.topics.length, 0)}개 토픽
+                    <span className="course-sidebar-icon">토픽:</span>
+                    {course.modules.reduce((acc, m) => acc + m.topics.length, 0)}개
                   </div>
                 </div>
               </div>
@@ -165,7 +165,7 @@ const CourseDetail = () => {
                         textDecoration: 'none'
                       }}
                     >
-                      <span className="course-sidebar-icon">{c.icon}</span>
+                      <span className="course-sidebar-icon">{c.icon}.</span>
                       {c.shortTitle}
                     </Link>
                   ))}

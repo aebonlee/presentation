@@ -65,19 +65,19 @@ const Footer = () => {
           <div>
             <h4 className="footer-title">연락처</h4>
             <div className="footer-contact-item">
-              <span className="footer-contact-icon">✉</span>
+              <span className="footer-contact-icon">Email</span>
               <span>aebon@dreamitbiz.com</span>
             </div>
             <div className="footer-contact-item">
-              <span className="footer-contact-icon">📞</span>
+              <span className="footer-contact-icon">Tel</span>
               <span>010-3700-0629</span>
             </div>
             <div className="footer-contact-item">
-              <span className="footer-contact-icon">💬</span>
+              <span className="footer-contact-icon">Chat</span>
               <span>카카오톡: aebon</span>
             </div>
             <div className="footer-contact-item">
-              <span className="footer-contact-icon">🕐</span>
+              <span className="footer-contact-icon">Hours</span>
               <span>평일 09:00 ~ 18:00</span>
             </div>
           </div>
