@@ -53,7 +53,7 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
   // Pages without dark hero sections need scrolled (glass) navbar from the start
-  const noHeroPage = location.pathname.startsWith('/learn') || location.pathname === '/login';
+  const noHeroPage = location.pathname.startsWith('/learn') || location.pathname === '/login' || /^\/tools\/[^/]+$/.test(location.pathname);
   const showScrolled = scrolled || noHeroPage;
 
   const themeIcon = theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🔄';
