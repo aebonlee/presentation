@@ -179,7 +179,7 @@ const ToolGuide = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [activeSubsection, setActiveSubsection] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [expandedSections, setExpandedSections] = useState(new Set([0]));
+  const [expandedSection, setExpandedSection] = useState(0);
 
   const tool = getToolById(toolId);
   const guide = getGuideByToolId(toolId);
@@ -188,7 +188,7 @@ const ToolGuide = () => {
     setActiveSection(0);
     setActiveSubsection(0);
     setSidebarOpen(false);
-    setExpandedSections(new Set([0]));
+    setExpandedSection(0);
     window.scrollTo(0, 0);
   }, [toolId]);
 
@@ -218,26 +218,13 @@ const ToolGuide = () => {
   const nextTool = currentIdx < toolsData.length - 1 ? toolsData[currentIdx + 1] : null;
 
   const toggleSection = (sIdx) => {
-    setExpandedSections(prev => {
-      const next = new Set(prev);
-      if (next.has(sIdx)) {
-        next.delete(sIdx);
-      } else {
-        next.add(sIdx);
-      }
-      return next;
-    });
+    setExpandedSection(prev => prev === sIdx ? null : sIdx);
   };
 
   const handleSectionClick = (sIdx) => {
     setActiveSection(sIdx);
     setSidebarOpen(false);
-    // auto-expand when navigating
-    setExpandedSections(prev => {
-      const next = new Set(prev);
-      next.add(sIdx);
-      return next;
-    });
+    setExpandedSection(sIdx);
   };
 
   return (
@@ -278,15 +265,15 @@ const ToolGuide = () => {
                 </button>
                 {section.subsections && section.subsections.length > 0 && (
                   <button
-                    className={`tool-guide-sidebar-toggle-arrow ${expandedSections.has(sIdx) ? 'expanded' : ''}`}
+                    className={`tool-guide-sidebar-toggle-arrow ${expandedSection === sIdx ? 'expanded' : ''}`}
                     onClick={() => toggleSection(sIdx)}
-                    aria-label={expandedSections.has(sIdx) ? '접기' : '펼치기'}
+                    aria-label={expandedSection === sIdx ? '접기' : '펼치기'}
                   >
                     ▸
                   </button>
                 )}
               </div>
-              {expandedSections.has(sIdx) && section.subsections && (
+              {expandedSection === sIdx && section.subsections && (
                 <div className="tool-guide-sidebar-subs">
                   {section.subsections.map((sub, subIdx) => (
                     <button
