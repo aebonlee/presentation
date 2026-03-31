@@ -170,7 +170,7 @@ export default function Enrollment() {
               수강 관련 문의사항이 있으신가요?
             </p>
             <p className="enrollment-contact-info">
-              이메일: contact@dreamit.co.kr | 전화: 02-1234-5678
+              ✉️ aebon@dreamitbiz.com | 📞 010-3700-0629
             </p>
           </div>
         </div>
