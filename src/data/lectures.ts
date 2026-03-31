@@ -1,5 +1,12 @@
 export const lectures = [
   {
+    id: 'effective-presentation',
+    title: '효과적인 프레젠테이션',
+    description: '효과적인 프레젠테이션을 위한 핵심 스킬과 전략을 종합적으로 다루는 강의안입니다.',
+    category: '기초',
+    pdfPath: '/lectures/effective_presentation_skills_20260401.pdf',
+  },
+  {
     id: 'pt-basics',
     title: '프레젠테이션 기초 강의안',
     description: '프레젠테이션의 기본 개념, 기획 프로세스, 청중 분석부터 핵심 메시지 도출까지 기초 역량을 다지는 강의안입니다.',

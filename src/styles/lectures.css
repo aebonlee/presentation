@@ -1,93 +1,168 @@
-/* ===== Lectures Page ===== */
+/* ===== Lectures Page — Sidebar + Inline PDF Viewer ===== */
 
-.lectures-filters {
+/* Layout */
+.lectures-layout {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
+  gap: 28px;
+  min-height: 75vh;
+  position: relative;
 }
 
-.lectures-filter {
-  padding: 8px 20px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-light);
+/* ── Sidebar ── */
+.lectures-sidebar {
+  width: 280px;
+  flex-shrink: 0;
   background: var(--bg-card);
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 20px 0;
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.lectures-sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 8px;
+}
+
+.lectures-sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lectures-sidebar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  text-align: left;
   cursor: pointer;
   transition: all var(--transition-normal);
+  border-left: 3px solid transparent;
+  color: var(--text-secondary);
 }
 
-.lectures-filter:hover {
+.lectures-sidebar-item:hover {
+  background: rgba(var(--accent-rgb, 37, 99, 235), 0.06);
+  color: var(--text-primary);
+}
+
+.lectures-sidebar-item.active {
+  background: rgba(var(--accent-rgb, 37, 99, 235), 0.1);
+  border-left-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.lectures-sidebar-item-category {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lectures-sidebar-item.active .lectures-sidebar-item-category {
+  color: var(--accent);
+}
+
+.lectures-sidebar-item-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Mobile sidebar toggle */
+.lectures-sidebar-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin-bottom: 16px;
+}
+
+.lectures-sidebar-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-.lectures-filter.active {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
+/* Sidebar overlay (mobile) */
+.lectures-sidebar-overlay {
+  display: none;
 }
 
-/* Card Grid */
-.lectures-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.lecture-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  padding: 32px 28px;
-  transition: all var(--transition-cubic);
+/* ── Content / PDF Viewer ── */
+.lectures-content {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
 }
 
-.lecture-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--accent-light);
-}
-
-.lecture-card-icon {
-  color: var(--text-light);
+.lectures-viewer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
   margin-bottom: 16px;
 }
 
-.lecture-card-category {
+.lectures-viewer-info {
+  flex: 1;
+}
+
+.lectures-viewer-category {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent);
   background: rgba(var(--accent-rgb, 37, 99, 235), 0.1);
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
-  margin-bottom: 12px;
-  width: fit-content;
+  margin-bottom: 8px;
 }
 
-.lecture-card-title {
-  font-size: var(--font-size-lg);
+.lectures-viewer-title {
+  font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
-.lecture-card-desc {
+.lectures-viewer-desc {
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 20px;
-  flex: 1;
 }
 
-.lecture-card-btn {
+.lectures-download-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
   padding: 10px 20px;
   background: var(--accent);
@@ -96,100 +171,48 @@
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-normal);
-  width: 100%;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.lecture-card-btn:hover {
+.lectures-download-btn:hover {
   opacity: 0.9;
   transform: translateY(-1px);
 }
 
-/* PDF Modal */
-.lecture-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.lecture-modal {
-  background: var(--bg-primary);
-  border-radius: var(--radius-xl);
-  width: 100%;
-  max-width: 900px;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-xl);
-  overflow: hidden;
-}
-
-.lecture-modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.lecture-modal-title {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.lecture-modal-close {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.lecture-modal-close:hover {
-  background: var(--accent);
-  color: #fff;
-}
-
-.lecture-modal-body {
+/* PDF iframe wrapper */
+.lectures-viewer-body {
   flex: 1;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
 }
 
-.lecture-pdf-viewer {
+.lectures-pdf-iframe {
   width: 100%;
-  height: 65vh;
+  height: 75vh;
   border: none;
+  background: #f5f5f5;
 }
 
-.lecture-pdf-fallback {
-  padding: 16px 24px;
+.lectures-pdf-fallback {
+  padding: 12px 24px;
   text-align: center;
   border-top: 1px solid var(--border-light);
   font-size: var(--font-size-sm);
   color: var(--text-light);
 }
 
-.lecture-download-btn {
+.lectures-fallback-link {
   display: inline-block;
-  margin-top: 8px;
-  padding: 8px 20px;
+  margin-top: 6px;
+  padding: 6px 16px;
   background: var(--accent);
   color: #fff;
   border-radius: var(--radius-md);
@@ -199,33 +222,61 @@
   transition: opacity var(--transition-normal);
 }
 
-.lecture-download-btn:hover {
+.lectures-fallback-link:hover {
   opacity: 0.9;
 }
 
 /* ===== Responsive ===== */
 
 @media (max-width: 1024px) {
-  .lectures-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .lectures-layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .lectures-sidebar-toggle {
+    display: inline-flex;
+  }
+
+  .lectures-sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    padding-top: 24px;
+  }
+
+  .lectures-sidebar.open {
+    left: 0;
+  }
+
+  .lectures-sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 999;
   }
 }
 
 @media (max-width: 640px) {
-  .lectures-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .lectures-viewer-header {
+    flex-direction: column;
+    padding: 18px 20px;
   }
 
-  .lecture-card {
-    padding: 24px 20px;
+  .lectures-download-btn {
+    width: 100%;
+    justify-content: center;
   }
 
-  .lecture-modal {
-    max-height: 95vh;
-  }
-
-  .lecture-pdf-viewer {
-    height: 55vh;
+  .lectures-pdf-iframe {
+    height: 60vh;
   }
 }

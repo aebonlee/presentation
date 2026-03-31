@@ -1,18 +1,14 @@
 import { useState } from 'react';
 import SEOHead from '../components/SEOHead';
 import useAOS from '../hooks/useAOS';
-import { lectures, lectureCategories } from '../data/lectures';
+import { lectures } from '../data/lectures';
 
 const Lectures = () => {
   useAOS();
-  const [activeCategory, setActiveCategory] = useState('전체');
-  const [viewingPdf, setViewingPdf] = useState<{ title: string; pdfPath: string; description: string } | null>(null);
+  const [selectedId, setSelectedId] = useState<string>(lectures[0]?.id ?? '');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const filtered = lectures.filter(
-    (item) => activeCategory === '전체' || item.category === activeCategory
-  );
-
-  const closePdf = () => setViewingPdf(null);
+  const selected = lectures.find((l) => l.id === selectedId) ?? lectures[0];
 
   return (
     <>
@@ -33,73 +29,100 @@ const Lectures = () => {
 
       <section className="section">
         <div className="container">
-          <div className="lectures-filters" data-aos="fade-up">
-            {lectureCategories.map((cat) => (
-              <button
-                key={cat}
-                className={`lectures-filter${activeCategory === cat ? ' active' : ''}`}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <div className="lectures-layout">
+            {/* Mobile sidebar toggle */}
+            <button
+              className="lectures-sidebar-toggle"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              aria-label={sidebarOpen ? '메뉴 닫기' : '강의안 목록 열기'}
+              aria-expanded={sidebarOpen}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+              강의안 목록
+            </button>
 
-          <div className="lectures-grid" data-aos="fade-up" data-aos-delay="100">
-            {filtered.map((lecture) => (
-              <div className="lecture-card" key={lecture.id}>
-                <div className="lecture-card-icon" aria-hidden="true">
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <rect x="8" y="4" width="32" height="40" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <path d="M16 16h16M16 22h16M16 28h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M30 32l4 4 6-8" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="lecture-card-category">{lecture.category}</span>
-                <h3 className="lecture-card-title">{lecture.title}</h3>
-                <p className="lecture-card-desc">{lecture.description}</p>
-                <button
-                  className="lecture-card-btn"
-                  onClick={() => setViewingPdf(lecture)}
-                  aria-label={`${lecture.title} PDF 보기`}
-                >
-                  PDF 강의안 보기
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-light)' }}>
-              <p style={{ fontSize: 'var(--font-size-lg)', marginBottom: 8 }}>해당 카테고리에 강의안이 없습니다</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {viewingPdf && (
-        <div className="lecture-modal-overlay" onClick={closePdf} role="dialog" aria-modal="true" aria-label={`${viewingPdf.title} PDF 뷰어`}>
-          <div className="lecture-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="lecture-modal-header">
-              <h2 className="lecture-modal-title">{viewingPdf.title}</h2>
-              <button className="lecture-modal-close" onClick={closePdf} aria-label="닫기">&times;</button>
-            </div>
-            <div className="lecture-modal-body">
-              <iframe
-                src={viewingPdf.pdfPath}
-                title={viewingPdf.title}
-                className="lecture-pdf-viewer"
+            {/* Sidebar overlay for mobile */}
+            {sidebarOpen && (
+              <div
+                className="lectures-sidebar-overlay"
+                onClick={() => setSidebarOpen(false)}
+                aria-hidden="true"
               />
-              <div className="lecture-pdf-fallback">
-                <p>PDF를 표시할 수 없는 경우:</p>
-                <a href={viewingPdf.pdfPath} download className="lecture-download-btn">
-                  PDF 다운로드
+            )}
+
+            {/* Left sidebar */}
+            <aside
+              className={`lectures-sidebar${sidebarOpen ? ' open' : ''}`}
+              role="navigation"
+              aria-label="강의안 목록"
+            >
+              <h2 className="lectures-sidebar-title">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                  <path d="M6 6h8M6 10h8M6 14h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                강의안 목록
+              </h2>
+              <ul className="lectures-sidebar-list">
+                {lectures.map((lecture) => (
+                  <li key={lecture.id}>
+                    <button
+                      className={`lectures-sidebar-item${selectedId === lecture.id ? ' active' : ''}`}
+                      onClick={() => {
+                        setSelectedId(lecture.id);
+                        setSidebarOpen(false);
+                      }}
+                      aria-current={selectedId === lecture.id ? 'page' : undefined}
+                    >
+                      <span className="lectures-sidebar-item-category">{lecture.category}</span>
+                      <span className="lectures-sidebar-item-title">{lecture.title}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+
+            {/* Main content: inline PDF viewer */}
+            <main className="lectures-content" data-aos="fade-up">
+              <div className="lectures-viewer-header">
+                <div className="lectures-viewer-info">
+                  <span className="lectures-viewer-category">{selected.category}</span>
+                  <h2 className="lectures-viewer-title">{selected.title}</h2>
+                  <p className="lectures-viewer-desc">{selected.description}</p>
+                </div>
+                <a
+                  href={selected.pdfPath}
+                  download
+                  className="lectures-download-btn"
+                  aria-label={`${selected.title} PDF 다운로드`}
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M9 2v10m0 0l-3.5-3.5M9 12l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M3 14h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                  다운로드
                 </a>
               </div>
-            </div>
+              <div className="lectures-viewer-body">
+                <iframe
+                  key={selected.id}
+                  src={selected.pdfPath}
+                  title={`${selected.title} PDF 뷰어`}
+                  className="lectures-pdf-iframe"
+                />
+                <div className="lectures-pdf-fallback">
+                  <p>PDF를 표시할 수 없는 경우:</p>
+                  <a href={selected.pdfPath} download className="lectures-fallback-link">
+                    PDF 다운로드
+                  </a>
+                </div>
+              </div>
+            </main>
           </div>
         </div>
-      )}
+      </section>
     </>
   );
 };
