@@ -12,6 +12,7 @@ const Navbar = () => {
   const [userOpen, setUserOpen] = useState(false);
   const [learnOpen, setLearnOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [refOpen, setRefOpen] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme, color, setColor, COLORS } = useTheme();
   const { user, isAuthenticated, getUserName, getUserInitial } = useAuth();
@@ -29,6 +30,7 @@ const Navbar = () => {
     setMobileOpen(false);
     setLearnOpen(false);
     setToolsOpen(false);
+    setRefOpen(false);
   }, [location]);
 
   useEffect(() => {
@@ -134,6 +136,9 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* 학습 강의안 */}
+          <Link to="/lectures" className={`nav-link ${isActive('/lectures') ? 'active' : ''}`} role="menuitem">학습 강의안</Link>
+
           {/* 도구 드롭다운 */}
           <div className={`nav-dropdown ${toolsOpen ? 'open' : ''}`}>
             <button
@@ -166,8 +171,33 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link to="/glossary" className={`nav-link ${isActive('/glossary') ? 'active' : ''}`} role="menuitem">용어사전</Link>
-          <Link to="/practice" className={`nav-link ${isActive('/practice') ? 'active' : ''}`} role="menuitem">퀴즈</Link>
+          {/* 참고 자료 드롭다운 */}
+          <div className={`nav-dropdown ${refOpen ? 'open' : ''}`}>
+            <button
+              className={`nav-link ${isActive('/glossary') || isActive('/practice') ? 'active' : ''}`}
+              onClick={() => setRefOpen(!refOpen)}
+              onKeyDown={(e) => handleDropdownKeyDown(e, refOpen, setRefOpen)}
+              onMouseEnter={() => { if (window.innerWidth > 1024) setRefOpen(true); }}
+              onMouseLeave={() => { if (window.innerWidth > 1024) setRefOpen(false); }}
+              aria-expanded={refOpen}
+              aria-haspopup="true"
+              aria-controls="ref-dropdown-menu"
+            >
+              참고 자료 ▾
+            </button>
+            <div
+              className="nav-dropdown-menu"
+              id="ref-dropdown-menu"
+              role="menu"
+              aria-label="참고 자료 목록"
+              onMouseEnter={() => { if (window.innerWidth > 1024) setRefOpen(true); }}
+              onMouseLeave={() => { if (window.innerWidth > 1024) setRefOpen(false); }}
+            >
+              <Link to="/glossary" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setRefOpen)}>용어사전</Link>
+              <Link to="/practice" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setRefOpen)}>퀴즈</Link>
+            </div>
+          </div>
+
           <Link to="/enrollment" className={`nav-link ${isActive('/enrollment') ? 'active' : ''}`} role="menuitem">과정 신청</Link>
           <Link to="/request" className={`nav-link ${isActive('/request') ? 'active' : ''}`} role="menuitem">제작 의뢰</Link>
           <Link to="/community" className={`nav-link ${isActive('/community') ? 'active' : ''}`} role="menuitem">커뮤니티</Link>

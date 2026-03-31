@@ -85,10 +85,10 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © 2025 드림아이티비즈. All rights reserved.
+            © 2025 드림아이티비즈(DreamIT Biz). All rights reserved.
           </div>
           <div className="footer-info">
-            대표: 이에본 | 사업자등록번호: 000-00-00000
+            Designed by Ph.D Aebon Lee | 대표이사: 이애본 | 사업자등록번호: 601-45-20154
           </div>
         </div>
       </div>

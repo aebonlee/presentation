@@ -15,6 +15,7 @@ const Glossary = lazy(() => import('./pages/Glossary'));
 const Practice = lazy(() => import('./pages/Practice'));
 const Request = lazy(() => import('./pages/Request'));
 const Community = lazy(() => import('./pages/Community'));
+const Lectures = lazy(() => import('./pages/Lectures'));
 
 const ToolGuideRedirect = () => {
   const { toolId } = useParams();
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="learn" element={<LearningPage />} />
         <Route path="learn/:categoryId" element={<LearningPage />} />
         <Route path="learn/:categoryId/:topicId" element={<LearningPage />} />
+        <Route path="lectures" element={<Lectures />} />
         <Route path="enrollment" element={<Enrollment />} />
         <Route path="glossary" element={<Glossary />} />
         <Route path="practice" element={<Practice />} />
