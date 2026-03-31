@@ -77,41 +77,82 @@
 .tool-guide-sidebar-section {
   display: flex;
   align-items: center;
-  gap: 10px;
   width: 100%;
-  padding: 10px 20px;
+  border-left: 3px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.tool-guide-sidebar-section.active {
+  border-left-color: var(--accent);
+}
+
+.tool-guide-sidebar-section-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 10px 20px;
   font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--text-secondary);
   text-align: left;
   transition: all var(--transition-fast);
-  border-left: 3px solid transparent;
   cursor: pointer;
   background: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: none;
+  border: none;
+  min-width: 0;
+}
+
+.tool-guide-sidebar-section-btn:hover {
+  color: var(--accent);
+}
+
+.tool-guide-sidebar-section.active .tool-guide-sidebar-section-btn {
+  color: var(--accent);
 }
 
 .tool-guide-sidebar-section:hover {
   background: rgba(37, 99, 235, 0.05);
-  color: var(--accent);
 }
 
 .tool-guide-sidebar-section.active {
   background: rgba(37, 99, 235, 0.08);
+}
+
+.tool-guide-sidebar-toggle-arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 12px;
+  transition: transform 0.2s ease, color var(--transition-fast);
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.tool-guide-sidebar-toggle-arrow:hover {
   color: var(--accent);
-  border-left-color: var(--accent);
+}
+
+.tool-guide-sidebar-toggle-arrow.expanded {
+  transform: rotate(90deg);
 }
 
 .tool-guide-sidebar-section-icon {
   font-size: 16px;
   width: 20px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .tool-guide-sidebar-subs {
   padding: 4px 0;
+  overflow: hidden;
 }
 
 .tool-guide-sidebar-sub {
@@ -509,6 +550,47 @@
   transform: scale(1.1);
 }
 
+/* Intro Section (embedded from ToolDetail) */
+.tool-intro-section {
+  padding: 0;
+}
+
+.tool-intro-section .section {
+  padding: 40px 0;
+}
+
+.tool-intro-section .section:first-child {
+  padding-top: 0;
+}
+
+.tool-detail-hero--embedded {
+  padding: 0;
+  background: none;
+}
+
+.tool-detail-hero--embedded .container {
+  padding: 0;
+}
+
+.tool-detail-hero--embedded .tool-detail-grid {
+  gap: 32px;
+}
+
+/* Tool Navigation (prev/next tool) */
+.tool-guide-tool-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+  gap: 12px;
+}
+
+.tool-guide-tool-nav .btn {
+  white-space: nowrap;
+}
+
 /* ===== Dark Mode ===== */
 [data-theme="dark"] .tool-guide-sidebar {
   background: var(--bg-darker);
@@ -517,6 +599,14 @@
 
 [data-theme="dark"] .tool-guide-sidebar-header {
   border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .tool-guide-sidebar-toggle-arrow {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .tool-guide-sidebar-toggle-arrow:hover {
+  color: var(--accent-light);
 }
 
 [data-theme="dark"] .tool-guide-section-tab.active {
@@ -625,6 +715,15 @@
   }
 
   .tool-guide-nav-bottom .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tool-guide-tool-nav {
+    flex-direction: column;
+  }
+
+  .tool-guide-tool-nav .btn {
     width: 100%;
     justify-content: center;
   }
