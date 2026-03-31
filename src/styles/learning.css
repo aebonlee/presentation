@@ -317,9 +317,15 @@
 }
 
 .enrollment-section > .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+}
+
+.enrollment-section-heading,
+.enrollment-contact-box,
+.enrollment-process-grid {
+  grid-column: 1 / -1;
 }
 
 .enrollment-card {

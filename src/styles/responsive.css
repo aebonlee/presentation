@@ -62,6 +62,10 @@
     font-size: var(--font-size-base);
   }
 
+  .enrollment-section > .container {
+    grid-template-columns: 1fr;
+  }
+
   .enrollment-process-grid {
     grid-template-columns: 1fr;
   }
