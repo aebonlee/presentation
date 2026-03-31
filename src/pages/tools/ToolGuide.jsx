@@ -36,29 +36,27 @@ const IntroContent = ({ tool, activeSubsection }) => {
     case 0:
       return (
         <div className="tool-intro-section">
-          <section className="tool-detail-hero--embedded">
-            <div className="container">
-              <div className="tool-detail-grid">
-                <div data-aos="fade-right">
-                  <div className={`tool-detail-icon ${tool.iconClass}`}>{tool.icon}</div>
-                  <h1 className="tool-detail-title">{tool.name}</h1>
-                  <p className="tool-detail-company">{tool.company}</p>
-                  <p className="tool-detail-desc">{tool.fullDescription}</p>
-                  <div className="tool-detail-tags">
-                    {tool.tags.map((tag, i) => (
-                      <span key={i} className="tool-detail-tag">{tag}</span>
-                    ))}
-                  </div>
-                  <a href={tool.officialUrl} target="_blank" rel="noopener noreferrer" className="hero-btn-primary" style={{ display: 'inline-flex' }}>
-                    공식 사이트 방문 →
-                  </a>
+          <div className="tool-detail-hero--embedded">
+            <div className="tool-detail-grid">
+              <div data-aos="fade-right">
+                <div className={`tool-detail-icon ${tool.iconClass}`}>{tool.icon}</div>
+                <h1 className="tool-detail-title">{tool.name}</h1>
+                <p className="tool-detail-company">{tool.company}</p>
+                <p className="tool-detail-desc">{tool.fullDescription}</p>
+                <div className="tool-detail-tags">
+                  {tool.tags.map((tag, i) => (
+                    <span key={i} className="tool-detail-tag">{tag}</span>
+                  ))}
                 </div>
-                <div className="tool-detail-visual" data-aos="fade-left">
-                  <div className="tool-detail-visual-box">{tool.icon}</div>
-                </div>
+                <a href={tool.officialUrl} target="_blank" rel="noopener noreferrer" className="hero-btn-primary" style={{ display: 'inline-flex' }}>
+                  공식 사이트 방문 →
+                </a>
+              </div>
+              <div className="tool-detail-visual" data-aos="fade-left">
+                <div className="tool-detail-visual-box">{tool.icon}</div>
               </div>
             </div>
-          </section>
+          </div>
         </div>
       );
 

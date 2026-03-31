@@ -555,25 +555,45 @@
   padding: 0;
 }
 
-.tool-intro-section .section {
-  padding: 40px 0;
-}
-
-.tool-intro-section .section:first-child {
-  padding-top: 0;
-}
-
+/* Hero card — dark gradient inside guide content */
 .tool-detail-hero--embedded {
-  padding: 0;
-  background: none;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
 }
 
-.tool-detail-hero--embedded .container {
-  padding: 0;
+.tool-detail-hero--embedded::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle at 20% 50%, var(--accent-light) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--primary-lighter) 0%, transparent 40%);
+  pointer-events: none;
 }
 
 .tool-detail-hero--embedded .tool-detail-grid {
-  gap: 32px;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.tool-detail-hero--embedded .tool-detail-visual-box {
+  width: 150px;
+  height: 150px;
+  font-size: 4rem;
+}
+
+.tool-detail-hero--embedded .tool-detail-title {
+  font-size: var(--font-size-3xl);
+}
+
+.tool-detail-hero--embedded .hero-btn-primary {
+  padding: 12px 28px;
+  font-size: var(--font-size-base);
 }
 
 /* Tool Navigation (prev/next tool) */
@@ -599,6 +619,10 @@
 
 [data-theme="dark"] .tool-guide-sidebar-header {
   border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .tool-detail-hero--embedded {
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 [data-theme="dark"] .tool-guide-sidebar-toggle-arrow {
@@ -676,6 +700,14 @@
   .tool-guide-content {
     padding: 24px 32px;
   }
+
+  .tool-detail-hero--embedded .tool-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-detail-hero--embedded .tool-detail-visual {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -701,6 +733,14 @@
     font-size: var(--font-size-xs);
     display: block;
     overflow-x: auto;
+  }
+
+  .tool-detail-hero--embedded {
+    padding: 28px;
+  }
+
+  .tool-detail-hero--embedded .tool-detail-title {
+    font-size: var(--font-size-2xl);
   }
 
   .tool-guide-cta {
