@@ -1,1 +1,0 @@
-import{r}from"./index-C7cUg43J.js";const n=()=>{r.useEffect(()=>{const t=new IntersectionObserver(e=>{e.forEach(s=>{s.isIntersecting&&s.target.classList.add("aos-animate")})},{threshold:.1,rootMargin:"0px 0px -50px 0px"});return document.querySelectorAll("[data-aos]").forEach(e=>t.observe(e)),()=>t.disconnect()})};export{n as u};
