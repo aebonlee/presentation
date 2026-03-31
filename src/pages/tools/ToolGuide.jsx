@@ -331,20 +331,8 @@ const ToolGuide = () => {
             </div>
           )}
 
-          {/* Content */}
-          {activeSection === 0 ? (
-            <IntroContent tool={tool} activeSubsection={activeSubsection} />
-          ) : (
-            currentSubsection && (
-              <div
-                className="tool-guide-markdown"
-                dangerouslySetInnerHTML={{ __html: renderMarkdown(currentSubsection.content) }}
-              />
-            )
-          )}
-
-          {/* Bottom Navigation */}
-          <div className="tool-guide-nav-bottom">
+          {/* Section/Subsection Navigation — above content */}
+          <div className="tool-guide-nav-top">
             {activeSubsection > 0 ? (
               <button className="btn btn-secondary" onClick={() => setActiveSubsection(activeSubsection - 1)}>
                 ← {currentSection.subsections[activeSubsection - 1]?.title}
@@ -370,7 +358,19 @@ const ToolGuide = () => {
             ) : <div />}
           </div>
 
-          {/* Prev/Next Tool Navigation */}
+          {/* Content */}
+          {activeSection === 0 ? (
+            <IntroContent tool={tool} activeSubsection={activeSubsection} />
+          ) : (
+            currentSubsection && (
+              <div
+                className="tool-guide-markdown"
+                dangerouslySetInnerHTML={{ __html: renderMarkdown(currentSubsection.content) }}
+              />
+            )
+          )}
+
+          {/* Prev/Next Tool Navigation — bottom */}
           <div className="tool-guide-tool-nav">
             {prevTool ? (
               <Link to={`/tools/${prevTool.id}`} className="btn btn-secondary">

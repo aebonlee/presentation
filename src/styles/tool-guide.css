@@ -470,6 +470,20 @@
 }
 
 /* Bottom Navigation */
+.tool-guide-nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tool-guide-nav-top .btn {
+  font-size: 0.85rem;
+  padding: 6px 14px;
+}
+
 .tool-guide-nav-bottom {
   display: flex;
   justify-content: space-between;
@@ -747,6 +761,16 @@
     flex-direction: column;
     text-align: center;
     padding: 24px 20px;
+  }
+
+  .tool-guide-nav-top {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tool-guide-nav-top .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .tool-guide-nav-bottom {
