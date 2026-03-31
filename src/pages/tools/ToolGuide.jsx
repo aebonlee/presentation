@@ -329,19 +329,6 @@ const ToolGuide = () => {
             </p>
           </div>
 
-          {/* Section Tabs */}
-          <div className="tool-guide-sections-nav">
-            {allSections.map((section, idx) => (
-              <button
-                key={section.id}
-                className={`tool-guide-section-tab ${activeSection === idx ? 'active' : ''}`}
-                onClick={() => handleSectionClick(idx)}
-              >
-                {sectionIcons[section.id] || '📖'} {section.title}
-              </button>
-            ))}
-          </div>
-
           {/* Subsection Tabs */}
           {currentSection?.subsections?.length > 1 && (
             <div className="tool-guide-subsections-nav">
