@@ -1,5 +1,0 @@
-const $=l=>{if(!l)return"";let e=l;return e=e.replace(/```([\s\S]*?)```/g,"<pre><code>$1</code></pre>"),e=e.replace(/^#### (.+)$/gm,"<h4>$1</h4>"),e=e.replace(/^### (.+)$/gm,"<h3>$1</h3>"),e=e.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>"),e=e.replace(/`([^`]+)`/g,"<code>$1</code>"),e=e.replace(/^> (.+)$/gm,"<blockquote>$1</blockquote>"),e=e.replace(/<\/blockquote>\n<blockquote>/g,"<br/>"),e=e.replace(/\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/g,(t,n,a)=>{const o=n.split("|").filter(Boolean).map(r=>`<th>${r.trim()}</th>`).join(""),p=a.trim().split(`
-`).map(r=>`<tr>${r.split("|").filter(Boolean).map(c=>`<td>${c.trim()}</td>`).join("")}</tr>`).join("");return`<table><thead><tr>${o}</tr></thead><tbody>${p}</tbody></table>`}),e=e.replace(/^- (.+)$/gm,"<li>$1</li>"),e=e.replace(/(<li>.*<\/li>\n?)+/g,t=>`<ul>${t}</ul>`),e=e.replace(/^\d+\. (.+)$/gm,"<li>$1</li>"),e=e.split(`
-
-`).map(t=>t.startsWith("<")||t.trim()===""?t:`<p>${t.replace(/\n/g,"<br/>")}</p>`).join(`
-`),e=e.replace(/~~(.+?)~~/g,"<del>$1</del>"),e};export{$ as r};
