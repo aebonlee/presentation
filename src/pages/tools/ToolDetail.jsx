@@ -170,6 +170,23 @@ const ToolDetail = () => {
         </div>
       </section>
 
+      {/* Guide CTA */}
+      <section className="section">
+        <div className="container">
+          <div className="tool-guide-cta" data-aos="fade-up">
+            <div className="tool-guide-cta-content">
+              <div className="tool-guide-cta-title">{tool.shortName} 종합 사용 가이드</div>
+              <div className="tool-guide-cta-desc">
+                단축키, 핵심 기능 사용법, 고급 테크닉, 실전 워크플로우, 문제 해결까지 — {tool.shortName}를 완벽하게 마스터하세요
+              </div>
+            </div>
+            <Link to={`/tools/${tool.id}/guide`} className="tool-guide-cta-btn">
+              가이드 보기 →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Navigation */}
       <section className="section">
         <div className="container">

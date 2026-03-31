@@ -9,6 +9,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const CourseDetail = lazy(() => import('./pages/courses/CourseDetail'));
 const ToolsOverview = lazy(() => import('./pages/tools/ToolsOverview'));
 const ToolDetail = lazy(() => import('./pages/tools/ToolDetail'));
+const ToolGuide = lazy(() => import('./pages/tools/ToolGuide'));
 const LearningPage = lazy(() => import('./pages/learning/LearningPage'));
 const Enrollment = lazy(() => import('./pages/Enrollment'));
 const Glossary = lazy(() => import('./pages/Glossary'));
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="curriculum/:slug" element={<CourseDetail />} />
         <Route path="tools" element={<ToolsOverview />} />
         <Route path="tools/:toolId" element={<ToolDetail />} />
+        <Route path="tools/:toolId/guide" element={<ToolGuide />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
