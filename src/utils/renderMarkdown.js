@@ -1,7 +1,11 @@
+import DOMPurify from 'dompurify';
+
 /**
  * Simple markdown-to-HTML renderer for learning and guide content.
  * Supports: code blocks, headers, bold, inline code, blockquotes,
  * tables, unordered/ordered lists, paragraphs, strikethrough.
+ *
+ * All output is sanitized with DOMPurify to prevent XSS attacks.
  */
 const renderMarkdown = (text) => {
   if (!text) return '';
@@ -41,7 +45,17 @@ const renderMarkdown = (text) => {
   // Strikethrough
   html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
 
-  return html;
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: [
+      'h3', 'h4', 'p', 'br', 'strong', 'em', 'del',
+      'code', 'pre', 'blockquote',
+      'table', 'thead', 'tbody', 'tr', 'th', 'td',
+      'ul', 'ol', 'li',
+      'div', 'span', 'section',
+      'kbd',
+    ],
+    ALLOWED_ATTR: ['class', 'style'],
+  });
 };
 
 export default renderMarkdown;

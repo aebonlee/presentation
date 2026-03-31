@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
 import useAOS from "../hooks/useAOS";
+import { useToast } from "../contexts/ToastContext";
 import { curriculumData } from "../data/curriculum";
 
 export default function Enrollment() {
   useAOS();
+  const toast = useToast();
 
   const [expandedModules, setExpandedModules] = useState({});
 
@@ -124,7 +126,7 @@ export default function Enrollment() {
                 <button
                   className="btn btn-primary"
                   onClick={() =>
-                    alert(
+                    toast.success(
                       `"${course.title}" 과정 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.`
                     )
                   }

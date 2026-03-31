@@ -42,7 +42,7 @@ const LearningPage = () => {
 
       <div className="learning-page">
         {/* Sidebar */}
-        <aside className={`learning-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <aside className={`learning-sidebar ${sidebarOpen ? 'open' : ''}`} role="navigation" aria-label="학습 목차">
           <div className="learning-sidebar-title">학습 목차</div>
           {learningCategories.map(cat => (
             <div key={cat.id} className="learning-sidebar-category">
@@ -50,6 +50,7 @@ const LearningPage = () => {
                 to={`/learn/${cat.id}`}
                 className={`learning-sidebar-cat-btn ${cat.id === (categoryId || 'basics') ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
+                aria-current={cat.id === (categoryId || 'basics') ? 'true' : undefined}
               >
                 <span className="learning-sidebar-cat-icon">{cat.icon}</span>
                 {cat.title}
@@ -62,6 +63,7 @@ const LearningPage = () => {
                       to={`/learn/${cat.id}/${t.id}`}
                       className={`learning-sidebar-topic ${t.id === (topicId || cat.topics[0]?.id) ? 'active' : ''}`}
                       onClick={() => setSidebarOpen(false)}
+                      aria-current={t.id === (topicId || cat.topics[0]?.id) ? 'page' : undefined}
                     >
                       {t.title}
                     </Link>
@@ -94,12 +96,15 @@ const LearningPage = () => {
 
           {/* Section Tabs */}
           {topic?.sections?.length > 1 && (
-            <div className="learning-sections-nav">
+            <div className="learning-sections-nav" role="tablist" aria-label="섹션 탭">
               {topic.sections.map((sec, idx) => (
                 <button
                   key={idx}
                   className={`learning-section-tab ${activeSection === idx ? 'active' : ''}`}
                   onClick={() => setActiveSection(idx)}
+                  role="tab"
+                  aria-selected={activeSection === idx}
+                  aria-controls="learning-content-panel"
                 >
                   {sec.title}
                 </button>
@@ -110,7 +115,9 @@ const LearningPage = () => {
           {/* Content */}
           {currentSection && (
             <div
+              id="learning-content-panel"
               className="learning-markdown"
+              role="tabpanel"
               dangerouslySetInnerHTML={{ __html: renderMarkdown(currentSection.content) }}
             />
           )}
@@ -144,7 +151,12 @@ const LearningPage = () => {
         </div>
 
         {/* Mobile Sidebar Toggle */}
-        <button className="learning-sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        <button
+          className="learning-sidebar-toggle"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          aria-label={sidebarOpen ? '목차 닫기' : '목차 열기'}
+          aria-expanded={sidebarOpen}
+        >
           {sidebarOpen ? '✕' : '☰'}
         </button>
       </div>

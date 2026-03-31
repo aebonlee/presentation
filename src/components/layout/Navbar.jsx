@@ -57,39 +57,80 @@ const Navbar = () => {
   const showScrolled = scrolled || noHeroPage;
 
   const themeIcon = theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🔄';
+  const themeLabel = theme === 'light' ? '라이트 모드' : theme === 'dark' ? '다크 모드' : '자동 모드';
 
   const colorLabels = { blue: '블루', teal: '틸', purple: '퍼플', emerald: '에메랄드', gold: '골드' };
 
+  /* ── Dropdown keyboard handler ── */
+  const handleDropdownKeyDown = (e, isOpen, setOpen) => {
+    if (e.key === 'Escape' && isOpen) {
+      setOpen(false);
+      e.currentTarget.focus();
+    } else if ((e.key === 'Enter' || e.key === ' ') && !isOpen) {
+      e.preventDefault();
+      setOpen(true);
+    } else if (e.key === 'ArrowDown' && isOpen) {
+      e.preventDefault();
+      const menu = e.currentTarget.nextElementSibling;
+      const first = menu?.querySelector('[role="menuitem"]');
+      first?.focus();
+    }
+  };
+
+  /* ── Menu item keyboard handler (Arrow Up/Down/Escape) ── */
+  const handleMenuItemKeyDown = (e, setOpen) => {
+    const items = Array.from(e.currentTarget.parentElement.querySelectorAll('[role="menuitem"]'));
+    const idx = items.indexOf(e.currentTarget);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      items[(idx + 1) % items.length]?.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      items[(idx - 1 + items.length) % items.length]?.focus();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      setOpen(false);
+      e.currentTarget.closest('.nav-dropdown')?.querySelector('button')?.focus();
+    }
+  };
+
   return (
-    <nav className={`navbar ${showScrolled ? 'navbar-scrolled' : 'navbar-transparent'}`}>
+    <nav className={`navbar ${showScrolled ? 'navbar-scrolled' : 'navbar-transparent'}`} role="navigation" aria-label="메인 네비게이션">
       <div className="navbar-inner">
-        <Link to="/" className="navbar-brand">
-          <div className="navbar-brand-icon">P</div>
+        <Link to="/" className="navbar-brand" aria-label="Presentation 홈으로 이동">
+          <div className="navbar-brand-icon" aria-hidden="true">P</div>
           Presentation
         </Link>
 
-        <div className={`navbar-nav ${mobileOpen ? 'open' : ''}`}>
+        <div className={`navbar-nav ${mobileOpen ? 'open' : ''}`} id="main-nav" role="menubar">
           {/* 학습 드롭다운 */}
           <div className={`nav-dropdown ${learnOpen ? 'open' : ''}`}>
             <button
               className={`nav-link ${isActive('/learn') ? 'active' : ''}`}
               onClick={() => setLearnOpen(!learnOpen)}
+              onKeyDown={(e) => handleDropdownKeyDown(e, learnOpen, setLearnOpen)}
               onMouseEnter={() => { if (window.innerWidth > 1024) setLearnOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setLearnOpen(false); }}
+              aria-expanded={learnOpen}
+              aria-haspopup="true"
+              aria-controls="learn-dropdown-menu"
             >
               A ~ Z 학습 ▾
             </button>
             <div
               className="nav-dropdown-menu"
+              id="learn-dropdown-menu"
+              role="menu"
+              aria-label="학습 카테고리"
               onMouseEnter={() => { if (window.innerWidth > 1024) setLearnOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setLearnOpen(false); }}
             >
-              <Link to="/learn/basics" className="nav-dropdown-item">프레젠테이션 기초</Link>
-              <Link to="/learn/slide-design" className="nav-dropdown-item">슬라이드 디자인</Link>
-              <Link to="/learn/speech" className="nav-dropdown-item">스피치와 전달력</Link>
-              <Link to="/learn/data-viz" className="nav-dropdown-item">데이터 시각화</Link>
-              <Link to="/learn/storytelling" className="nav-dropdown-item">스토리텔링</Link>
-              <Link to="/learn/english-presentation" className="nav-dropdown-item">영어 프레젠테이션</Link>
+              <Link to="/learn/basics" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setLearnOpen)}>프레젠테이션 기초</Link>
+              <Link to="/learn/slide-design" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setLearnOpen)}>슬라이드 디자인</Link>
+              <Link to="/learn/speech" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setLearnOpen)}>스피치와 전달력</Link>
+              <Link to="/learn/data-viz" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setLearnOpen)}>데이터 시각화</Link>
+              <Link to="/learn/storytelling" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setLearnOpen)}>스토리텔링</Link>
+              <Link to="/learn/english-presentation" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setLearnOpen)}>영어 프레젠테이션</Link>
             </div>
           </div>
 
@@ -98,48 +139,70 @@ const Navbar = () => {
             <button
               className={`nav-link ${isActive('/tools') ? 'active' : ''}`}
               onClick={() => setToolsOpen(!toolsOpen)}
+              onKeyDown={(e) => handleDropdownKeyDown(e, toolsOpen, setToolsOpen)}
               onMouseEnter={() => { if (window.innerWidth > 1024) setToolsOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setToolsOpen(false); }}
+              aria-expanded={toolsOpen}
+              aria-haspopup="true"
+              aria-controls="tools-dropdown-menu"
             >
               제작도구 ▾
             </button>
             <div
               className="nav-dropdown-menu"
+              id="tools-dropdown-menu"
+              role="menu"
+              aria-label="제작도구 목록"
               onMouseEnter={() => { if (window.innerWidth > 1024) setToolsOpen(true); }}
               onMouseLeave={() => { if (window.innerWidth > 1024) setToolsOpen(false); }}
             >
-              <Link to="/tools" className="nav-dropdown-item">도구 비교</Link>
-              <Link to="/tools/powerpoint" className="nav-dropdown-item">PowerPoint</Link>
-              <Link to="/tools/google-slides" className="nav-dropdown-item">Google Slides</Link>
-              <Link to="/tools/canva" className="nav-dropdown-item">Canva</Link>
-              <Link to="/tools/miricanvas" className="nav-dropdown-item">미리캔버스</Link>
-              <Link to="/tools/figma" className="nav-dropdown-item">Figma</Link>
-              <Link to="/tools/genially" className="nav-dropdown-item">Genially</Link>
+              <Link to="/tools" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>도구 비교</Link>
+              <Link to="/tools/powerpoint" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>PowerPoint</Link>
+              <Link to="/tools/google-slides" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>Google Slides</Link>
+              <Link to="/tools/canva" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>Canva</Link>
+              <Link to="/tools/miricanvas" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>미리캔버스</Link>
+              <Link to="/tools/figma" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>Figma</Link>
+              <Link to="/tools/genially" className="nav-dropdown-item" role="menuitem" tabIndex={-1} onKeyDown={(e) => handleMenuItemKeyDown(e, setToolsOpen)}>Genially</Link>
             </div>
           </div>
 
-          <Link to="/glossary" className={`nav-link ${isActive('/glossary') ? 'active' : ''}`}>용어사전</Link>
-          <Link to="/practice" className={`nav-link ${isActive('/practice') ? 'active' : ''}`}>퀴즈</Link>
-          <Link to="/enrollment" className={`nav-link ${isActive('/enrollment') ? 'active' : ''}`}>과정 신청</Link>
-          <Link to="/request" className={`nav-link ${isActive('/request') ? 'active' : ''}`}>제작 의뢰</Link>
-          <Link to="/community" className={`nav-link ${isActive('/community') ? 'active' : ''}`}>커뮤니티</Link>
+          <Link to="/glossary" className={`nav-link ${isActive('/glossary') ? 'active' : ''}`} role="menuitem">용어사전</Link>
+          <Link to="/practice" className={`nav-link ${isActive('/practice') ? 'active' : ''}`} role="menuitem">퀴즈</Link>
+          <Link to="/enrollment" className={`nav-link ${isActive('/enrollment') ? 'active' : ''}`} role="menuitem">과정 신청</Link>
+          <Link to="/request" className={`nav-link ${isActive('/request') ? 'active' : ''}`} role="menuitem">제작 의뢰</Link>
+          <Link to="/community" className={`nav-link ${isActive('/community') ? 'active' : ''}`} role="menuitem">커뮤니티</Link>
         </div>
 
         <div className="navbar-controls">
-          <button className="theme-toggle" onClick={toggleTheme} title={`테마: ${theme}`}>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`테마 전환: 현재 ${themeLabel}`}
+            title={`테마: ${theme}`}
+          >
             {themeIcon}
           </button>
 
           <div ref={colorRef} style={{ position: 'relative' }}>
-            <button className="color-picker-btn" onClick={() => setColorOpen(!colorOpen)} title="컬러 테마">
+            <button
+              className="color-picker-btn"
+              onClick={() => setColorOpen(!colorOpen)}
+              aria-label="컬러 테마 선택"
+              aria-expanded={colorOpen}
+              aria-haspopup="true"
+              title="컬러 테마"
+            >
               🎨
             </button>
-            <div className={`color-picker-dropdown ${colorOpen ? 'open' : ''}`}>
+            <div className={`color-picker-dropdown ${colorOpen ? 'open' : ''}`} role="listbox" aria-label="컬러 테마 목록">
               {COLORS.map(c => (
                 <button
                   key={c}
                   className={`color-dot color-dot-${c} ${color === c ? 'active' : ''}`}
                   onClick={() => { setColor(c); setColorOpen(false); }}
+                  role="option"
+                  aria-selected={color === c}
+                  aria-label={`${colorLabels[c]} 테마`}
                   title={colorLabels[c]}
                 />
               ))}
@@ -148,15 +211,21 @@ const Navbar = () => {
 
           {isAuthenticated ? (
             <div ref={userRef} className="user-menu">
-              <button className="user-avatar" onClick={() => setUserOpen(!userOpen)}>
+              <button
+                className="user-avatar"
+                onClick={() => setUserOpen(!userOpen)}
+                aria-label={`사용자 메뉴: ${getUserName()}`}
+                aria-expanded={userOpen}
+                aria-haspopup="true"
+              >
                 {getUserInitial()}
               </button>
-              <div className={`user-dropdown ${userOpen ? 'open' : ''}`}>
+              <div className={`user-dropdown ${userOpen ? 'open' : ''}`} role="menu" aria-label="사용자 메뉴">
                 <div style={{ padding: '10px 16px', fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 600 }}>
                   {getUserName()}
                 </div>
-                <div className="user-dropdown-divider" />
-                <button className="user-dropdown-item" onClick={handleSignOut}>
+                <div className="user-dropdown-divider" role="separator" />
+                <button className="user-dropdown-item" onClick={handleSignOut} role="menuitem">
                   로그아웃
                 </button>
               </div>
@@ -168,10 +237,13 @@ const Navbar = () => {
           <button
             className={`navbar-toggle ${mobileOpen ? 'open' : ''}`}
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? '메뉴 닫기' : '메뉴 열기'}
+            aria-expanded={mobileOpen}
+            aria-controls="main-nav"
           >
-            <span className="navbar-toggle-bar" />
-            <span className="navbar-toggle-bar" />
-            <span className="navbar-toggle-bar" />
+            <span className="navbar-toggle-bar" aria-hidden="true" />
+            <span className="navbar-toggle-bar" aria-hidden="true" />
+            <span className="navbar-toggle-bar" aria-hidden="true" />
           </button>
         </div>
       </div>

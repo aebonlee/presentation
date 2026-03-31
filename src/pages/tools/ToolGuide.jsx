@@ -237,7 +237,7 @@ const ToolGuide = () => {
 
       <div className="tool-guide-page">
         {/* Sidebar */}
-        <aside className={`tool-guide-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <aside className={`tool-guide-sidebar ${sidebarOpen ? 'open' : ''}`} role="navigation" aria-label={`${tool.shortName} 가이드 목차`}>
           <div className="tool-guide-sidebar-header">
             <Link to="/tools" className="tool-guide-sidebar-back">
               ← 도구 목록으로 돌아가기
@@ -257,6 +257,7 @@ const ToolGuide = () => {
                 <button
                   className="tool-guide-sidebar-section-btn"
                   onClick={() => handleSectionClick(sIdx)}
+                  aria-current={activeSection === sIdx ? 'true' : undefined}
                 >
                   <span className="tool-guide-sidebar-section-icon">
                     {sectionIcons[section.id] || '📖'}
@@ -267,7 +268,8 @@ const ToolGuide = () => {
                   <button
                     className={`tool-guide-sidebar-toggle-arrow ${expandedSection === sIdx ? 'expanded' : ''}`}
                     onClick={() => toggleSection(sIdx)}
-                    aria-label={expandedSection === sIdx ? '접기' : '펼치기'}
+                    aria-label={expandedSection === sIdx ? `${section.title} 접기` : `${section.title} 펼치기`}
+                    aria-expanded={expandedSection === sIdx}
                   >
                     ▸
                   </button>
@@ -318,12 +320,14 @@ const ToolGuide = () => {
 
           {/* Subsection Tabs */}
           {currentSection?.subsections?.length > 1 && (
-            <div className="tool-guide-subsections-nav">
+            <div className="tool-guide-subsections-nav" role="tablist" aria-label="서브섹션 탭">
               {currentSection.subsections.map((sub, idx) => (
                 <button
                   key={idx}
                   className={`tool-guide-subsection-tab ${activeSubsection === idx ? 'active' : ''}`}
                   onClick={() => setActiveSubsection(idx)}
+                  role="tab"
+                  aria-selected={activeSubsection === idx}
                 >
                   {sub.title}
                 </button>
@@ -387,7 +391,12 @@ const ToolGuide = () => {
         </div>
 
         {/* Mobile Sidebar Toggle */}
-        <button className="tool-guide-sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        <button
+          className="tool-guide-sidebar-toggle"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          aria-label={sidebarOpen ? '목차 닫기' : '목차 열기'}
+          aria-expanded={sidebarOpen}
+        >
           {sidebarOpen ? '✕' : '☰'}
         </button>
       </div>
