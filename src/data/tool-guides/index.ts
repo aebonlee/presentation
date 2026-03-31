@@ -14,6 +14,6 @@ export const toolGuides = [
   geniallyGuide,
 ];
 
-export const getGuideByToolId = (toolId) => {
+export const getGuideByToolId = (toolId: string | undefined) => {
   return toolGuides.find(g => g.toolId === toolId);
 };

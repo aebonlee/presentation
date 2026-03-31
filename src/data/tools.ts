@@ -235,7 +235,7 @@ export const toolsData = [
   }
 ];
 
-export const getToolById = (id) => {
+export const getToolById = (id: string | undefined) => {
   return toolsData.find(t => t.id === id);
 };
 

@@ -1,5 +1,5 @@
 /**
- * communityStorage.js
+ * communityStorage.ts
  * 커뮤니티 게시판 CRUD — Supabase prs_* 테이블
  */
 
@@ -7,7 +7,7 @@ import getSupabase from './supabase';
 
 // ── Posts ──
 
-export async function getPosts({ category, page = 1, limit = 12 } = {}) {
+export async function getPosts({ category, page = 1, limit = 12 }: { category?: string; page?: number; limit?: number } = {}) {
   const client = getSupabase();
   if (!client) return { data: [], count: 0 };
 
@@ -27,7 +27,7 @@ export async function getPosts({ category, page = 1, limit = 12 } = {}) {
   return { data: data || [], count: count || 0 };
 }
 
-export async function getPost(id) {
+export async function getPost(id: number) {
   const client = getSupabase();
   if (!client) return null;
 
@@ -47,7 +47,7 @@ export async function getPost(id) {
   return data;
 }
 
-export async function createPost({ category, title, content, authorId }) {
+export async function createPost({ category, title, content, authorId }: { category: string; title: string; content: string; authorId: string }) {
   const client = getSupabase();
   if (!client) return null;
 
@@ -64,7 +64,7 @@ export async function createPost({ category, title, content, authorId }) {
   return data;
 }
 
-export async function updatePost(id, { title, content }) {
+export async function updatePost(id: number, { title, content }: { title: string; content: string }) {
   const client = getSupabase();
   if (!client) return null;
 
@@ -82,7 +82,7 @@ export async function updatePost(id, { title, content }) {
   return data;
 }
 
-export async function deletePost(id) {
+export async function deletePost(id: number) {
   const client = getSupabase();
   if (!client) return false;
 
@@ -100,7 +100,7 @@ export async function deletePost(id) {
 
 // ── Comments ──
 
-export async function getComments(postId) {
+export async function getComments(postId: number) {
   const client = getSupabase();
   if (!client) return [];
 
@@ -117,7 +117,7 @@ export async function getComments(postId) {
   return data || [];
 }
 
-export async function createComment({ postId, content, authorId }) {
+export async function createComment({ postId, content, authorId }: { postId: number; content: string; authorId: string }) {
   const client = getSupabase();
   if (!client) return null;
 
@@ -134,7 +134,7 @@ export async function createComment({ postId, content, authorId }) {
   return data;
 }
 
-export async function deleteComment(id) {
+export async function deleteComment(id: number) {
   const client = getSupabase();
   if (!client) return false;
 
@@ -152,7 +152,7 @@ export async function deleteComment(id) {
 
 // ── Likes ──
 
-export async function toggleLike(postId, userId) {
+export async function toggleLike(postId: number, userId: string) {
   const client = getSupabase();
   if (!client) return null;
 
@@ -179,14 +179,14 @@ export async function toggleLike(postId, userId) {
   }
 }
 
-export async function getUserLikes(userId) {
+export async function getUserLikes(userId: string) {
   const client = getSupabase();
-  if (!client) return new Set();
+  if (!client) return new Set<number>();
 
   const { data } = await client
     .from('prs_post_likes')
     .select('post_id')
     .eq('user_id', userId);
 
-  return new Set((data || []).map(d => d.post_id));
+  return new Set((data || []).map((d: { post_id: number }) => d.post_id));
 }

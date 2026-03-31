@@ -95,9 +95,9 @@ const LearningPage = () => {
           </div>
 
           {/* Section Tabs */}
-          {topic?.sections?.length > 1 && (
+          {topic?.sections && topic.sections.length > 1 && (
             <div className="learning-sections-nav" role="tablist" aria-label="섹션 탭">
-              {topic.sections.map((sec, idx) => (
+              {topic!.sections.map((sec, idx) => (
                 <button
                   key={idx}
                   className={`learning-section-tab ${activeSection === idx ? 'active' : ''}`}
@@ -126,7 +126,7 @@ const LearningPage = () => {
           <div className="learning-nav-bottom">
             {activeSection > 0 ? (
               <button className="btn btn-secondary" onClick={() => setActiveSection(activeSection - 1)}>
-                ← {topic.sections[activeSection - 1]?.title}
+                ← {topic!.sections[activeSection - 1]?.title}
               </button>
             ) : <div />}
             {topic?.sections && activeSection < topic.sections.length - 1 ? (

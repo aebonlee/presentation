@@ -1,4 +1,5 @@
 import { getSupabase } from './supabase';
+import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
 const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
 
@@ -53,7 +54,7 @@ export const getCurrentUser = async () => {
   return user;
 };
 
-export const onAuthStateChange = (callback) => {
+export const onAuthStateChange = (callback: (event: AuthChangeEvent, session: Session | null) => void) => {
   const supabase = getSupabase();
   if (!supabase) return { data: { subscription: { unsubscribe: () => {} } } };
 

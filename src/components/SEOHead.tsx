@@ -3,7 +3,15 @@ const siteUrl = import.meta.env.VITE_SITE_URL || 'https://presentation.dreamitbi
 const defaultDesc = '효과적인 발표 기법과 시각 자료 제작 학습 - PPT, 스피치, 시각디자인, 스토리텔링';
 const defaultOgImage = `${siteUrl}/og-image.png`;
 
-const SEOHead = ({ title, description, path = '', ogImage, noindex = false }) => {
+interface SEOHeadProps {
+  title?: string;
+  description?: string;
+  path?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const SEOHead = ({ title, description, path = '', ogImage, noindex = false }: SEOHeadProps) => {
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const desc = description || defaultDesc;
   const url = `${siteUrl}${path}`;

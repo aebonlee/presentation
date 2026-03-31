@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const handleFamilySite = (e) => {
+  const handleFamilySite = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const url = e.target.value;
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');

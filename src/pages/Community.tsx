@@ -16,13 +16,13 @@ const CATEGORIES = [
   { value: 'feedback', label: '피드백' },
 ];
 
-const categoryLabel = (v) => CATEGORIES.find(c => c.value === v)?.label || v;
+const categoryLabel = (v: string) => CATEGORIES.find(c => c.value === v)?.label || v;
 
-const formatDate = (iso) => {
+const formatDate = (iso: string) => {
   if (!iso) return '';
   const d = new Date(iso);
   const now = new Date();
-  const diff = now - d;
+  const diff = now.getTime() - d.getTime();
   if (diff < 60000) return '방금 전';
   if (diff < 3600000) return `${Math.floor(diff / 60000)}분 전`;
   if (diff < 86400000) return `${Math.floor(diff / 3600000)}시간 전`;
@@ -31,9 +31,66 @@ const formatDate = (iso) => {
 
 const POSTS_PER_PAGE = 12;
 
+/* ── Types ── */
+interface Post {
+  id: number;
+  category: string;
+  title: string;
+  content: string;
+  author_id: string;
+  view_count: number;
+  like_count: number;
+  created_at: string;
+}
+
+interface Comment {
+  id: number;
+  post_id: number;
+  content: string;
+  author_id: string;
+  created_at: string;
+}
+
+type ViewMode = 'list' | 'write' | 'detail' | 'edit';
+
+interface State {
+  view: ViewMode;
+  category: string;
+  posts: Post[];
+  totalCount: number;
+  page: number;
+  loading: boolean;
+  currentPost: Post | null;
+  comments: Comment[];
+  commentText: string;
+  userLikes: Set<number>;
+  formCategory: string;
+  formTitle: string;
+  formContent: string;
+  submitting: boolean;
+}
+
+type Action =
+  | { type: 'SET_VIEW'; payload: ViewMode }
+  | { type: 'SET_CATEGORY'; payload: string }
+  | { type: 'SET_PAGE'; payload: number }
+  | { type: 'LOAD_POSTS_START' }
+  | { type: 'LOAD_POSTS_DONE'; payload: { data: Post[]; count: number } }
+  | { type: 'LOAD_POSTS_ERROR' }
+  | { type: 'OPEN_DETAIL'; payload: { post: Post; comments: Comment[] } }
+  | { type: 'GO_LIST' }
+  | { type: 'START_WRITE' }
+  | { type: 'START_EDIT' }
+  | { type: 'SET_FORM_FIELD'; field: string; value: string }
+  | { type: 'SET_SUBMITTING'; payload: boolean }
+  | { type: 'SET_COMMENTS'; payload: Comment[] }
+  | { type: 'SET_COMMENT_TEXT'; payload: string }
+  | { type: 'SET_USER_LIKES'; payload: Set<number> }
+  | { type: 'UPDATE_POST_LIKE'; payload: { liked: boolean; postId: number } };
+
 /* ── Reducer ── */
-const initialState = {
-  view: 'list',       // list | write | detail | edit
+const initialState: State = {
+  view: 'list',
   category: '',
   posts: [],
   totalCount: 0,
@@ -49,7 +106,7 @@ const initialState = {
   submitting: false,
 };
 
-const reducer = (state, action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SET_VIEW':
       return { ...state, view: action.payload };
@@ -73,9 +130,9 @@ const reducer = (state, action) => {
       return {
         ...state,
         view: 'edit',
-        formTitle: state.currentPost.title,
-        formContent: state.currentPost.content,
-        formCategory: state.currentPost.category,
+        formTitle: state.currentPost?.title ?? '',
+        formContent: state.currentPost?.content ?? '',
+        formCategory: state.currentPost?.category ?? 'qna',
       };
     case 'SET_FORM_FIELD':
       return { ...state, [action.field]: action.value };
@@ -105,7 +162,7 @@ const reducer = (state, action) => {
 };
 
 const Community = () => {
-  const { user, isAuthenticated, getUserName } = useAuth();
+  const { user, isAuthenticated, getUserName: _getUserName } = useAuth();
   const toast = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -121,7 +178,7 @@ const Community = () => {
     dispatch({ type: 'LOAD_POSTS_START' });
     try {
       const { data, count } = await getPosts({ category: category || undefined, page, limit: POSTS_PER_PAGE });
-      dispatch({ type: 'LOAD_POSTS_DONE', payload: { data, count } });
+      dispatch({ type: 'LOAD_POSTS_DONE', payload: { data: data as Post[], count } });
     } catch {
       dispatch({ type: 'LOAD_POSTS_ERROR' });
       toast.error('게시글을 불러오지 못했습니다.');
@@ -147,7 +204,7 @@ const Community = () => {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const openDetail = async (id) => {
+  const openDetail = async (id: number) => {
     try {
       const post = await getPost(id);
       if (!post) {
@@ -155,8 +212,8 @@ const Community = () => {
         return;
       }
       const cmts = await getComments(id);
-      dispatch({ type: 'OPEN_DETAIL', payload: { post, comments: cmts } });
-      setSearchParams({ post: id });
+      dispatch({ type: 'OPEN_DETAIL', payload: { post: post as Post, comments: cmts as Comment[] } });
+      setSearchParams({ post: String(id) });
       window.scrollTo(0, 0);
     } catch {
       toast.error('게시글을 불러오지 못했습니다.');
@@ -169,7 +226,7 @@ const Community = () => {
   };
 
   // Create post
-  const handleCreate = async (e) => {
+  const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formTitle.trim() || !formContent.trim()) {
       toast.error('제목과 내용을 입력해주세요.');
@@ -181,7 +238,7 @@ const Community = () => {
         category: formCategory,
         title: formTitle.trim(),
         content: formContent.trim(),
-        authorId: user.id,
+        authorId: user!.id,
       });
       dispatch({ type: 'SET_SUBMITTING', payload: false });
       if (result) {
@@ -197,19 +254,19 @@ const Community = () => {
   };
 
   // Edit post
-  const handleEdit = async (e) => {
+  const handleEdit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formTitle.trim() || !formContent.trim()) return;
     dispatch({ type: 'SET_SUBMITTING', payload: true });
     try {
-      const result = await updatePost(currentPost.id, {
+      const result = await updatePost(currentPost!.id, {
         title: formTitle.trim(),
         content: formContent.trim(),
       });
       dispatch({ type: 'SET_SUBMITTING', payload: false });
       if (result) {
         toast.success('수정되었습니다.');
-        openDetail(currentPost.id);
+        openDetail(currentPost!.id);
       } else {
         toast.error('수정에 실패했습니다.');
       }
@@ -222,7 +279,7 @@ const Community = () => {
   const handleDelete = async () => {
     if (!confirm('정말 삭제하시겠습니까?')) return;
     try {
-      const ok = await deletePost(currentPost.id);
+      const ok = await deletePost(currentPost!.id);
       if (ok) {
         toast.success('삭제되었습니다.');
         goList();
@@ -241,15 +298,15 @@ const Community = () => {
       return;
     }
     try {
-      const liked = await toggleLike(currentPost.id, user.id);
-      dispatch({ type: 'UPDATE_POST_LIKE', payload: { liked, postId: currentPost.id } });
+      const liked = await toggleLike(currentPost!.id, user!.id);
+      dispatch({ type: 'UPDATE_POST_LIKE', payload: { liked: !!liked, postId: currentPost!.id } });
     } catch {
       toast.error('좋아요 처리 중 오류가 발생했습니다.');
     }
   };
 
   // Comments
-  const handleComment = async (e) => {
+  const handleComment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!commentText.trim()) return;
     if (!isAuthenticated) {
@@ -258,26 +315,26 @@ const Community = () => {
     }
     try {
       const result = await createComment({
-        postId: currentPost.id,
+        postId: currentPost!.id,
         content: commentText.trim(),
-        authorId: user.id,
+        authorId: user!.id,
       });
       if (result) {
         dispatch({ type: 'SET_COMMENT_TEXT', payload: '' });
-        const cmts = await getComments(currentPost.id);
-        dispatch({ type: 'SET_COMMENTS', payload: cmts });
+        const cmts = await getComments(currentPost!.id);
+        dispatch({ type: 'SET_COMMENTS', payload: cmts as Comment[] });
       }
     } catch {
       toast.error('댓글 등록에 실패했습니다.');
     }
   };
 
-  const handleDeleteComment = async (id) => {
+  const handleDeleteComment = async (id: number) => {
     if (!confirm('댓글을 삭제하시겠습니까?')) return;
     try {
       await deleteComment(id);
-      const cmts = await getComments(currentPost.id);
-      dispatch({ type: 'SET_COMMENTS', payload: cmts });
+      const cmts = await getComments(currentPost!.id);
+      dispatch({ type: 'SET_COMMENTS', payload: cmts as Comment[] });
     } catch {
       toast.error('댓글 삭제에 실패했습니다.');
     }
@@ -417,7 +474,7 @@ const Community = () => {
       </div>
 
       <div className="community-form-actions">
-        <button type="button" className="btn btn-secondary" onClick={view === 'edit' ? () => openDetail(currentPost.id) : goList}>
+        <button type="button" className="btn btn-secondary" onClick={view === 'edit' ? () => openDetail(currentPost!.id) : goList}>
           취소
         </button>
         <button type="submit" className="btn btn-primary" disabled={submitting}>

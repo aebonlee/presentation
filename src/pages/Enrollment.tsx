@@ -9,16 +9,16 @@ export default function Enrollment() {
   useAOS();
   const toast = useToast();
 
-  const [expandedModules, setExpandedModules] = useState({});
+  const [expandedModules, setExpandedModules] = useState<Record<number, boolean>>({});
 
-  const toggleModules = (courseId) => {
+  const toggleModules = (courseId: number) => {
     setExpandedModules((prev) => ({
       ...prev,
       [courseId]: !prev[courseId],
     }));
   };
 
-  const levelLabels = {
+  const levelLabels: Record<string, string> = {
     입문: "입문",
     초급: "초급",
     중급: "중급",

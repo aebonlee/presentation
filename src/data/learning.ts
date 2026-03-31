@@ -1105,11 +1105,11 @@ export const learningCategories = [
   }
 ];
 
-export const getLearningCategory = (id) => {
+export const getLearningCategory = (id: string | undefined) => {
   return learningCategories.find(c => c.id === id);
 };
 
-export const getLearningTopic = (categoryId, topicId) => {
+export const getLearningTopic = (categoryId: string | undefined, topicId: string | undefined) => {
   const category = getLearningCategory(categoryId);
   if (!category) return null;
   return category.topics.find(t => t.id === topicId);

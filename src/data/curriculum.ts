@@ -151,6 +151,6 @@ export const curriculumData = [
   }
 ];
 
-export const getCurriculumBySlug = (slug) => {
+export const getCurriculumBySlug = (slug: string | undefined) => {
   return curriculumData.find(c => c.slug === slug);
 };

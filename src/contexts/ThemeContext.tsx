@@ -1,10 +1,21 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
-const ThemeContext = createContext();
+type ColorName = 'blue' | 'teal' | 'purple' | 'emerald' | 'gold';
 
-const COLORS = ['blue', 'teal', 'purple', 'emerald', 'gold'];
+interface ThemeContextValue {
+  theme: string;
+  setTheme: (theme: string) => void;
+  toggleTheme: () => void;
+  color: string;
+  setColor: (color: string) => void;
+  COLORS: readonly ColorName[];
+}
 
-export const ThemeProvider = ({ children }) => {
+const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+const COLORS = ['blue', 'teal', 'purple', 'emerald', 'gold'] as const;
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('prs_themeMode');
     return saved || 'light';

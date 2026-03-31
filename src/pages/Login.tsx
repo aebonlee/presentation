@@ -18,7 +18,7 @@ const Login = () => {
     try {
       await signInWithGoogle();
     } catch (err) {
-      toast.error('Google 로그인에 실패했습니다: ' + err.message);
+      toast.error('Google 로그인에 실패했습니다: ' + (err instanceof Error ? err.message : String(err)));
     }
   };
 
@@ -26,7 +26,7 @@ const Login = () => {
     try {
       await signInWithKakao();
     } catch (err) {
-      toast.error('카카오 로그인에 실패했습니다: ' + err.message);
+      toast.error('카카오 로그인에 실패했습니다: ' + (err instanceof Error ? err.message : String(err)));
     }
   };
 

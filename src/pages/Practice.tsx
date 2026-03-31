@@ -223,12 +223,12 @@ const quizData = [
 const Practice = () => {
   useAOS();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
-  const handleOptionClick = (index) => {
+  const handleOptionClick = (index: number) => {
     if (showResult) return;
     setSelectedAnswer(index);
     setShowResult(true);
@@ -255,7 +255,7 @@ const Practice = () => {
     setIsFinished(false);
   };
 
-  const getOptionClass = (index) => {
+  const getOptionClass = (index: number) => {
     if (!showResult) {
       return 'quiz-option';
     }

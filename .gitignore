@@ -26,3 +26,10 @@ dist-ssr
 # Environment
 .env.local
 .env.*.local
+
+# Claude
+.claude/
+
+# Windows artifacts
+NUL
+nul

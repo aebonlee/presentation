@@ -1,10 +1,20 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { getSupabase } from '../utils/supabase';
+import type { User, Session } from '@supabase/supabase-js';
 
-const AuthContext = createContext();
+interface AuthContextValue {
+  user: User | null;
+  loading: boolean;
+  getUserName: () => string;
+  getUserAvatar: () => string;
+  getUserInitial: () => string;
+  isAuthenticated: boolean;
+}
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+const AuthContext = createContext<AuthContextValue | null>(null);
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +24,7 @@ export const AuthProvider = ({ children }) => {
       return;
     }
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
       setUser(session?.user ?? null);
       setLoading(false);
     });

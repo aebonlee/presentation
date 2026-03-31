@@ -7,7 +7,7 @@ import { ToastProvider } from './contexts/ToastContext';
 import App from './App';
 import './index.css';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider>

@@ -5,6 +5,8 @@ import { useAuth } from '../../contexts/AuthContext';
 import { signOut } from '../../utils/auth';
 import { useToast } from '../../contexts/ToastContext';
 
+type ColorName = 'blue' | 'teal' | 'purple' | 'emerald' | 'gold';
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,10 +17,10 @@ const Navbar = () => {
   const [refOpen, setRefOpen] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme, color, setColor, COLORS } = useTheme();
-  const { user, isAuthenticated, getUserName, getUserInitial } = useAuth();
+  const { isAuthenticated, getUserName, getUserInitial } = useAuth();
   const toast = useToast();
-  const colorRef = useRef(null);
-  const userRef = useRef(null);
+  const colorRef = useRef<HTMLDivElement>(null);
+  const userRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -34,9 +36,9 @@ const Navbar = () => {
   }, [location]);
 
   useEffect(() => {
-    const handleClick = (e) => {
-      if (colorRef.current && !colorRef.current.contains(e.target)) setColorOpen(false);
-      if (userRef.current && !userRef.current.contains(e.target)) setUserOpen(false);
+    const handleClick = (e: MouseEvent) => {
+      if (colorRef.current && !colorRef.current.contains(e.target as Node)) setColorOpen(false);
+      if (userRef.current && !userRef.current.contains(e.target as Node)) setUserOpen(false);
     };
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -52,7 +54,7 @@ const Navbar = () => {
     }
   };
 
-  const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
+  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
 
   // Pages without dark hero sections need scrolled (glass) navbar from the start
   const noHeroPage = location.pathname.startsWith('/learn') || location.pathname === '/login' || /^\/tools\/[^/]+$/.test(location.pathname);
@@ -61,10 +63,10 @@ const Navbar = () => {
   const themeIcon = theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🔄';
   const themeLabel = theme === 'light' ? '라이트 모드' : theme === 'dark' ? '다크 모드' : '자동 모드';
 
-  const colorLabels = { blue: '블루', teal: '틸', purple: '퍼플', emerald: '에메랄드', gold: '골드' };
+  const colorLabels: Record<ColorName, string> = { blue: '블루', teal: '틸', purple: '퍼플', emerald: '에메랄드', gold: '골드' };
 
   /* ── Dropdown keyboard handler ── */
-  const handleDropdownKeyDown = (e, isOpen, setOpen) => {
+  const handleDropdownKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, isOpen: boolean, setOpen: (v: boolean) => void) => {
     if (e.key === 'Escape' && isOpen) {
       setOpen(false);
       e.currentTarget.focus();
@@ -74,14 +76,14 @@ const Navbar = () => {
     } else if (e.key === 'ArrowDown' && isOpen) {
       e.preventDefault();
       const menu = e.currentTarget.nextElementSibling;
-      const first = menu?.querySelector('[role="menuitem"]');
+      const first = menu?.querySelector<HTMLElement>('[role="menuitem"]');
       first?.focus();
     }
   };
 
   /* ── Menu item keyboard handler (Arrow Up/Down/Escape) ── */
-  const handleMenuItemKeyDown = (e, setOpen) => {
-    const items = Array.from(e.currentTarget.parentElement.querySelectorAll('[role="menuitem"]'));
+  const handleMenuItemKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>, setOpen: (v: boolean) => void) => {
+    const items = Array.from(e.currentTarget.parentElement?.querySelectorAll<HTMLElement>('[role="menuitem"]') ?? []);
     const idx = items.indexOf(e.currentTarget);
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -92,7 +94,7 @@ const Navbar = () => {
     } else if (e.key === 'Escape') {
       e.preventDefault();
       setOpen(false);
-      e.currentTarget.closest('.nav-dropdown')?.querySelector('button')?.focus();
+      e.currentTarget.closest('.nav-dropdown')?.querySelector<HTMLElement>('button')?.focus();
     }
   };
 
@@ -225,7 +227,7 @@ const Navbar = () => {
               🎨
             </button>
             <div className={`color-picker-dropdown ${colorOpen ? 'open' : ''}`} role="listbox" aria-label="컬러 테마 목록">
-              {COLORS.map(c => (
+              {COLORS.map((c: ColorName) => (
                 <button
                   key={c}
                   className={`color-dot color-dot-${c} ${color === c ? 'active' : ''}`}

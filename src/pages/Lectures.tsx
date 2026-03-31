@@ -6,7 +6,7 @@ import { lectures, lectureCategories } from '../data/lectures';
 const Lectures = () => {
   useAOS();
   const [activeCategory, setActiveCategory] = useState('전체');
-  const [viewingPdf, setViewingPdf] = useState(null);
+  const [viewingPdf, setViewingPdf] = useState<{ title: string; pdfPath: string; description: string } | null>(null);
 
   const filtered = lectures.filter(
     (item) => activeCategory === '전체' || item.category === activeCategory

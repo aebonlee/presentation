@@ -6,7 +6,7 @@ import { getToolById, toolsData } from '../../data/tools';
 import { getGuideByToolId } from '../../data/tool-guides';
 import renderMarkdown from '../../utils/renderMarkdown';
 
-const sectionIcons = {
+const sectionIcons: Record<string, string> = {
   intro: '📋',
   shortcuts: '⌨️',
   core: '🎯',
@@ -15,7 +15,39 @@ const sectionIcons = {
   troubleshoot: '🔧',
 };
 
-const INTRO_SECTION = {
+interface Subsection {
+  title: string;
+  content?: string;
+}
+
+interface Section {
+  id: string;
+  title: string;
+  subsections: Subsection[];
+}
+
+interface Tool {
+  id: string;
+  name: string;
+  shortName: string;
+  company: string;
+  icon: string;
+  iconClass: string;
+  color: string;
+  gradient: string;
+  description: string;
+  fullDescription: string;
+  tags: string[];
+  pricing: { plan: string; price: string; period: string; features: string[]; featured: boolean }[];
+  features: string[];
+  pros: string[];
+  cons: string[];
+  useCases: string[];
+  officialUrl: string;
+  tips: string[];
+}
+
+const INTRO_SECTION: Section = {
   id: 'intro',
   title: '도구 소개',
   subsections: [
@@ -28,7 +60,7 @@ const INTRO_SECTION = {
 };
 
 /* ── Intro sub-section renderers ── */
-const IntroContent = ({ tool, activeSubsection }) => {
+const IntroContent = ({ tool, activeSubsection }: { tool: Tool; activeSubsection: number }) => {
   useAOS();
 
   switch (activeSubsection) {
@@ -44,7 +76,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
                 <p className="tool-detail-company">{tool.company}</p>
                 <p className="tool-detail-desc">{tool.fullDescription}</p>
                 <div className="tool-detail-tags">
-                  {tool.tags.map((tag, i) => (
+                  {tool.tags.map((tag: string, i: number) => (
                     <span key={i} className="tool-detail-tag">{tag}</span>
                   ))}
                 </div>
@@ -75,7 +107,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
                 <div className="pricing-price">{plan.price}</div>
                 <div className="pricing-period">{plan.period || '일시불'}</div>
                 <div className="pricing-features">
-                  {plan.features.map((f, i) => (
+                  {plan.features.map((f: string, i: number) => (
                     <div key={i} className="pricing-feature">
                       <span className="pricing-feature-check">✓</span>
                       {f}
@@ -103,7 +135,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
                 <span className="tool-info-card-icon">주요 기능</span>
               </div>
               <div className="tool-info-list">
-                {tool.features.map((f, i) => (
+                {tool.features.map((f: string, i: number) => (
                   <div key={i} className="tool-info-item">{f}</div>
                 ))}
               </div>
@@ -113,7 +145,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
                 <span className="tool-info-card-icon">장점</span>
               </div>
               <div className="tool-info-list">
-                {tool.pros.map((p, i) => (
+                {tool.pros.map((p: string, i: number) => (
                   <div key={i} className="tool-info-item">{p}</div>
                 ))}
               </div>
@@ -123,7 +155,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
                 <span className="tool-info-card-icon">단점</span>
               </div>
               <div className="tool-info-list">
-                {tool.cons.map((c, i) => (
+                {tool.cons.map((c: string, i: number) => (
                   <div key={i} className="tool-info-item" style={{ color: 'var(--text-light)' }}>{c}</div>
                 ))}
               </div>
@@ -140,7 +172,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
             <h2 className="section-title">추천 활용 분야</h2>
           </div>
           <div className="tool-usecase-grid" data-aos="fade-up">
-            {tool.useCases.map((uc, i) => (
+            {tool.useCases.map((uc: string, i: number) => (
               <div key={i} className="card tool-usecase-card">
                 <div className="tool-usecase-num">{String(i + 1).padStart(2, '0')}</div>
                 <div className="tool-usecase-label">{uc}</div>
@@ -159,7 +191,7 @@ const IntroContent = ({ tool, activeSubsection }) => {
             <p className="section-subtitle">{tool.shortName}를 더 잘 활용하기 위한 실전 팁</p>
           </div>
           <div style={{ padding: 0 }}>
-            {tool.tips.map((tip, i) => (
+            {tool.tips.map((tip: string, i: number) => (
               <div key={i} className="card tool-tip-card" data-aos="fade-up" data-aos-delay={`${i * 100}`}>
                 <div className="icon-num-sm">{i + 1}</div>
                 <p className="tool-tip-text">{tip}</p>
@@ -179,10 +211,10 @@ const ToolGuide = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [activeSubsection, setActiveSubsection] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [expandedSection, setExpandedSection] = useState(0);
+  const [expandedSection, setExpandedSection] = useState<number | null>(0);
 
-  const tool = getToolById(toolId);
-  const guide = getGuideByToolId(toolId);
+  const tool = getToolById(toolId) as Tool | undefined;
+  const guide = getGuideByToolId(toolId) as { toolId: string; sections: Section[] } | undefined;
 
   useEffect(() => {
     setActiveSection(0);
@@ -209,7 +241,7 @@ const ToolGuide = () => {
     );
   }
 
-  const allSections = [INTRO_SECTION, ...guide.sections];
+  const allSections: Section[] = [INTRO_SECTION, ...guide.sections];
   const currentSection = allSections[activeSection];
   const currentSubsection = currentSection?.subsections?.[activeSubsection];
 
@@ -217,11 +249,11 @@ const ToolGuide = () => {
   const prevTool = currentIdx > 0 ? toolsData[currentIdx - 1] : null;
   const nextTool = currentIdx < toolsData.length - 1 ? toolsData[currentIdx + 1] : null;
 
-  const toggleSection = (sIdx) => {
+  const toggleSection = (sIdx: number) => {
     setExpandedSection(prev => prev === sIdx ? null : sIdx);
   };
 
-  const handleSectionClick = (sIdx) => {
+  const handleSectionClick = (sIdx: number) => {
     setActiveSection(sIdx);
     setSidebarOpen(false);
     setExpandedSection(sIdx);
@@ -366,7 +398,7 @@ const ToolGuide = () => {
           {activeSection === 0 ? (
             <IntroContent tool={tool} activeSubsection={activeSubsection} />
           ) : (
-            currentSubsection && (
+            currentSubsection?.content && (
               <div
                 className="tool-guide-markdown"
                 dangerouslySetInnerHTML={{ __html: renderMarkdown(currentSubsection.content) }}

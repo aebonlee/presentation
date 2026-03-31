@@ -7,7 +7,7 @@ import DOMPurify from 'dompurify';
  *
  * All output is sanitized with DOMPurify to prevent XSS attacks.
  */
-const renderMarkdown = (text) => {
+const renderMarkdown = (text: string): string => {
   if (!text) return '';
   let html = text;
   // Code blocks (must come before inline code)
@@ -24,21 +24,21 @@ const renderMarkdown = (text) => {
   // Merge consecutive blockquotes
   html = html.replace(/<\/blockquote>\n<blockquote>/g, '<br/>');
   // Tables
-  html = html.replace(/\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/g, (match, header, rows) => {
-    const ths = header.split('|').filter(Boolean).map(h => `<th>${h.trim()}</th>`).join('');
-    const trs = rows.trim().split('\n').map(row => {
-      const tds = row.split('|').filter(Boolean).map(d => `<td>${d.trim()}</td>`).join('');
+  html = html.replace(/\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/g, (_match: string, header: string, rows: string) => {
+    const ths = header.split('|').filter(Boolean).map((h: string) => `<th>${h.trim()}</th>`).join('');
+    const trs = rows.trim().split('\n').map((row: string) => {
+      const tds = row.split('|').filter(Boolean).map((d: string) => `<td>${d.trim()}</td>`).join('');
       return `<tr>${tds}</tr>`;
     }).join('');
     return `<table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
   });
   // Unordered lists
   html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>.*<\/li>\n?)+/g, (m) => `<ul>${m}</ul>`);
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, (m: string) => `<ul>${m}</ul>`);
   // Ordered lists
   html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
   // Paragraphs
-  html = html.split('\n\n').map(block => {
+  html = html.split('\n\n').map((block: string) => {
     if (block.startsWith('<') || block.trim() === '') return block;
     return `<p>${block.replace(/\n/g, '<br/>')}</p>`;
   }).join('\n');
