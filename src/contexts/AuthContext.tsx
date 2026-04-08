@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-import { getSupabase } from '../utils/supabase';
+import { getSupabase, setSharedSession, getSharedSession, clearSharedSession } from '../utils/supabase';
 import type { User, Session } from '@supabase/supabase-js';
 
 interface AuthContextValue {
@@ -24,8 +24,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
-      setUser(session?.user ?? null);
+    supabase.auth.getSession().then(async ({ data: { session } }: { data: { session: Session | null } }) => {
+      if (!session) {
+        const rt = getSharedSession();
+        if (rt) {
+          try {
+            const { data } = await supabase!.auth.refreshSession({ refresh_token: rt });
+            if (data.session) {
+              setUser(data.session.user ?? null);
+            } else {
+              clearSharedSession();
+              setUser(null);
+            }
+          } catch {
+            clearSharedSession();
+            setUser(null);
+          }
+        } else {
+          setUser(null);
+        }
+      } else {
+        setUser(session.user ?? null);
+        if (session.refresh_token) setSharedSession(session.refresh_token);
+      }
       setLoading(false);
     });
 
@@ -33,6 +54,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       (_event, session) => {
         setUser(session?.user ?? null);
         setLoading(false);
+        // SSO: 쿠키 동기화
+        if (session?.refresh_token) setSharedSession(session.refresh_token);
+        if (_event === 'SIGNED_OUT') clearSharedSession();
       }
     );
 
