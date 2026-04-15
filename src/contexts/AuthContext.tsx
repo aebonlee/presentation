@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { getSupabase, setSharedSession, getSharedSession, clearSharedSession } from '../utils/supabase';
+import { ADMIN_EMAILS } from '../config/admin';
 import type { User, Session } from '@supabase/supabase-js';
 
 interface AuthContextValue {
@@ -9,6 +10,7 @@ interface AuthContextValue {
   getUserAvatar: () => string;
   getUserInitial: () => string;
   isAuthenticated: boolean;
+  isAdmin: boolean;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -88,6 +90,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return name.charAt(0).toUpperCase();
   };
 
+  const isAdmin = ADMIN_EMAILS.includes(user?.email?.toLowerCase() || '');
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -96,6 +100,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       getUserAvatar,
       getUserInitial,
       isAuthenticated: !!user,
+      isAdmin,
     }}>
       {children}
     </AuthContext.Provider>

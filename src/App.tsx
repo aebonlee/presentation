@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import PublicLayout from './layouts/PublicLayout';
+import AdminGuard from './components/AdminGuard';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -16,6 +17,7 @@ const Practice = lazy(() => import('./pages/Practice'));
 const Request = lazy(() => import('./pages/Request'));
 const Community = lazy(() => import('./pages/Community'));
 const Lectures = lazy(() => import('./pages/Lectures'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 
 const ToolGuideRedirect = () => {
   const { toolId } = useParams();
@@ -42,6 +44,7 @@ const App = () => {
         <Route path="tools" element={<ToolsOverview />} />
         <Route path="tools/:toolId" element={<ToolGuide />} />
         <Route path="tools/:toolId/guide" element={<ToolGuideRedirect />} />
+        <Route path="admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
