@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from '
 import { getSupabase, setSharedSession, getSharedSession, clearSharedSession } from '../utils/supabase';
 import { ADMIN_EMAILS } from '../config/admin';
 import type { User, Session } from '@supabase/supabase-js';
+import { useIdleTimeout } from '../hooks/useIdleTimeout';
 
 interface AuthContextValue {
   user: User | null;
@@ -63,6 +64,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     );
 
     const timeout = setTimeout(() => setLoading(false), 5000);
+
+
+  // 10분 무동작 세션 타임아웃
+  useIdleTimeout({
+    enabled: !!user,
+    onTimeout: () => {
+      clearSharedSession();
+    },
+  });
 
     return () => {
       subscription.unsubscribe();
