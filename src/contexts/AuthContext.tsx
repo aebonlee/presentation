@@ -65,15 +65,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const timeout = setTimeout(() => setLoading(false), 5000);
 
-
-  // 10분 무동작 세션 타임아웃
-  useIdleTimeout({
-    enabled: !!user,
-    onTimeout: () => {
-      clearSharedSession();
-    },
-  });
-
     return () => {
       subscription.unsubscribe();
       clearTimeout(timeout);
@@ -101,6 +92,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const isAdmin = ADMIN_EMAILS.includes(user?.email?.toLowerCase() || '');
+
+
+  // 10분 무동작 세션 타임아웃
+  useIdleTimeout({
+  enabled: !!user,
+  onTimeout: () => {
+  clearSharedSession();
+  },
+  });
 
   return (
     <AuthContext.Provider value={{
