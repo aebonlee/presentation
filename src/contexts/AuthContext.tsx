@@ -1,8 +1,9 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import {createContext, useContext, useState, useEffect, type ReactNode, useCallback} from 'react';
 import { getSupabase, setSharedSession, getSharedSession, clearSharedSession } from '../utils/supabase';
 import { ADMIN_EMAILS } from '../config/admin';
 import type { User, Session } from '@supabase/supabase-js';
 import { useIdleTimeout } from '../hooks/useIdleTimeout';
+import ProfileCompleteModal from '../components/ProfileCompleteModal';
 
 interface AuthContextValue {
   user: User | null;
@@ -19,6 +20,16 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [_userProfile, _setUserProfile] = useState<any>(null);
+
+  
+  // ─── 프로필 완성 체크용 user_profiles 로드 ───
+  const _loadUserProfile = useCallback(async (uid: string) => {
+    try {
+      const { data } = await getSupabase()!.from('user_profiles').select('name,phone').eq('id', uid).maybeSingle();
+      _setUserProfile(data);
+    } catch { _setUserProfile(null); }
+  }, []);
 
   useEffect(() => {
     const supabase = getSupabase();
@@ -101,6 +112,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   clearSharedSession();
   },
   });
+  const refreshProfile = useCallback(async () => { if (user) await _loadUserProfile(user.id); }, [user, _loadUserProfile]);
+  const needsProfileCompletion = !!user && !!_userProfile && (!_userProfile.name || !_userProfile.phone);
+
 
   return (
     <AuthContext.Provider value={{
@@ -113,6 +127,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       isAdmin,
     }}>
       {children}
+      {needsProfileCompletion && user && (
+        <ProfileCompleteModal user={user} onComplete={refreshProfile} />
+      )}
     </AuthContext.Provider>
   );
 };

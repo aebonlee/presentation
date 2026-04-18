@@ -27,7 +27,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (!supabase) return;
     (async () => {
-      const { count } = await supabase.from('user_profiles').select('id', { count: 'exact', head: true });
+      const { count } = await supabase.from('user_profiles').select('id', { count: 'exact', head: true }).contains('visited_sites', [window.location.hostname]);
       setStats({ members: count || 0 });
     })();
   }, [supabase]);
